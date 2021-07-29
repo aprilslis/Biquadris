@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Cell::Cell(int row, int col): type{'\0'}, age{0}, row{row}, col{col} {}
+Cell::Cell(int row, int col): type{'\0'}, age{0}, row{row}, col{col} {} // '\0' reperesents no type 
 
 void Cell::setType(char type) {
         this->type = type;
