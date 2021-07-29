@@ -31,3 +31,13 @@ bool Cell::isFull() {
 void Cell::updateAge() {
         ++age;
 }
+
+void Cell::swapCell(Cell *other) {
+        swap(type, other->type);
+        swap(age, other->age);
+}
+
+void Cell::clearCell() {
+        type = '\0';
+        age = 0;
+}
