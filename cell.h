@@ -10,15 +10,15 @@ class Cell {
 
         public:
         Cell(int row, int col);
-        void setType(char type);
+        void setType(char type); 
         char getType();
         int getAge();
         int getRow();
         int getCol();
         bool isFull();
-        void updateAge();
-        void swapCell(Cell *other);
-        void clearCell();
+        void updateAge(); // increments age of cell
+        void swapCell(Cell *other); // swaps the contents of other with this
+        void clearCell(); // resets the cell
 
 };
 
