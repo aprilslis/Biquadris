@@ -17,6 +17,8 @@ class Cell {
         int getCol();
         bool isFull();
         void updateAge();
+        void swapCell(Cell *other);
+        void clearCell();
 
 };
 
