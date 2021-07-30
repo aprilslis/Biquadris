@@ -11,7 +11,7 @@ class Block {
         std::vector <Cell *> block; // contains all cells in current block
 
         public:
-        virtual void init(Cell *lowerleft, std::vector<std::vector<Cell *>> grid) = 0; 
+        virtual void init(std::vector<std::vector<Cell *>> grid) = 0; 
         virtual void moveLeft() = 0;
         virtual void moveRight() = 0;
         virtual void moveDown() = 0;
