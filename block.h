@@ -18,10 +18,10 @@ class Block {
         virtual void drop() = 0;
         virtual void rotateCW() = 0;
         virtual void rotateCCW() = 0;
-        virtual bool lost() = 0;
 
 };
 
 class InvalidMoveException {}; // raised if move is invalid
+class LostException {}; // raised if losing condition triggered
 
 #endif
