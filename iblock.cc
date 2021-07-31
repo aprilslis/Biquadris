@@ -45,7 +45,7 @@ void IBlock::init(vector<vector<Cell *>> g) {
 
 bool IBlock::lost() {
 	if (grid[3][0]->isFull() || grid[3][1]->isFull() || grid[3][2]->isFull() || grid[3][3]->isFull()) {
-		return LostException();
+		throw LostException();
 	}
 }
 
