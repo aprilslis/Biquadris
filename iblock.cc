@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void switchBlocks(vector<Cell *> other) {
+void IBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
 	        block[i]->setType('\0'); 
