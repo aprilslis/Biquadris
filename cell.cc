@@ -32,9 +32,9 @@ void Cell::updateAge() {
         ++age;
 }
 
-void Cell::swapCell(Cell *other) {
-        swap(type, other->type);
-        swap(age, other->age);
+void Cell::copyCell(Cell *other) {
+        type = other->type;
+        age = other->age;
 }
 
 void Cell::clearCell() {
