@@ -17,9 +17,8 @@ class Cell {
         int getCol();
         bool isFull();
         void updateAge(); // increments age of cell
-        void swapCell(Cell *other); // swaps the contents of other with this
+        void copyCell(Cell *other); // copies the contents of other
         void clearCell(); // resets the cell
-
 };
 
 #endif
