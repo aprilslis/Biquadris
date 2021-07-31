@@ -105,6 +105,8 @@ void JBlock::drop() {
 		while(true) {
 			moveDown();
 		}
+	} catch (InvalidMoveException &e) {
+		break;
 	}
 }
 
