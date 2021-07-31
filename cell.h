@@ -19,6 +19,7 @@ class Cell {
         void updateAge(); // increments age of cell
         void copyCell(Cell *other); // copies the contents of other
         void clearCell(); // resets the cell
+        
 };
 
 #endif
