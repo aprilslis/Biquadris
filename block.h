@@ -9,7 +9,8 @@ class Block {
         protected:
         Cell *lowerleft; // contains the lower-left corner cell
         std::vector <Cell *> block; // contains all cells in current block
-
+        std::vector<std::vector<Cell *>> grid; // stores the game board
+        
         public:
         virtual void init(std::vector<std::vector<Cell *>> grid) = 0; 
         virtual void moveLeft() = 0;
