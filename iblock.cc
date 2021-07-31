@@ -109,8 +109,8 @@ void IBlock::drop() {
 }
 
 void IBlock::rotationCW() {
-    vector<Cell *> temp;
-    int row = lowerleft->getRow;
+	vector<Cell *> temp;
+	int row = lowerleft->getRow;
 	int col = lowerleft->getCol;
 	if (pos == 1) {
 		if (row - 1 < 0 || row - 2 < 0 || row - 3 < 0) {
