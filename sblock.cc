@@ -66,7 +66,7 @@ void SBlock::moveLeft() {
 	switchBlocks(temp);
 }
 
-void SBlock::moveRight() {
+void SBlock::moveRight() {					// opposite of moving left
 	for (int i = 0; i < size; i++) {
 		if (block[i]->getCol() + 1 > 10) {
 			throw InvalidMoveException e{};
@@ -118,10 +118,10 @@ void SBlock::rotateCW() {
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException e{};
 		}
-        temp.push_back(grid[row][col + 1]);
-        temp.push_back(grid[row - 1][col]);
+        	temp.push_back(grid[row][col + 1]);
+        	temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col+1]);
-        temp.push_back(grid[row - 2][col]);
+        	temp.push_back(grid[row - 2][col]);
 		switchBlocks(temp);
 		++pos;
 	} else if (pos == 2) {
@@ -133,7 +133,7 @@ void SBlock::rotateCW() {
 		temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col + 1]);
 		switchBlocks(temp);
-	    --pos;
+	        --pos;
 	}
 }
 
