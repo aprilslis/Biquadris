@@ -13,6 +13,7 @@ class Block {
         
         public:
         virtual void init(std::vector<std::vector<Cell *>> grid) = 0; 
+        virtual void lost() = 0;
         virtual void moveLeft() = 0;
         virtual void moveRight() = 0;
         virtual void moveDown() = 0;
