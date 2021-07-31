@@ -133,7 +133,7 @@ void SBlock::rotateCW() {
 		temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col + 1]);
 		switchBlocks(temp);
-	        --pos;
+	    --pos;
 	}
 }
 
