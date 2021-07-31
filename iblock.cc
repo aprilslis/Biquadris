@@ -105,6 +105,8 @@ void IBlock::drop() {
 		while(true) {
 			moveDown();
 		}
+	} catch (InvalidMoveException &e) {
+		break;
 	}
 }
 
