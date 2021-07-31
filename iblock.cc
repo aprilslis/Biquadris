@@ -32,6 +32,7 @@ void IBlock::init(vector<vector<Cell *>> g) {
 	grid = g;
 	pos = 1;
 	size = 4;
+	lost();
 	lowerleft = grid[3][0];
 	block.push_back(lowerleft);
 	block.push_back(grid[3][1]);
@@ -39,6 +40,12 @@ void IBlock::init(vector<vector<Cell *>> g) {
 	block.push_back(grid[3][3]);
 	for (int i = 0; i < size; i++) {
 		block[i]->setType('I');
+	}
+}
+
+bool IBlock::lost() {
+	if (grid[3][0]->isFull() || grid[3][1]->isFull() || grid[3][2]->isFull() || grid[3][3]->isFull()) {
+		return LostException();
 	}
 }
 
@@ -51,8 +58,8 @@ void IBlock::moveLeft() {
 
 	vector<Cell *> temp;
 	for (int i = 0; i < size; i++) {
-		int row = block[i].getRow();
-		int col = block[i].getCol();
+		int row = block[i]->getRow();
+		int col = block[i]->getCol();
 		temp.push_back(grid[row][col - 1]);
 	}
 
@@ -68,8 +75,8 @@ void IBlock::moveRight() {
 
 	vector<Cell *> temp;
 	for (int i = 0; i < size; i++) {
-		int row = block[i].getRow();
-		int col = block[i].getCol();
+		int row = block[i]->getRow();
+		int col = block[i]->getCol();
 		temp.push_back(grid[row][col + 1]);
 	}
 
@@ -85,8 +92,8 @@ void IBlock::moveDown() {
 
 	vector<Cell *> temp;
 	for (int i = 0; i < size; i++) {
-		int row = block[i].getRow();
-		int col = block[i].getCol();
+		int row = block[i]->getRow();
+		int col = block[i]->getCol();
 		temp.push_back(grid[row + 1][col]);
 	}
 
