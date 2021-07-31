@@ -128,7 +128,7 @@ void JBlock::rotateCW() {
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException e{};
 		}
-		temp.push_back(gris[row][col + 2]);
+		temp.push_back(grid[row][col + 2]);
 		temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col + 1]);
 		temp.push_back(grid[row - 1][col + 2]);
