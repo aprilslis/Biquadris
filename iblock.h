@@ -11,6 +11,7 @@ class IBlock : public Block {
   
     public:
         void init(std::vector<std::vector<Cell *>> g) override;
+        void lost() override;
         void moveLeft() override;
         void moveRight() override;
         void moveDown() override;
