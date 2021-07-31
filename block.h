@@ -12,7 +12,7 @@ class Block {
         std::vector<std::vector<Cell *>> grid; // stores the game board
         
         public:
-        virtual void init(std::vector<std::vector<Cell *>> grid) = 0; 
+        virtual void init(std::vector<std::vector<Cell *>> g) = 0; 
         virtual void lost() = 0;
         virtual void moveLeft() = 0;
         virtual void moveRight() = 0;
