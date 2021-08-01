@@ -111,6 +111,19 @@ void JBlock::drop() {
 	}
 }
 
+//
+// -> clockwise
+// POS = 1	POS = 2		POS = 3		POS = 4
+//	        JJ				 J	
+// J            J		JJJ		 J
+// JJJ          J		  J		JJ	
+// <- anticlockwise
+//Notes:
+//1)In position three the lowerleft is the lowest block
+//2)Make use of the diagrams to write code for rotation
+//3)Remember to change positions use the lowerleft cell of initial position always 
+//
+
 void JBlock::rotateCW() {
 	vector<Cell *> temp;
 	int row = lowerleft->getRow;
