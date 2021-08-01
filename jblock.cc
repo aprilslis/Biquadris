@@ -30,20 +30,21 @@ void JBlock::init(std::vector<std::vector<Cell *>> g) {
 	grid = g;
 	pos = 1;
 	size = 4;
-	lost();
+	lost(); // checking whether the initial position of the block is empty
+	//pushing the initial configuration into our block vector 
 	lowerleft = grid[3][0];
 	block.push_back(lowerleft);
 	block.push_back(grid[3][1]);
 	block.push_back(grid[3][2]);
 	block.push_back(grid[2][0]);
 	for (int i = 0; i < size; i++) {
-		block[i]->setType('J');
+		block[i]->setType('J'); // setting our block of the empty cells to J type cells 
 	}
 }
 
 
 
-void JBlock::lost() {
+void JBlock::lost() { // checks if the first position of the block is in losing condition (i.e. one or more cells are filled)
 	if (grid[3][0]->isFull() || grid[3][1]->isFull() || grid[3][2]->isFull() || grid[2][0]->isFull()) {
 		throw LostException();
 	}
@@ -51,16 +52,16 @@ void JBlock::lost() {
 
 void JBlock::moveLeft() {
 	for (int i = 0; i < size; i++) {
-		if (block[i]->getCol() - 1 < 0) {
+		if (block[i]->getCol() - 1 < 0) {  // checking whether each cell is part of grid
 			throw InvalidMoveException e{};
 		}
 	}
 
-	vector<Cell *> temp;
+	vector<Cell *> temp; // this will store the block to one left of current block
 	for (int i = 0; i < size; i++) {
 		int row = block[i]->getRow();
 		int col = block[i]->getCol();
-		temp.push_back(grid[row][col - 1]);
+		temp.push_back(grid[row][col - 1]); // pushing each cell to the left of current cell
 	}
 
 	switchBlocks(temp);
@@ -68,16 +69,16 @@ void JBlock::moveLeft() {
 
 void JBlock::moveRight() {
 	for (int i = 0; i < size; i++) {
-		if (block[i]->getCol() + 1 > 10) {
+		if (block[i]->getCol() + 1 > 10) { // checking whether each cell is part of grid
 			throw InvalidMoveException e{};
 		}
 	}
 
-	vector<Cell *> temp;
+	vector<Cell *> temp; // this will store the block to one right of current block
 	for (int i = 0; i < size; i++) {
 		int row = block[i]->getRow();
 		int col = block[i]->getCol();
-		temp.push_back(grid[row][col + 1]);
+		temp.push_back(grid[row][col + 1]); // pushing each cell to the right of current cell
 	}
 
 	switchBlocks(temp);
@@ -85,16 +86,16 @@ void JBlock::moveRight() {
 
 void JBlock::moveDown() {
 	for (int i = 0; i < size; i++) {
-		if (block[i]->getRow() + 1 > 17) {
+		if (block[i]->getRow() + 1 > 17) { // checking whether each cell is part of grid
 			throw InvalidMoveException e{}; 
 		}
 	}
 
-	vector<Cell *> temp;
+	vector<Cell *> temp; // this will store the block to one right of current block
 	for (int i = 0; i < size; i++) {
 		int row = block[i]->getRow();
 		int col = block[i]->getCol();
-		temp.push_back(grid[row + 1][col]);
+		temp.push_back(grid[row + 1][col]); // pushing each below the current cell 
 	}
 
 	switchBlocks(temp);
@@ -103,7 +104,7 @@ void JBlock::moveDown() {
 void JBlock::drop() {
 	try {
 		while(true) {
-			moveDown();
+			moveDown(); // keeps moving down as long as it is valid
 		}
 	} catch (InvalidMoveException &e) {
 		break;
@@ -114,7 +115,7 @@ void JBlock::rotateCW() {
 	vector<Cell *> temp;
 	int row = lowerleft->getRow;
 	int col = lowerleft->getCol;
-	if (pos == 1) {
+	if (pos == 1) { // pos 1 -> pos 2
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException e{};
 		}
@@ -124,7 +125,7 @@ void JBlock::rotateCW() {
 		temp.push_back(grid[row - 2][col + 1]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 2) {
+	} else if (pos == 2) { // pos 2 -> pos 3
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException e{};
 		}
@@ -134,7 +135,7 @@ void JBlock::rotateCW() {
 		temp.push_back(grid[row - 1][col + 2]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 3) {
+	} else if (pos == 3) { // pos 3 -> pos 4
 		if (row - 1 < 0 || row - 2  < 0 || col - 1 < 0 || col - 2 < 0) {
 			throw InvalidMoveException e{};
 		}
@@ -144,7 +145,7 @@ void JBlock::rotateCW() {
 		temp.push_back(grid[row - 2][col - 1]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 4) {
+	} else if (pos == 4) { // pos 4 -> pos 1
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException e{};
 		}
@@ -161,7 +162,7 @@ void JBlock::rotateCCW() {
 	vector<Cell *> temp;
 	int row = lowerleft->getRow;
 	int col = lowerleft->getCol;
-	if (pos == 1) {
+	if (pos == 1) { // pos 1 -> pos 4
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException e{};
 		}
@@ -171,7 +172,7 @@ void JBlock::rotateCCW() {
 		temp.push_back(grid[row - 2][col + 1]);
 		switchBlocks(temp);
 		pos = 4;
-	} else if (pos == 4) {
+	} else if (pos == 4) { // pos 4 -> pos 3
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException e{};
 		}
@@ -181,7 +182,7 @@ void JBlock::rotateCCW() {
 		temp.push_back(grid[row - 1][col + 2]);
 		switchBlocks(temp);
 		--pos;
-	} else if (pos == 3) {
+	} else if (pos == 3) { // pos 3 -> pos 2
 		if (row - 1 < 0 || row - 2 < 0 || col - 1 < 0 || col - 2 < 0) {
 			throw InvalidMoveException e{};
 		}
@@ -191,7 +192,7 @@ void JBlock::rotateCCW() {
 		temp.push_back(grid[row - 2][col - 1]);
 		switchBlocks(temp);
 		--pos;
-	} else if (pos == 2) {
+	} else if (pos == 2) { // pos 2 -> pos 1
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException e{};
 		}
