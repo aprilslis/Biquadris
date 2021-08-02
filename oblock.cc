@@ -26,7 +26,7 @@ void OBlock::switchBlocks(vector<Cell *> other) {
     lowerleft = other[0];
 }
 
-void OBlock::init(std::vector<std::vector<Cell *>> g) {
+void OBlock::init(std::vector<std::vector<Cell *>> &g) {
     grid = g;
     pos = 1;
     size = 4;
