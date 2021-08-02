@@ -26,7 +26,7 @@ void LBlock::switchBlocks(vector<Cell *> other) {
     lowerleft = other[0];
 }
 
-void LBlock::init(std::vector<std::vector<Cell *>> g) {
+void LBlock::init(std::vector<std::vector<Cell *>> &g) {
     grid = g;
     pos = 1;
     size = 4;
