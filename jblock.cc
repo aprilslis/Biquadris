@@ -26,7 +26,7 @@ void JBlock::switchBlocks(vector<Cell *> other) {
 	lowerleft = other[0];
 }
 
-void JBlock::init(std::vector<std::vector<Cell *>> g) {
+void JBlock::init(std::vector<std::vector<Cell *>> &g) {
 	grid = g;
 	pos = 1;
 	size = 4;
