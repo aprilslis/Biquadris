@@ -20,6 +20,7 @@ class Block {
         virtual void drop() = 0;
         virtual void rotateCW() = 0;
         virtual void rotateCCW() = 0;
+        void emptyBlock() = 0;
 
 };
 
