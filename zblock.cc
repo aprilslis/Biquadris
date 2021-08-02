@@ -26,7 +26,7 @@ void ZBlock::switchBlocks(vector<Cell *> other) {
 	lowerleft = other[0];
 }
 
-void ZBlock::init(std::vector<std::vector<Cell *>> g) {
+void ZBlock::init(std::vector<std::vector<Cell *>> &g) {
 	grid = g;
 	pos = 1;
 	size = 4;
