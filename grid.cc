@@ -99,7 +99,7 @@ void Grid::addBlock(Block *b){
 
 
 void Grid::replaceBlock(Block *b){
-    cur->clearBlock(); //where is the function?
+    cur->emptyBlock();
     addBlock(b);
 } //replace current block with new block b
 
