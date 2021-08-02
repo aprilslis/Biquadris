@@ -55,17 +55,54 @@ void Grid::setCell(Cell *c, int x, int y){
 
 void Grid::clearRow(int y){
     for(int i=0;i<width;i++){
-        Cell *tmp = new Cell{i,y};
-        setCell(tmp,i,y);
+        setCell(nullptr,i,y);
     }
 } //clear row at x
 
 
+int Grid::findCompleteRows(){
+    int rowsCleared=0;
+    for(int j=0;j<height;j++){
+        int count = 0;
+        for(int i=0;i<width;i++){
+            if(board[i][j]->getType()!='\0') count++;
+        }
+        if(count==width){
+            rowsCleared++;
+            clearRow(j);
+            updateBoard(j);
+        }
+    }
+
+    return rowsCleared;
+} //check for completed rows, return number of rows cleared
 
 
-void Grid::updateBoard(){
+void Grid::updateBoard(int y){
+    for(int i=0;i<width;i++){
+        for(int j=y-1;j>0;j--){
+            board[i][j+1] = board[i][j];
+        }
+    }
+
+    for(int i=0;i<width;i++){
+        board[i][0] = new Cell{i,0};
+    }
 
 } //used after clearing row/block, let all block fall over gravity(?)
+
+
+void Grid::addBlock(Block *b){
+    b->init(&board); //needs to change block class
+    cur = b;
+} //add a new given block at left top corner
+
+
+void Grid::replaceBlock(Block *b){
+    cur->clearBlock();
+    addBlock(b);
+} //replace current block with new block b
+
 
 
 void Grid::levelUp(){
