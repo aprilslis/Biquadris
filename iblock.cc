@@ -28,7 +28,7 @@ void IBlock::switchBlocks(vector<Cell *> other) {
 	lowerleft = other[0];
 }
 
-void IBlock::init(vector<vector<Cell *>> g) {
+void IBlock::init(vector<vector<Cell *>> &g) {
 	grid = g;
 	pos = 1;
 	size = 4;
