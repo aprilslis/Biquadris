@@ -69,7 +69,6 @@ void Grid::clearFullRows() { // check for completed rows, return number of rows 
     }
 }
 
-
 void Grid::updateRows(int row) { // each row moves down and top row gets cleared
     for (int i = row; i >= 4; i--) {
         for (int j = 0; j < width; j++) {
