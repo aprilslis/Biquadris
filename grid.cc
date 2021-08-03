@@ -1,6 +1,3 @@
-#include <vector>
-#include <iostream>
-#include "cell.h"
 #include "grid.h"
 
 using namespace std;
