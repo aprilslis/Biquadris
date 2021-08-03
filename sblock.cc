@@ -138,6 +138,6 @@ void SBlock::rotateCW() {
 }
 
 void SBlock::rotateCCW() {  // CCW and CW have same effect as there are 2 positions in SBlock
-	rotationCW();
+	rotateCW();
 }
 
