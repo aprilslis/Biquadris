@@ -109,7 +109,7 @@ void IBlock::drop() {
 	}
 }
 
-void IBlock::rotationCW() {
+void IBlock::rotateCW() {
 	vector<Cell *> temp;
 	int row = lowerleft->getRow();
 	int col = lowerleft->getCol();
@@ -137,6 +137,6 @@ void IBlock::rotationCW() {
 
 }
 
-void IBlock::rotationCCW() { // CCW and CW have same effect as there are 2 positions in IBlock 
+void IBlock::rotateCCW() { // CCW and CW have same effect as there are 2 positions in IBlock 
 	rotationCW();
 }
