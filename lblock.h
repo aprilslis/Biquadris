@@ -16,8 +16,8 @@ class LBlock : public Block {
         void moveRight() override;
         void moveDown() override;
         void drop() override;
-        void rotationCW() override;
-        void rotationCCW() override;
+        void rotateCW() override;
+        void rotateCCW() override;
   
 };
 
