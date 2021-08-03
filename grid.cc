@@ -35,12 +35,8 @@ void Grid::replaceBlock(Block *b) { // replace current block with new block b
 }
 
 bool Grid::isFullRow(int row) {
-    char c = board[row][0]->getType();
-    if (c == '\0') { // if a cell is empty the row cannot be full and empty rows are not considered full
-        return false;
-    }
-    for (int j = 1; j < width; j++) {
-        if (board[row][j]->getType() != c) {
+    for (int j = 0; j < width; j++) {
+        if (board[row][j]->getType() == '\0') {
             return false;
         }
     }
