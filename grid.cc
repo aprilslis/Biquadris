@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void Grid::Grid() : width{11}, height{18}, cur{nullptr} { // initialises board
+Grid::Grid() : width{11}, height{18}, cur{nullptr} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -12,7 +12,7 @@ void Grid::Grid() : width{11}, height{18}, cur{nullptr} { // initialises board
     }
 }
 
-void Grid::~Grid() { // release all existing cells
+Grid::~Grid() { // release all existing cells
     for(int i = 0; i < height; i++) {
         for(int j = 0; j < width; j++) {
             delete board[i][j];
@@ -35,7 +35,7 @@ void Grid::replaceBlock(Block *b) { // replace current block with new block b
 }
 
 bool Grid::isFullRow(int row) {
-    char c = board[row][0];
+    char c = board[row][0]->getType();
     if (c == '\0') { // if a cell is empty the row cannot be full and empty rows are not considered full
         return false;
     }
@@ -89,7 +89,7 @@ void Grid::levelDown() {
 void Grid::clearGrid() { 
     for (int i = 3; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            board[i][j]->resetCell(); // resets each cell
+            board[i][j]->clearCell(); // resets each cell
         }
     }
 }

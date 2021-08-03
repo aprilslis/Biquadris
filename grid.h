@@ -18,13 +18,14 @@ class Grid{
     int some_special_effects; //(add later)
 
   public:
-    void Grid();
+    Grid();
+    ~Grid();
     
     Cell *getCell(int x, int y); // get cell at (row, column)  
     void addBlock(Block *b); // add a new given block at left top corner
     void replaceBlock(Block *b); // replace current block with new block b
     
-    bool isFullRow(); // checks if row is full
+    bool isFullRow(int row); // checks if row is full
     int countFullRows(); // returns number of full rows
     void clearFullRows(); // clears the full rows one at a time
     void updateRows(int y); // used after clearing row/block, let all block fall over gravity(?)
@@ -35,7 +36,7 @@ class Grid{
     void clearGrid(); // resets the grid
     void printGrid(); // print out current board
     
-    void ~Grid();
+    
 };
 
 #endif
