@@ -11,9 +11,7 @@
 class Level {
 	int seed;
 public:
-	virtual Block * generateBlock();
-	virtual void setSeed(int);
-	virtual int getLevel();
+	virtual Block * generateRandomBlock(int seed = 0);
 };
 
 #endif
