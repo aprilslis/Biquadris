@@ -1,6 +1,7 @@
 #ifndef _LEVEL_H_
 #define _LEVEL_H_
 
+#include <cstdlib>
 #include "jblock.h"
 #include "lblock.h"
 #include "oblock.h"
