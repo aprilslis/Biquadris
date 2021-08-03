@@ -2,98 +2,88 @@
 #include <iostream>
 #include "cell.h"
 #include "grid.h"
+
 using namespace std;
 
-
 void Grid::printGrid(){
-    cout<<"printing gird:-------------------------"<<endl;
-    for(int i=0;i<width;i++){
-        for(int j=0;i<height;i++){
-            cout<<board[i][j]->getType()<<" ";
+    cout << endl;
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            cout << grid[i][j]->getType() << " ";
         }
-        cout<<endl;
+        cout << endl;
     }
-    cout<<"---------------------------------------"<<endl;
+    cout << endl;
 } //print out current board
 
 
-void Grid::newGame(){
-    for(int i=0;i<width;i++){
-        board.emplace_back();
-        for(int j=0;i<height;i++){
-            board[i].emplace_back(new Cell{i,j});
+void Grid::init() { // initialises the board
+    for(int i = 0; i < height; i++){
+        //board.emplace_back();
+        vector <Cell *> temp;
+        for(int j = 0 ; j < width; j++){
+            temp.push_back(new Cell{i,j});
         }
+        grid.push_back(temp);
     }
 } //start a new game
 
 
-bool Grid::endGame(){
+bool Grid::won() {
     
 } //check if game has ended
 
 
-void Grid::clearBoard(){
-    for(int i=0;i<width;i++){
-        for(int j=0;i<height;i++){
-            delete board[i][j];
+void Grid::clearGrid() {
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            delete grid[i][j];
         }
+        grid[i].clear();
     }
 } //release all existing cells
 
 
-Cell * Grid::getCell(int x, int y){
-    return board[x][y];
+Cell * Grid::getCell(int row, int col) {
+    return grid[row][col];
 } //get cell at x,y
 
 
-void Grid::setCell(Cell *c, int x, int y){
-    Cell *temp = board[x][y];
-    board[x][y] = c;
-    delete temp;
-} //set cell at x,y
-
-
-void Grid::clearRow(int y){
-    for(int i=0;i<width;i++){
-        setCell(nullptr,i,y);
-    }
-} //clear row at x
-
-
-int Grid::findCompleteRows(){
-    int rowsCleared=0;
-    for(int j=0;j<height;j++){
+void Grid::clearFullRows(){
+    for (int i = height; i >= 3; i--) {
         int count = 0;
-        for(int i=0;i<width;i++){
-            if(board[i][j]->getType()!='\0') count++;
+        char c = grid[i][0]->getType();
+        for (int j = 1; j < width; j++) {
+            if (board[i][j]->getType() == c) {
+                count++;
+            }
         }
-        if(count==width){
-            rowsCleared++;
-            clearRow(j);
-            updateBoard(j);
-        }
-    }
-
-    return rowsCleared;
-} //check for completed rows, return number of rows cleared
-
-
-void Grid::updateBoard(int y){
-    for(int i=0;i<width;i++){
-        for(int j=y-1;j>0;j--){
-            board[i][j+1] = board[i][j];
+        if (count == width) { 
+            updateRows(i);
+            return;
         }
     }
+} // check for completed rows, return number of rows cleared
 
-    for(int i=0;i<width;i++){
-        board[i][0] = new Cell{i,0};
+
+void Grid::updateRows(int row){
+    if (i == 3) {
+        for (int j = 0; j < width; j++) {
+            grid[i][j]->clearCell();
+        }
+    } else {
+        for (int i = row; i >= 3; i--) {
+            for (int j = 0; j < width; j++) {
+                grid[i][j] = grid[i - 1][j];
+            }
+        }
     }
-
-} //used after clearing row/block, let all block fall over gravity(?)
+    clearFullRows(); // after we clear one row we check again if the updated grid has any more such full rows
+} // used after clearing row/block, let all block fall over gravity(?)
 
 
 void Grid::addBlock(Block *b){
-    b->init(board); //needs to change block class
+    b->init(grid); //needs to change block class
     cur = b;
 } //add a new given block at left top corner
 
