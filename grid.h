@@ -1,8 +1,11 @@
 #ifndef _GRID_H_
 #define _GRID_H_
+
+#include <iostream>
 #include <vector>
-#include "cell.h"
 #include "block.h"
+#include "cell.h"
+
 using namespace std;
 
 class Grid{
@@ -35,7 +38,5 @@ class Grid{
     void ~Grid();
 
 };
-
-
 
 #endif
