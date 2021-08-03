@@ -14,7 +14,7 @@ void SBlock::switchBlocks(vector<Cell *> other) {
 	        for (int j = 0; j < size; j++) {
 	                block[j]->setType('S');
 	         }
-	         throw InvalidMoveException e{};
+	         throw InvalidMoveException();
 	    }
 	} 
 
@@ -53,7 +53,7 @@ void SBlock::lost() {
 void SBlock::moveLeft() {
 	for (int i = 0; i < size; i++) {
 		if (block[i]->getCol() - 1 < 0) {
-			throw InvalidMoveException e{};
+			throw InvalidMoveException();
 		}
 	}
 
@@ -70,7 +70,7 @@ void SBlock::moveLeft() {
 void SBlock::moveRight() {					// opposite of moving left
 	for (int i = 0; i < size; i++) {
 		if (block[i]->getCol() + 1 > 10) {
-			throw InvalidMoveException e{};
+			throw InvalidMoveException();
 		}
 	}
 
@@ -87,7 +87,7 @@ void SBlock::moveRight() {					// opposite of moving left
 void SBlock::moveDown() {
 	for (int i = 0; i < size; i++) {
 		if (block[i]->getRow() + 1 > 17) {
-			throw InvalidMoveException e{}; 
+			throw InvalidMoveException(); 
 		}
 	}
 
@@ -107,7 +107,6 @@ void SBlock::drop() {
 			moveDown();
 		}
 	} catch (InvalidMoveException &e) {
-		throw;
 	}
 }
 
@@ -117,7 +116,7 @@ void SBlock::rotateCW() {
 	int col = lowerleft->getCol();
 	if (pos == 1) {
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
-			throw InvalidMoveException e{};
+			throw InvalidMoveException();
 		}
         	temp.push_back(grid[row][col + 1]);
         	temp.push_back(grid[row - 1][col]);
@@ -127,7 +126,7 @@ void SBlock::rotateCW() {
 		++pos;
 	} else if (pos == 2) {
 		if (row - 1 < 0 || col + 1 > 10 || col - 1 < 0) {
-			throw InvalidMoveException e{};
+			throw InvalidMoveException();
 		}
 		temp.push_back(lowerleft);
 		temp.push_back(grid[row][col - 1]);
