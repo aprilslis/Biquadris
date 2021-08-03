@@ -46,6 +46,7 @@ bool Grid::isFullRow(int row) {
 }
 
 int Grid::countFullRows() {
+    cout<<"hereee"<<endl;
     int count = 0;
     for (int i = 3; i < height; i++) {
         if (isFullRow(i)) {
@@ -67,7 +68,8 @@ void Grid::clearFullRows() { // check for completed rows, return number of rows 
 void Grid::updateRows(int row) { // each row moves down and top row gets cleared
     for (int i = row; i >= 4; i--) {
         for (int j = 0; j < width; j++) {
-            board[i][j] = board[i - 1][j];
+            board[i][j]->copyCell(board[i - 1][j]);
+            //board[i][j] = board[i - 1][j];
         }
     }
     for (int k = 0; k < width; k++) {
