@@ -14,7 +14,7 @@ void LBlock::switchBlocks(vector<Cell *> other) {
             for (int j = 0; j < size; j++) {
                     block[j]->setType('L');
              }
-             throw InvalidMoveException e{};
+             throw InvalidMoveException();
         }
     } 
 
@@ -53,7 +53,7 @@ void LBlock::lost() {
 void LBlock::moveLeft() {
     for (int i = 0; i < size; i++) {
         if (block[i]->getCol() - 1 < 0) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
     }
 
@@ -70,7 +70,7 @@ void LBlock::moveLeft() {
 void LBlock::moveRight() {
     for (int i = 0; i < size; i++) {
         if (block[i]->getCol() + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
     }
 
@@ -87,7 +87,7 @@ void LBlock::moveRight() {
 void LBlock::moveDown() {
     for (int i = 0; i < size; i++) {
         if (block[i]->getRow() + 1 > 17) {
-            throw InvalidMoveException e{}; 
+            throw InvalidMoveException(); 
         }
     }
 
@@ -107,7 +107,6 @@ void LBlock::drop() {
             moveDown();
         }
     } catch (InvalidMoveException &e) {
-        throw;
     }
 }
 
@@ -117,7 +116,7 @@ void LBlock::rotateCW() {
     int col = lowerleft->getCol();
     if (pos == 1) {
         if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(lowerleft);
         temp.push_back(grid[row][col + 1]);
@@ -127,7 +126,7 @@ void LBlock::rotateCW() {
         ++pos;
     } else if (pos == 2) {
         if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(lowerleft);
         temp.push_back(grid[row - 1][col]);
@@ -137,7 +136,7 @@ void LBlock::rotateCW() {
         ++pos;
     } else if (pos == 3) {
         if (row - 1 < 0 || row - 2  < 0 || col + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(grid[row][col + 1]);
         temp.push_back(grid[row - 1][col + 1]);
@@ -147,7 +146,7 @@ void LBlock::rotateCW() {
         ++pos;
     } else if (pos == 4) {
         if (row - 1 < 0 || col + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(grid[row][col - 1]);
         temp.push_back(grid[row][col]);
@@ -164,7 +163,7 @@ void LBlock::rotateCCW() {
     int col = lowerleft->getCol();
     if (pos == 1) {
         if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(grid[row][col + 1]);
         temp.push_back(grid[row - 1][col + 1]);
@@ -174,7 +173,7 @@ void LBlock::rotateCCW() {
         pos = 4;
     } else if (pos == 4) {
         if (row - 1 < 0 || col - 1 < 0 || col + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(grid[row][col - 1]);
         temp.push_back(grid[row - 1][col - 1]);
@@ -184,7 +183,7 @@ void LBlock::rotateCCW() {
         --pos;
     } else if (pos == 3) {
         if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(lowerleft);
         temp.push_back(grid[row ][col + 1]);
@@ -194,7 +193,7 @@ void LBlock::rotateCCW() {
         --pos;
     } else if (pos == 2) {
         if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
         temp.push_back(lowerleft);
         temp.push_back(grid[row][col + 1]);
