@@ -60,14 +60,14 @@ int Grid::countFullRows() {
     return count;
 }
 
-void Grid::clearFullRows() {
+void Grid::clearFullRows() { // check for completed rows, return number of rows cleared
     for (int i = height; i >= 3; i--) {
         if (isFullRow(i)) {
             updateRows(i);
             break;
         }
     }
-} // check for completed rows, return number of rows cleared
+}
 
 
 void Grid::updateRows(int row) { // each row moves down and top row gets cleared
@@ -82,13 +82,22 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
     clearFullRows(); // after we clear one row we check again if the updated grid has any more such full rows
 }
 
-void Grid::levelUp() {    
-} //level game up
+void Grid::levelUp() { 
+    ++level;
+} 
 
-void Grid::levelDown(){
-} //level game down
+void Grid::levelDown() {
+    --level;
+}
 
-void Grid::printGrid(){ // prints out current board
+void Grid::clearGrid() { 
+    for (int i = 3; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            board[i][j]->resetCell(); // resets each cell
+        }
+    }
+}
+void Grid::printGrid() { // prints out current board
     cout << endl;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
