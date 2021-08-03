@@ -9,7 +9,7 @@ void Grid::printGrid(){
     cout << endl;
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
-            cout << grid[i][j]->getType() << " ";
+            cout << board[i][j]->getType() << " ";
         }
         cout << endl;
     }
@@ -24,7 +24,7 @@ void Grid::init() { // initialises the board
         for(int j = 0 ; j < width; j++){
             temp.push_back(new Cell{i,j});
         }
-        grid.push_back(temp);
+        board.push_back(temp);
     }
 } //start a new game
 
@@ -34,25 +34,25 @@ bool Grid::won() {
 } //check if game has ended
 
 
-void Grid::clearGrid() {
+void Grid::clearBoard() {
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
-            delete grid[i][j];
+            delete board[i][j];
         }
-        grid[i].clear();
+        board[i].clear();
     }
 } //release all existing cells
 
 
 Cell * Grid::getCell(int row, int col) {
-    return grid[row][col];
+    return board[row][col];
 } //get cell at x,y
 
 
 void Grid::clearFullRows(){
     for (int i = height; i >= 3; i--) {
         int count = 0;
-        char c = grid[i][0]->getType();
+        char c = board[i][0]->getType();
         for (int j = 1; j < width; j++) {
             if (board[i][j]->getType() == c) {
                 count++;
@@ -69,12 +69,12 @@ void Grid::clearFullRows(){
 void Grid::updateRows(int row){
     if (i == 3) {
         for (int j = 0; j < width; j++) {
-            grid[i][j]->clearCell();
+            board[i][j]->clearCell();
         }
     } else {
         for (int i = row; i >= 3; i--) {
             for (int j = 0; j < width; j++) {
-                grid[i][j] = grid[i - 1][j];
+                board[i][j] = board[i - 1][j];
             }
         }
     }
@@ -83,7 +83,7 @@ void Grid::updateRows(int row){
 
 
 void Grid::addBlock(Block *b){
-    b->init(grid); //needs to change block class
+    b->init(board); //needs to change block class
     cur = b;
 } //add a new given block at left top corner
 

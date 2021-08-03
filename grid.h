@@ -16,11 +16,12 @@ class Grid{
 
   public:
     void printGrid(); //print out current board
-    void newGame(); //start a new game
-    bool endGame(); //check if game has ended
+    void init(); //start a new game
+    bool won(); //check if game has ended
     void clearBoard(); //release all existing cells
     Cell *getCell(int x, int y); //get cell at x,y
     void setCell(Cell *c, int x, int y); //set cell at x,y
+    
     void clearRow(int y); //clear row at x
     int findCompleteRows(); //check for completed rows, return number of rows cleared
     void updateBoard(int y); //used after clearing row/block, let all block fall over gravity(?)
