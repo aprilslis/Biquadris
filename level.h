@@ -9,6 +9,7 @@
 #include "tblock.h"
 
 class Level {
+protected:
 	int seed;
 public:
 	virtual Block * generateRandomBlock(int seed = 0);
