@@ -10,9 +10,7 @@ class Level0: public Level {
 	int pos;
 public:
 	void init(std::string sequence);
-	virtual Block * generateBlock() override;
-	virtual void setSeed(int) override;
-	virtual int getLevel() override;
+	virtual Block * generateRandomBlock(int seed = 0) override;
 };
 
 #endif
