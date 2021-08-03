@@ -8,7 +8,7 @@ void Level0::init(string sequence) {
 	pos = 0;
 }
 
-Block * Level0::generateBlock() {
+Block * Level0::generateRandomBlock(int seed) {
 	if (pos + 1 > len) {
 		pos = 0;
 	}
@@ -40,12 +40,6 @@ Block * Level0::generateBlock() {
 	}
 }
 
-void Level0::setSeed() {
-}
-
-int Level0::getLevel() {
-	return 0;
-}
 
 
 
