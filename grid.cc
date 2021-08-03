@@ -48,19 +48,33 @@ Cell * Grid::getCell(int row, int col) {
     return board[row][col];
 } //get cell at x,y
 
-
-void Grid::clearFullRows(){
-    for (int i = height; i >= 3; i--) {
-        int count = 0;
-        char c = board[i][0]->getType();
-        for (int j = 1; j < width; j++) {
-            if (board[i][j]->getType() == c && c != '\0') {
-                count++;
-            }
+bool Grid::isFullRow(int row) {
+    char c = board[row][0];
+    if (c == '\0') {
+        return false;
+    }
+    for (int j = 1; j < width; j++) {
+        if (grid[row][j]->getType() ! = c) {
+            return false;
         }
-        if (count == width) { 
+    }
+    return true;
+}
+
+int Grid::countFullRows() {
+    int count = 0;
+    for (int i = 3; i < height; i++) {
+        if (isFullRow(i)) {
+            count++;
+        }
+    } 
+    return count;
+}
+
+void Grid::clearFullRows() {
+    for (int i = height; i >= 0; i--) {
+        if (isFullRow(i)) {
             updateRows(i);
-            return;
         }
     }
 } // check for completed rows, return number of rows cleared
