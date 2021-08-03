@@ -93,7 +93,7 @@ void Grid::updateBoard(int y){
 
 
 void Grid::addBlock(Block *b){
-    b->init(&board); //needs to change block class
+    b->init(board); //needs to change block class
     cur = b;
 } //add a new given block at left top corner
 

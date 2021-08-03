@@ -1,4 +1,5 @@
 #include "jblock.h"
+using namespace std;
 
 void JBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
@@ -126,8 +127,8 @@ void JBlock::drop() {
 
 void JBlock::rotateCW() {
 	vector<Cell *> temp;
-	int row = lowerleft->getRow;
-	int col = lowerleft->getCol;
+	int row = lowerleft->getRow();
+	int col = lowerleft->getCol();
 	if (pos == 1) { // pos 1 -> pos 2
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException e{};
@@ -173,8 +174,8 @@ void JBlock::rotateCW() {
 
 void JBlock::rotateCCW() {
 	vector<Cell *> temp;
-	int row = lowerleft->getRow;
-	int col = lowerleft->getCol;
+	int row = lowerleft->getRow();
+	int col = lowerleft->getCol();
 	if (pos == 1) { // pos 1 -> pos 4
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException e{};

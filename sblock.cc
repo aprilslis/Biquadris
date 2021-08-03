@@ -1,4 +1,5 @@
 #include "sblock.h"
+using namespace std;
 
 void SBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
@@ -106,14 +107,14 @@ void SBlock::drop() {
 			moveDown();
 		}
 	} catch (InvalidMoveException &e) {
-		break;
+		throw;
 	}
 }
 
 void SBlock::rotateCW() {
 	vector<Cell *> temp;
-	int row = lowerleft->getRow;
-	int col = lowerleft->getCol;
+	int row = lowerleft->getRow();
+	int col = lowerleft->getCol();
 	if (pos == 1) {
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException e{};

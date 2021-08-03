@@ -1,4 +1,5 @@
 #include "zblock.h"
+using namespace std;
 
 void ZBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
@@ -106,14 +107,14 @@ void ZBlock::drop() {
 			moveDown();
 		}
 	} catch (InvalidMoveException &e) {
-		break;
+		throw;
 	}
 }
 
 void ZBlock::rotateCW() {
 	vector<Cell *> temp;
-	int row = lowerleft->getRow;
-	int col = lowerleft->getCol;
+	int row = lowerleft->getRow();
+	int col = lowerleft->getCol();
 	if (pos == 1) {
 		if (row - 1 < 0 || row - 2 < 0 || col - 1 < 0) {
 			throw InvalidMoveException e{};

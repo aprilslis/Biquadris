@@ -1,4 +1,5 @@
 #include "lblock.h"
+using namespace std;
 
 void LBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
@@ -106,14 +107,14 @@ void LBlock::drop() {
             moveDown();
         }
     } catch (InvalidMoveException &e) {
-        break;
+        throw;
     }
 }
 
 void LBlock::rotateCW() {
     vector<Cell *> temp;
-    int row = lowerleft->getRow;
-    int col = lowerleft->getCol;
+    int row = lowerleft->getRow();
+    int col = lowerleft->getCol();
     if (pos == 1) {
         if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
             throw InvalidMoveException e{};
@@ -159,8 +160,8 @@ void LBlock::rotateCW() {
 
 void LBlock::rotateCCW() {
     vector<Cell *> temp;
-    int row = lowerleft->getRow;
-    int col = lowerleft->getCol;
+    int row = lowerleft->getRow();
+    int col = lowerleft->getCol();
     if (pos == 1) {
         if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
             throw InvalidMoveException e{};

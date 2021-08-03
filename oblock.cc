@@ -1,4 +1,5 @@
 #include "oblock.h"
+using namespace std;
 
 void OBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
@@ -106,14 +107,14 @@ void OBlock::drop() {
             moveDown();
         }
     } catch (InvalidMoveException &e) {
-        break;
+        throw;
     }
 }
 
 void OBlock::rotateCW() {
-    break; // rotation does not affect spatial configuration
+    return; // rotation does not affect spatial configuration
 }
 
 void OBlock::rotateCCW() {
-    break; // rotation does not affect spatial configuration
+    return; // rotation does not affect spatial configuration
 }

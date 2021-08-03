@@ -43,7 +43,7 @@ void IBlock::init(vector<vector<Cell *>> &g) {
 	}
 }
 
-bool IBlock::lost() {
+void IBlock::lost() {
 	if (grid[3][0]->isFull() || grid[3][1]->isFull() || grid[3][2]->isFull() || grid[3][3]->isFull()) {
 		throw LostException();
 	}
@@ -106,14 +106,14 @@ void IBlock::drop() {
 			moveDown();
 		}
 	} catch (InvalidMoveException &e) {
-		break;
+		throw;
 	}
 }
 
 void IBlock::rotationCW() {
 	vector<Cell *> temp;
-	int row = lowerleft->getRow;
-	int col = lowerleft->getCol;
+	int row = lowerleft->getRow();
+	int col = lowerleft->getCol();
 	if (pos == 1) {
 		if (row - 1 < 0 || row - 2 < 0 || row - 3 < 0) {
 			throw InvalidMoveException e{};
