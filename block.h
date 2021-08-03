@@ -18,8 +18,8 @@ class Block {
         virtual void moveRight() = 0;
         virtual void moveDown() = 0;
         virtual void drop() = 0;
-        virtual void rotateCW() = 0;
-        virtual void rotateCCW() = 0;
+        virtual void rotationCW() = 0;
+        virtual void rotationCCW() = 0;
         void emptyBlock();
 
 };
