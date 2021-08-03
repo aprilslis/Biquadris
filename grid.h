@@ -36,7 +36,6 @@ class Grid{
     void printGrid(); // print out current board
     
     void ~Grid();
-
 };
 
 #endif
