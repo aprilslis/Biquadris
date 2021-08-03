@@ -40,6 +40,7 @@ bool Grid::isFullRow(int row) {
             return false;
         }
     }
+    cout<<"returned true"<<endl;
     return true;
 }
 
