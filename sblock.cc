@@ -38,7 +38,7 @@ void SBlock::init(std::vector<std::vector<Cell *>> &g) {
 	block.push_back(grid[2][1]);
 	block.push_back(grid[2][2]);
 	for (int i = 0; i < size; i++) {
-		block[i]->setType('J');
+		block[i]->setType('S');
 	}
 }
 
