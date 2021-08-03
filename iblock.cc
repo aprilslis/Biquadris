@@ -138,5 +138,5 @@ void IBlock::rotateCW() {
 }
 
 void IBlock::rotateCCW() { // CCW and CW have same effect as there are 2 positions in IBlock 
-	rotationCW();
+	rotateCW();
 }
