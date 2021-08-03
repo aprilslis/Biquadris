@@ -14,7 +14,7 @@ void OBlock::switchBlocks(vector<Cell *> other) {
             for (int j = 0; j < size; j++) {
                     block[j]->setType('O');
              }
-             throw InvalidMoveException e{};
+             throw InvalidMoveException();
         }
     } 
 
@@ -53,7 +53,7 @@ void OBlock::lost() {
 void OBlock::moveLeft() {
     for (int i = 0; i < size; i++) {
         if (block[i]->getCol() - 1 < 0) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
     }
 
@@ -70,7 +70,7 @@ void OBlock::moveLeft() {
 void OBlock::moveRight() {
     for (int i = 0; i < size; i++) {
         if (block[i]->getCol() + 1 > 10) {
-            throw InvalidMoveException e{};
+            throw InvalidMoveException();
         }
     }
 
@@ -87,7 +87,7 @@ void OBlock::moveRight() {
 void OBlock::moveDown() {
     for (int i = 0; i < size; i++) {
         if (block[i]->getRow() + 1 > 17) {
-            throw InvalidMoveException e{}; 
+            throw InvalidMoveException(); 
         }
     }
 
@@ -107,7 +107,6 @@ void OBlock::drop() {
             moveDown();
         }
     } catch (InvalidMoveException &e) {
-        throw;
     }
 }
 
