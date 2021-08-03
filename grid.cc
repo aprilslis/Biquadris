@@ -35,6 +35,7 @@ void Grid::replaceBlock(Block *b) { // replace current block with new block b
 }
 
 bool Grid::isFullRow(int row) {
+    cout<<"here"<<endl;
     for (int j = 0; j < width; j++) {
         if (board[row][j]->getType() == '\0') {
             return false;
@@ -55,7 +56,7 @@ int Grid::countFullRows() {
 }
 
 void Grid::clearFullRows() { // check for completed rows, return number of rows cleared
-    for (int i = height; i >= 3; i--) {
+    for (int i = height-1; i >= 3; i--) {
         if (isFullRow(i)) {
             updateRows(i);
             break;
