@@ -6,8 +6,8 @@
 using namespace std;
 
 class Grid{
-    const int width = 11; //grid width
-    const int height = 18; //grid height
+    const int width; //grid width
+    const int height; //grid height
     vector<vector<Cell *>> board; //game board: row/height<column/width<cell>>
     Block *cur; //current block we are working with
 
