@@ -97,7 +97,13 @@ void Grid::printGrid() { // prints out current board
     cout << endl;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            cout << board[i][j]->getType() << " ";
+            if(board[i][j]->getType()=='\0'){
+                cout << "." << " ";
+            }
+            else{
+                cout << board[i][j]->getType() << " ";
+            }
+            
         }
         cout << endl;
     }
