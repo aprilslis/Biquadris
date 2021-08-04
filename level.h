@@ -2,6 +2,7 @@
 #define _LEVEL_H_
 
 #include <cstdlib>
+#include "iblock.h"
 #include "jblock.h"
 #include "lblock.h"
 #include "oblock.h"
