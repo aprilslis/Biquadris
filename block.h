@@ -10,6 +10,7 @@ class Block {
         Cell *lowerleft; // contains the lower-left corner cell
         std::vector <Cell *> block; // contains all cells in current block
         std::vector<std::vector<Cell *>> grid; // stores the game board
+        int level; // track the level the block was generated in
         
         public:
         virtual void init(std::vector<std::vector<Cell *>> &g) = 0; 
