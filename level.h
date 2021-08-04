@@ -14,7 +14,7 @@ class Level {
 protected:
 	int seed;
 public:
-	virtual Block * generateRandomBlock(int seed = 0);
+	virtual Block * generateRandomBlock(int seed = 0) = 0;
 };
 
 #endif
