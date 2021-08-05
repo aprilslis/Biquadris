@@ -7,6 +7,7 @@ class Cell {
         int age;
         int row;
         int col;
+        int identity;
 
         public:
         Cell(int row, int col);
