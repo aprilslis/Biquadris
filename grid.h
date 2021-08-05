@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include "cell.h"
-<<<<<<< HEAD
 #include "level.h"
 #include "level0.h"
 #include "level1.h"
@@ -19,10 +18,7 @@
 #include "sblock.h"
 #include "tblock.h"
 #include "zblock.h"
-=======
 #include "score.h"
-
->>>>>>> d5766c800cad9e44eb2a77fa96ba3fed8dbfe775
 using namespace std;
 
 class Grid{
@@ -31,16 +27,13 @@ class Grid{
     vector<vector<Cell *>> board; //game board: row/height<column/width<cell>>
     Block *cur; //current block we are working with
 
-<<<<<<< HEAD
     int levelNum;
     Level *level; //current level
 
     Block *cur;
     Block *next;
-=======
-    int level = 0; //current level
-    Score score{level}; //score member to track score
->>>>>>> d5766c800cad9e44eb2a77fa96ba3fed8dbfe775
+
+    Score score{levelNum}; //score member to track score
     int some_special_effects; //(add later)
 
   public:

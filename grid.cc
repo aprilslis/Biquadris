@@ -82,7 +82,6 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
 }
 
 void Grid::levelUp() { 
-<<<<<<< HEAD
     if(levelNum<5) levelNum++;
     Level *tmp = level;
     switch (levelNum){
@@ -110,17 +109,6 @@ void Grid::levelUp() {
 
 void Grid::levelDown() {
     if(levelNum>=0) levelNum--;
-=======
-    ++level;
-    // add score stuff
-    //score.setScore(level);
-} 
-
-void Grid::levelDown() {
-    --level;
-    // add score stuff
-    //score.setScore(level);
->>>>>>> d5766c800cad9e44eb2a77fa96ba3fed8dbfe775
 }
 
 void Grid::clearGrid() { 
