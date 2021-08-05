@@ -10,7 +10,7 @@ class Block {
         Cell *lowerleft; // contains the lower-left corner cell
         std::vector <Cell *> block; // contains all cells in current block
         std::vector<std::vector<Cell *>> grid; // stores the game board
-        
+        int level; // stores current level of block
         public:
         virtual void init(std::vector<std::vector<Cell *>> &g) = 0; 
         virtual void lost() = 0;
@@ -21,6 +21,8 @@ class Block {
         virtual void rotateCW() = 0;
         virtual void rotateCCW() = 0;
         void emptyBlock();
+	void setLevel(int level);
+	int getLevel();
 
 };
 

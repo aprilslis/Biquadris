@@ -5,3 +5,11 @@ void Block::emptyBlock() {
     block[i]->setType('\0');
   }
 }
+
+void Block::setLevel(int level) {
+	this->level = level;
+}
+
+int Block::getLevel() {
+	return level;
+}
