@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Grid::Grid() : width{11}, height{18}, cur{nullptr} { // initialises board
+Grid::Grid() : width{11}, height{18}, cur{nullptr}, levelNum{0} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -10,6 +10,8 @@ Grid::Grid() : width{11}, height{18}, cur{nullptr} { // initialises board
         }
         board.push_back(temp);
     }
+
+    level = new Level0{};
 }
 
 Grid::~Grid() { // release all existing cells
@@ -18,6 +20,7 @@ Grid::~Grid() { // release all existing cells
             delete board[i][j];
         }
     }
+    delete level;
 }
 
 Cell * Grid::getCell(int row, int col) {
@@ -79,11 +82,33 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
 }
 
 void Grid::levelUp() { 
-    ++level;
+    if(levelNum<5) levelNum++;
+    Level *tmp = level;
+    switch (levelNum){
+        case 0:
+            level = new Level0{};
+            break;
+        case 1:
+            level = new Level1{};
+            break;
+        case 2:
+            level = new Level2{};
+            break;
+        // case 3:
+        //     level = new Level3{};
+        //     break;
+        // case 4:
+        //     level = new Level4{};
+        //     break;
+        
+        default:
+            break;
+    }
+    delete tmp;
 } 
 
 void Grid::levelDown() {
-    --level;
+    if(levelNum>=0) levelNum--;
 }
 
 void Grid::clearGrid() { 
@@ -109,3 +134,21 @@ void Grid::printGrid() { // prints out current board
     }
     cout << endl;
 }
+
+
+
+
+Block * Grid::generateBlock(){
+    if(level==0){
+
+    }
+}
+
+void moveBlockRight(Block *b);
+void moveBlockLeft(Block *b);
+void moveBlockDown(Block *b);
+void dropBlock(Block *b);
+void rotateBlockCW(Block *b);
+void rotateBlockCCW(Block *b);
+void setFilename(string newfile);
+

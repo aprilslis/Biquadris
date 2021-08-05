@@ -3,9 +3,21 @@
 
 #include <iostream>
 #include <vector>
-#include "block.h"
 #include "cell.h"
-
+#include "level.h"
+#include "level0.h"
+#include "level1.h"
+#include "level2.h"
+// #include "level3.h"
+// #include "level4.h"
+#include "block.h"
+#include "iblock.h"
+#include "jblock.h"
+#include "lblock.h"
+#include "oblock.h"
+#include "sblock.h"
+#include "tblock.h"
+#include "zblock.h"
 using namespace std;
 
 class Grid{
@@ -14,7 +26,11 @@ class Grid{
     vector<vector<Cell *>> board; //game board: row/height<column/width<cell>>
     Block *cur; //current block we are working with
 
-    int level = 0; //current level
+    int levelNum;
+    Level *level; //current level
+
+    Block *cur;
+    Block *next;
     int some_special_effects; //(add later)
 
   public:
@@ -35,6 +51,17 @@ class Grid{
     
     void clearGrid(); // resets the grid
     void printGrid(); // print out current board
+
+
+    Block *generateBlock();//generate a random block from file if provide
+    void moveBlockRight(Block *b);
+    void moveBlockLeft(Block *b);
+    void moveBlockDown(Block *b);
+    void dropBlock(Block *b);
+    void rotateBlockCW(Block *b);
+    void rotateBlockCCW(Block *b);
+    void setFilename(string newfile);
+
     
     
 };
