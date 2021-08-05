@@ -5,6 +5,7 @@
 #include <vector>
 #include "block.h"
 #include "cell.h"
+#include "score.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class Grid{
     Block *cur; //current block we are working with
 
     int level = 0; //current level
+    Score score{0, level}; //score member to track score
     int some_special_effects; //(add later)
 
   public:
