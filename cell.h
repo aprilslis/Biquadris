@@ -16,6 +16,7 @@ class Cell {
         int getAge();
         int getRow();
         int getCol();
+        int getIdentity();
         bool isFull();
         void updateAge(); // increments age of cell
         void copyCell(Cell *other); // copies the contents of other
