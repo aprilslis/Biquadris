@@ -80,10 +80,14 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
 
 void Grid::levelUp() { 
     ++level;
+    // add score stuff
+    //score.setScore(level);
 } 
 
 void Grid::levelDown() {
     --level;
+    // add score stuff
+    //score.setScore(level);
 }
 
 void Grid::clearGrid() { 
