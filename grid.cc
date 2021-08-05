@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Grid::Grid() : width{11}, height{18}, cur{nullptr}, levelNum{0} { // initialises board
+Grid::Grid() : width{11}, height{18}, cur{nullptr}, levelNum{0}, seed{0} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -12,6 +12,8 @@ Grid::Grid() : width{11}, height{18}, cur{nullptr}, levelNum{0} { // initialises
     }
 
     level = new Level0{};
+    cur = level->generateRandomBlock(seed);
+    next = level->generateRandomBlock(seed);
 }
 
 Grid::~Grid() { // release all existing cells
@@ -27,14 +29,30 @@ Cell * Grid::getCell(int row, int col) {
     return board[row][col];
 } //get cell at x,y
 
-void Grid::addBlock(Block *b) { //add a new given block at left top corner
-    b->init(board); //needs to change block class
-    cur = b;
+void Grid::addBlock() { //add a new block at left top corner
+    generateBlock();
+    cur->init(board); 
 }
 
-void Grid::replaceBlock(Block *b) { // replace current block with new block b
-    cur->emptyBlock();
-    addBlock(b);
+void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
+    Block *tmp = cur;
+    switch (c){
+        case 'i':
+            cur = new IBlock{};
+            break;
+        case 'j':
+            cur = new JBlock{};
+            break;
+        case 'l':
+            cur = new LBlock{};
+            break;
+        
+        default:
+            break;
+    }
+    tmp->emptyBlock();
+    cur->init(board);
+    delete tmp;
 }
 
 bool Grid::isFullRow(int row) {
@@ -82,7 +100,7 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
 }
 
 void Grid::levelUp() { 
-    if(levelNum<5) levelNum++;
+    if(levelNum<4) levelNum++;
     Level *tmp = level;
     switch (levelNum){
         case 0:
@@ -94,21 +112,49 @@ void Grid::levelUp() {
         case 2:
             level = new Level2{};
             break;
-        // case 3:
-        //     level = new Level3{};
-        //     break;
-        // case 4:
-        //     level = new Level4{};
-        //     break;
+        case 3:
+            level = new Level3{};
+            break;
+        case 4:
+            level = new Level4{};
+            break;
         
         default:
             break;
     }
     delete tmp;
+
+    //add score sstuff
+    //score.setScore(levelNum);
 } 
 
 void Grid::levelDown() {
-    if(levelNum>=0) levelNum--;
+    if(levelNum>0) levelNum--;
+    Level *tmp = level;
+    switch (levelNum){
+        case 0:
+            level = new Level0{};
+            break;
+        case 1:
+            level = new Level1{};
+            break;
+        case 2:
+            level = new Level2{};
+            break;
+        case 3:
+            level = new Level3{};
+            break;
+        case 4:
+            level = new Level4{};
+            break;
+        
+        default:
+            break;
+    }
+    delete tmp;
+
+    //add score sstuff
+    //score.setScore(levelNum);
 }
 
 void Grid::clearGrid() { 
@@ -138,17 +184,36 @@ void Grid::printGrid() { // prints out current board
 
 
 
-Block * Grid::generateBlock(){
-    if(level==0){
-
-    }
+void Grid::setSeed(int seed){
+    this->seed = seed;
 }
 
-void moveBlockRight(Block *b);
-void moveBlockLeft(Block *b);
-void moveBlockDown(Block *b);
-void dropBlock(Block *b);
-void rotateBlockCW(Block *b);
-void rotateBlockCCW(Block *b);
-void setFilename(string newfile);
+void Grid::generateBlock(){
+    cur = next;
+    next = level->generateRandomBlock(seed);
+}
+
+void Grid::moveBlockRight(){
+    cur->moveRight();
+}
+
+void Grid::moveBlockLeft(){
+    cur->moveLeft();
+}
+
+void Grid::moveBlockDown(){
+    cur->moveDown();
+}
+
+void Grid::dropBlock(){
+    cur->drop();
+}
+
+void Grid::rotateBlockCW(){
+    cur->rotateCW();
+}
+
+void Grid::rotateBlockCCW(){
+    cur->rotateCCW();
+}
 

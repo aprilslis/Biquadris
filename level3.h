@@ -5,7 +5,8 @@
 #include <string>
 
 class Level3: public Level {
-	
+	public:
+	Block * generateRandomBlock(int seed = 0) override;
 };
 
 #endif

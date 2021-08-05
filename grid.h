@@ -8,8 +8,8 @@
 #include "level0.h"
 #include "level1.h"
 #include "level2.h"
-// #include "level3.h"
-// #include "level4.h"
+#include "level3.h"
+#include "level4.h"
 #include "block.h"
 #include "iblock.h"
 #include "jblock.h"
@@ -25,10 +25,10 @@ class Grid{
     const int width; //grid width
     const int height; //grid height
     vector<vector<Cell *>> board; //game board: row/height<column/width<cell>>
-    Block *cur; //current block we are working with
 
     int levelNum;
     Level *level; //current level
+    int seed;
 
     Block *cur;
     Block *next;
@@ -41,8 +41,8 @@ class Grid{
     ~Grid();
     
     Cell *getCell(int x, int y); // get cell at (row, column)  
-    void addBlock(Block *b); // add a new given block at left top corner
-    void replaceBlock(Block *b); // replace current block with new block b
+    void addBlock(); // add a new block at left top corner
+    void replaceBlock(char c); // replace current block with new block I,J,L
     
     bool isFullRow(int row); // checks if row is full
     int countFullRows(); // returns number of full rows
@@ -56,14 +56,15 @@ class Grid{
     void printGrid(); // print out current board
 
 
-    Block *generateBlock();//generate a random block from file if provide
-    void moveBlockRight(Block *b);
-    void moveBlockLeft(Block *b);
-    void moveBlockDown(Block *b);
-    void dropBlock(Block *b);
-    void rotateBlockCW(Block *b);
-    void rotateBlockCCW(Block *b);
-    void setFilename(string newfile);
+    void setSeed(int seed);
+    void generateBlock();//generate a random block 
+    void moveBlockRight();
+    void moveBlockLeft();
+    void moveBlockDown();
+    void dropBlock();
+    void rotateBlockCW();
+    void rotateBlockCCW();
+    //void setFilename(string newfile);
 
     
     
