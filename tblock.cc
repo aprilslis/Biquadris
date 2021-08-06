@@ -4,7 +4,8 @@ using namespace std;
 void TBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
-	        block[i]->setType('\0'); 
+	        block[i]->setType('\0');
+		block[i]->setIdentity(0);
 	}
 
 	// asserting invariants
@@ -13,6 +14,7 @@ void TBlock::switchBlocks(vector<Cell *> other) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
 	                block[j]->setType('T');
+			block[j]->setIdentity(identity);
 	         }
 	         throw InvalidMoveException();
 	    }
@@ -23,6 +25,7 @@ void TBlock::switchBlocks(vector<Cell *> other) {
 	block = other;
 	for (int i = 0; i < size; i++) {
 	        block[i]->setType('T'); 
+		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
 }
@@ -39,6 +42,7 @@ void TBlock::init(std::vector<std::vector<Cell *>> &g) {
 	block.push_back(grid[2][2]);
 	for (int i = 0; i < size; i++) {
 		block[i]->setType('T');
+		block[i]->setIdentity(identity);
 	}
 }
 
