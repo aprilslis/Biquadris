@@ -10,6 +10,7 @@ class SBlock : public Block {
     void switchBlocks(std::vector<Cell *> other);
   
     public:
+        SBlock();
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;
         void moveLeft() override;
