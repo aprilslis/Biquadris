@@ -24,6 +24,10 @@ int Cell::getCol() {
         return col;
 }
 
+int Cell::setIdentity(int identity) {
+        this->identity = identity;
+}
+
 int Cell::getIdentity() {
         return identity;
 }
