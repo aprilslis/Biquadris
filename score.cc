@@ -2,24 +2,25 @@
 
 using namespace std;
 
-Score::Score(int l) : score{0}, level{l} {}
+Score::Score() : score{0}, highscore{0} {}
 
 Score::~Score() {}
 
 int Score::getScore() {
-    return score;
+	return score;
 }
 
-void Score::setLevel(int l) {
-    level = l;
+int Score::getHighScore() {
+	return highscore;
 }
 
-void Score::setScoreRowsCleared(int r {
-    int rowScore = level + r * r; 
-    score += rowScore;
-}
+void Score::updateScore(int val) {
+	score += val;
+	if (score > highscore) {
+		highscore = score;
+	}
+} 
 
-void setScoreBlockCleared(int l) {
-    int blockScore = (l + 1) * (l + 1);
-    score += blockScore;
+void Score::resetScore() {
+	score = 0;
 }

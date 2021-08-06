@@ -2,17 +2,17 @@
 #define _SCORE_H_
 
 
-class Score : public Score {
-  
+class Score {
     int score;
-    int level;
-  
+    int highscore;
     public:
-        Score(int l);
-        ~Score();
+        Score();
         int getScore();
-        void setLevel(int l);
-        void setScoreRowsCleared(int r);
-        void setScoreBlockCleared(int l);
+	int getHighScore();
+	void updateScore(int val);
+	void resetScore();
+	virtual ~Score();
   
 };
+
+#endif

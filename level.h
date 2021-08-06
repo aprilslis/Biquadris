@@ -16,6 +16,7 @@ protected:
 public:
 	virtual Block * generateRandomBlock(int seed = 0) = 0;
 	virtual int getLevel() = 0;
+	virtual ~Level();
 };
 
 #endif
