@@ -1,6 +1,8 @@
 #include "jblock.h"
 using namespace std;
 
+JBlock::JBlock(int level): Block{level} {}
+
 void JBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 

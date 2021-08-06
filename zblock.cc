@@ -1,6 +1,8 @@
 #include "zblock.h"
 using namespace std;
 
+ZBlock::ZBlock(int level): Block{level} {}
+
 void ZBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 

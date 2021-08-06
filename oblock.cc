@@ -1,6 +1,8 @@
 #include "oblock.h"
 using namespace std;
 
+OBlock::OBlock(int level): Block{level} {}
+
 void OBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
     for (int i = 0; i < size; i++) { 

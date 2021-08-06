@@ -52,7 +52,7 @@ void Grid::removeIds(int row) {
 }
 
 void Grid::updateIds(Block *b) {
-	b->setIndentity(id);
+	b->setIdentity(id);
 	ids.push_back(id);
 	levels.push_back(level->getLevel());
 	ncells.push_back(4);
@@ -73,14 +73,14 @@ void Grid::addBlock() { //add a new block at left top corner
 void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
     Block *tmp = cur;
     switch (c){
-        case 'i':
-            cur = new IBlock{};
+	    case 'i':
+            cur = new IBlock{level->getLevel()};
             break;
         case 'j':
-            cur = new JBlock{};
+            cur = new JBlock{level->getLevel()};
             break;
         case 'l':
-            cur = new LBlock{};
+            cur = new LBlock{level->getLevel()};
             break;
         
         default:

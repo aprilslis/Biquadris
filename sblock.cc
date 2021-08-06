@@ -1,6 +1,8 @@
 #include "sblock.h"
 using namespace std;
 
+SBlock::SBlock(int level): Block{level} {}
+
 void SBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 

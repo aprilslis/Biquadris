@@ -25,7 +25,7 @@ class Grid{
     const int height; //grid height
     int id; // generates ids
 
-    vector<vector<Cell *>> board; //game board: row/height<column/width<cell>>
+    std::vector<std::vector<Cell *>> board; //game board: row/height<column/width<cell>>
 
     int levelNum;
     Level *level; //current level
@@ -36,9 +36,9 @@ class Grid{
 
     Score *s; //score member to track score
 
-    vector<int> ids; // stores all ids different blocks have
-    vector<int> levels; // stores levels corresponding to the ids
-    vector<int> ncells;  // stores no of left cells in a block if an id
+    std::vector<int> ids; // stores all ids different blocks have
+    std::vector<int> levels; // stores levels corresponding to the ids
+    std::vector<int> ncells;  // stores no of left cells in a block if an id
 
     void removeIds(int row); // removes id if cleared row removes last cell of a certain block
     void updateIds(Block *b);

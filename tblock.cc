@@ -1,6 +1,8 @@
 #include "tblock.h"
 using namespace std;
 
+TBlock::TBlock(int level): Block{level} {}
+
 void TBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
