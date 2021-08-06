@@ -10,6 +10,7 @@ class JBlock : public Block {
     void switchBlocks(std::vector<Cell *> other);
   
     public:
+        JBlock();
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;
         void moveLeft() override;
