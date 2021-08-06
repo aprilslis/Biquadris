@@ -43,9 +43,11 @@ void Cell::updateAge() {
 void Cell::copyCell(Cell *other) {
         type = other->type;
         age = other->age;
+        identity = other->identity;
 }
 
 void Cell::clearCell() {
         type = '\0';
         age = 0;
+        identity = 0;
 }
