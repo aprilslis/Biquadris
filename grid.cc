@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Grid::Grid() : width{11}, height{18}, cur{nullptr}, levelNum{0}, seed{0} { // initialises board
+Grid::Grid() : width{11}, height{18}, levelNum{0}, seed{0} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -30,7 +30,6 @@ Cell * Grid::getCell(int row, int col) {
 } //get cell at x,y
 
 void Grid::addBlock() { //add a new block at left top corner
-    generateBlock();
     cur->init(board); 
 }
 
@@ -102,26 +101,7 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
 void Grid::levelUp() { 
     if(levelNum<4) levelNum++;
     Level *tmp = level;
-    switch (levelNum){
-        case 0:
-            level = new Level0{};
-            break;
-        case 1:
-            level = new Level1{};
-            break;
-        case 2:
-            level = new Level2{};
-            break;
-        case 3:
-            level = new Level3{};
-            break;
-        case 4:
-            level = new Level4{};
-            break;
-        
-        default:
-            break;
-    }
+    setLevel();
     delete tmp;
 
     //add score sstuff
@@ -131,6 +111,13 @@ void Grid::levelUp() {
 void Grid::levelDown() {
     if(levelNum>0) levelNum--;
     Level *tmp = level;
+    delete tmp;
+
+    //add score sstuff
+    //score.setScore(levelNum);
+}
+
+void Grid::setLevel() {
     switch (levelNum){
         case 0:
             level = new Level0{};
@@ -151,10 +138,13 @@ void Grid::levelDown() {
         default:
             break;
     }
-    delete tmp;
+}
 
-    //add score sstuff
-    //score.setScore(levelNum);
+void Grid::setLevelNum(int n){
+    levelNum = n;
+    Level *tmp = level;
+    setLevel();
+    delete tmp;
 }
 
 void Grid::clearGrid() { 
@@ -163,6 +153,13 @@ void Grid::clearGrid() {
             board[i][j]->clearCell(); // resets each cell
         }
     }
+    Level *tmp = level;
+    level = new Level0{};
+    delete tmp;
+
+    levelNum = 0;
+    cur = level->generateRandomBlock(seed);
+    next = level->generateRandomBlock(seed);
 }
 void Grid::printGrid() { // prints out current board
     cout << endl;

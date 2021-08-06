@@ -51,6 +51,8 @@ class Grid{
 
     void levelUp(); // level game up
     void levelDown(); // level game down
+    void setLevel(); //update the level
+    void setLevelNum(int n); //set the levelNum to be n
     
     void clearGrid(); // resets the grid
     void printGrid(); // print out current board

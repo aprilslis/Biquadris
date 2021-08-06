@@ -1,12 +1,11 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 #include "grid.h"
-#include "block.h"
+#include <vector>
 using namespace std;
 
 class Game{
 
-    int level;
     int score1;
     int score2;
     Grid board1;
