@@ -15,25 +15,25 @@ Block * Level0::generateRandomBlock(int seed) {
 	switch(sequence[pos]) {
 		case 'I' : 
 			++pos;
-			return new IBlock{};
+			return new IBlock{0};
 		case 'J' :
 			++pos;
-			return new JBlock{};
+			return new JBlock{0};
 		case 'L' :
 			++pos;
-			return new LBlock{};
+			return new LBlock{0};
 		case 'O' :
 			++pos;
-			return new OBlock{};
+			return new OBlock{0};
 		case 'S' :
 			++pos;
-			return new SBlock{};
+			return new SBlock{0};
 		case 'Z' :
 			++pos;
-			return new ZBlock{};
+			return new ZBlock{0};
 		case 'T' :
 			++pos;
-			return new TBlock{};
+			return new TBlock{0};
 		default :
 			++pos;
 			return nullptr;
