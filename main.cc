@@ -1,4 +1,5 @@
 #include <iostream>
+#include "game.h"
 #include "grid.h"
 #include "iblock.h"
 #include "jblock.h"
@@ -11,9 +12,11 @@ using namespace std;
 
 
 
-int main(){
-    
-    Grid g;
+int main(int argc, char *argv[]){
+    Game g;
+    g.start();
+    // testing:
+    /*Grid g;
     g.printGrid();
     cout<<"---------------------------------------"<<endl;
 
@@ -29,4 +32,6 @@ int main(){
     i->moveRight();
     i->drop();
     g.printGrid();
+    */ 
+    return 0;
 }
