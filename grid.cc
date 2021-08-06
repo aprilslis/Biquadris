@@ -210,7 +210,7 @@ void Grid::generateBlock(){
     ids.push_back(inc);
     levels.push_back(level->getLevel());
     ncells.push_back(4);
-    inc++
+    inc++;
     next = level->generateRandomBlock(seed);
 }
 
