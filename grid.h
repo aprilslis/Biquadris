@@ -24,6 +24,8 @@ using namespace std;
 class Grid{
     const int width; //grid width
     const int height; //grid height
+    static int inc; // generates ids
+
     vector<vector<Cell *>> board; //game board: row/height<column/width<cell>>
 
     int levelNum;
@@ -35,6 +37,12 @@ class Grid{
 
     Score score{levelNum}; //score member to track score
     int some_special_effects; //(add later)
+
+    vector<int> ids; // stores all ids different blocks have
+    vector<int> levels; // stores levels corresponding to the ids
+    vector<int> ncells;  // stores no of left cells in a block if an id
+
+    void removeIds(int row); // removes id if cleared row removes last cell of a certain block
 
   public:
     Grid();

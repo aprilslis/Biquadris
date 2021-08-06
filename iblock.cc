@@ -6,6 +6,7 @@ void IBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
 	        block[i]->setType('\0'); 
+		block[i]->setIdentity(0);
 	}
 
 	// asserting invariants
@@ -14,6 +15,7 @@ void IBlock::switchBlocks(vector<Cell *> other) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
 	                block[j]->setType('I');
+			block[j]->setIdentity(identity);
 	         }
 	         throw InvalidMoveException();
 	    }
@@ -24,6 +26,7 @@ void IBlock::switchBlocks(vector<Cell *> other) {
 	block = other;
 	for (int i = 0; i < size; i++) {
 	        block[i]->setType('I'); 
+		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
 }
@@ -40,6 +43,7 @@ void IBlock::init(vector<vector<Cell *>> &g) {
 	block.push_back(grid[3][3]);
 	for (int i = 0; i < size; i++) {
 		block[i]->setType('I');
+		block[i]->setIdentity(identity);
 	}
 }
 

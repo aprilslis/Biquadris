@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Grid::Grid() : width{11}, height{18}, levelNum{0}, seed{0} { // initialises board
+Grid::Grid() : width{11}, height{18}, levelNum{0}, seed{0}, inc{1} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -13,6 +13,11 @@ Grid::Grid() : width{11}, height{18}, levelNum{0}, seed{0} { // initialises boar
 
     level = new Level0{};
     cur = level->generateRandomBlock(seed);
+    cur->setIdentity(inc);
+    ids.push_back(inc);
+    levels.push_back(level->getLevel());
+    ncells.push_back(4);
+    ++inc;
     next = level->generateRandomBlock(seed);
 }
 
@@ -28,6 +33,22 @@ Grid::~Grid() { // release all existing cells
 Cell * Grid::getCell(int row, int col) {
     return board[row][col];
 } //get cell at x,y
+
+void Grid::removeIds(int row) {
+	for (int i = 0; i < (int)ids.size(); i++) {
+		for (int j = 0; j < width; j++) {
+			if (ids[i] == board[i][j]->getIdentity()) {
+				--ncells[i];
+				if (ncells[i] == 0) {
+					// increase score 
+					ids.erase(ids.begin() + i);
+					levels.erase(levels.begin() + i);
+					ncells.erase(ncells.begin() + i);
+				}
+			}
+		}
+	}
+}
 
 void Grid::addBlock() { //add a new block at left top corner
     cur->init(board); 
@@ -55,18 +76,15 @@ void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
 }
 
 bool Grid::isFullRow(int row) {
-    cout<<"here"<<endl;
     for (int j = 0; j < width; j++) {
         if (board[row][j]->getType() == '\0') {
             return false;
         }
     }
-    cout<<"returned true"<<endl;
     return true;
 }
 
 int Grid::countFullRows() {
-    cout<<"hereee"<<endl;
     int count = 0;
     for (int i = 3; i < height; i++) {
         if (isFullRow(i)) {
@@ -188,6 +206,11 @@ void Grid::setSeed(int seed){
 
 void Grid::generateBlock(){
     cur = next;
+    cur->setIdentity(inc);
+    ids.push_back(inc);
+    levels.push_back(level->getLevel());
+    ncells.push_back(4);
+    inc++
     next = level->generateRandomBlock(seed);
 }
 

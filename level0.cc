@@ -40,7 +40,9 @@ Block * Level0::generateRandomBlock(int seed) {
 	}
 }
 
-
+int Level0::getLevel() {
+	return 0;
+}
 
 
 

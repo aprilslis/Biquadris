@@ -28,3 +28,7 @@ Block * Level1::generateRandomBlock(int seed) {
 	    return nullptr;
     }
 } 
+
+int Level1::getLevel() {
+        return 1;
+}

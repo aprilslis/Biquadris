@@ -11,6 +11,7 @@ class Level0: public Level {
 public:
 	void init(std::string sequence);
 	virtual Block * generateRandomBlock(int seed = 0) override;
+	int getLevel() override;
 };
 
 #endif
