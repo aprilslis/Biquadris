@@ -5,6 +5,7 @@ void JBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
 	        block[i]->setType('\0'); 
+		block[i]->setIdentity(0);
 	}
 
 	// asserting invariants
@@ -13,6 +14,7 @@ void JBlock::switchBlocks(vector<Cell *> other) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
 	                block[j]->setType('J');
+			block[j]->setIdentity(identity);
 	         }
 	         throw InvalidMoveException();
 	    }
@@ -22,7 +24,8 @@ void JBlock::switchBlocks(vector<Cell *> other) {
 	block.clear();
 	block = other;
 	for (int i = 0; i < size; i++) {
-	        block[i]->setType('J'); 
+	        block[i]->setType('J');
+		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
 }
@@ -39,7 +42,8 @@ void JBlock::init(std::vector<std::vector<Cell *>> &g) {
 	block.push_back(grid[3][2]);
 	block.push_back(grid[2][0]);
 	for (int i = 0; i < size; i++) {
-		block[i]->setType('J'); // setting our block of the empty cells to J type cells 
+		block[i]->setType('J'); // setting our block of the empty cells to J type cells
+		block[i]->setIdentity(identity);
 	}
 }
 
