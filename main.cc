@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "game.h"
 #include "grid.h"
 #include "iblock.h"
@@ -8,6 +9,7 @@
 #include "sblock.h"
 #include "tblock.h"
 #include "zblock.h"
+
 using namespace std;
 
 
@@ -16,36 +18,36 @@ int main(int argc, char *argv[]){
     Game g;
     g.start();
     for (int i = 1; i < argc; i++){
-        string cmdin;
-        cmdin = {argv[i]};
-        if (cmdin == "-text") {
-            displayTextOnly(); 
+        string cmd;
+        cmd = {argv[i]};
+        if (cmd == "-text") {
+            //displayTextOnly(); 
         } 
-        else if (cmdin == "-seed") {
+        else if (cmd == "-seed") {
             istringstream ss(argv[i++]);
-            int seedin;
-            ss >> seedin;
+            int seed;
+            ss >> seed;
             if (seed > 0){
-                setSeed(seedin);
+                setSeed(seed);
                 srand(seed);
             }
-        } else if (cmdin == "-scriptfile1") {
+        } else if (cmd == "-scriptfile1") {
             istringstream ss(argv[i++]); 
             string fname; 
             ss >> fname; 
             setScript1(fname); 
-        } else if (cmdin == "-scriptfile2") {
+        } else if (cmd == "-scriptfile2") {
             istringstream ss(argv[i++]); 
             string fname; 
             ss >> fname; 
             setScript2(fname);    
         }
-        else if (cmdin == "-startlevel") {
+        else if (cmd == "-startlevel") {
             int lvlin;
             istringstream ss(argv[i++]);
-            ss >> lvlin; 
-            if (lvlin >= 0 && lvlin <= 4)  {
-                setStartLevel(lvlin); 
+            ss >> lvl; 
+            if (lvl >= 0 && lvl <= 4)  {
+                //setStartLevel(lvl); 
             }
         }
     }
