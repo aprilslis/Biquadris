@@ -158,6 +158,7 @@ void Grid::clearGrid() {
     delete tmp;
 
     levelNum = 0;
+    //need to reset sequence too
     cur = level->generateRandomBlock(seed);
     next = level->generateRandomBlock(seed);
 }

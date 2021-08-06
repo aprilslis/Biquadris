@@ -169,6 +169,7 @@ void Game::start(){
 }
 
 void Game::restart(){
+    cout<<"Game starting:"<<endl;
     //score = 0
     //old boards are delete, new boards is init
     score1 = 0;
@@ -179,6 +180,6 @@ void Game::restart(){
 
 void Game::end(){
     //print endgame winnning message according to score
-    cout<<"blabla won~ New game starting:"<<endl;
+    cout<<"blabla won~"<<endl;
 }
 
