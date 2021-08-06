@@ -10,6 +10,7 @@ class ZBlock : public Block {
     void switchBlocks(std::vector<Cell *> other);
   
     public:
+        ZBlock();
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;
         void moveLeft() override;
