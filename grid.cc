@@ -170,6 +170,7 @@ void Grid::setLevel() {
     switch (levelNum){
         case 0:
             level = new Level0{};
+	    level.init(filename);
             break;
         case 1:
             level = new Level1{};
