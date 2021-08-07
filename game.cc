@@ -158,8 +158,15 @@ void Game::start(int startlevel=0){
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"norandom")){
-                    //blabla
+                    string newfile;
+                    cin>>newfile;
+                    //do something
                     break; //this command should not be done more than 1 time
+                }
+                else if(cmpString(input,"sequence")){
+                    string file;
+                    cin>>file;
+                    break;
                 }
             }
         }

@@ -82,6 +82,18 @@ void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
         case 'l':
             cur = new LBlock{level->getLevel()};
             break;
+        case 'o':
+            cur = new OBlock{level->getLevel()};
+            break;
+        case 's':
+            cur = new SBlock{level->getLevel()};
+            break;
+        case 't':
+            cur = new TBlock{level->getLevel()};
+            break;
+        case 'z':
+            cur = new ZBlock{level->getLevel()};
+            break;
         
         default:
             break;
