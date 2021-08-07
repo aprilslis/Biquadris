@@ -10,6 +10,10 @@ void SBlock::moveHeavy() {
         }
 }
 
+char Sblock::getType() {
+	return 'S';
+}
+
 void SBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
