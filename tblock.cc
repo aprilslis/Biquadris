@@ -10,6 +10,10 @@ void TBlock::moveHeavy() {
 	}
 }
 
+char Tblock::getType() {
+	return 'T';
+}
+
 void TBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
