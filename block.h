@@ -15,6 +15,7 @@ class Block {
         public:
 	Block(int level);
 	virtual ~Block();
+        virtual char getType() = 0;
         virtual void init(std::vector<std::vector<Cell *>> &g) = 0; 
         virtual void lost() = 0;
         virtual void moveLeft() = 0;

@@ -19,6 +19,6 @@ void Block::setIdentity(int identity) {
 	this->identity = identity;
 }
 
-void Block::isHeavy() {
+bool Block::isHeavy() {
 	return (level == 3);
 }

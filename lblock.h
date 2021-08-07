@@ -12,6 +12,7 @@ class LBlock : public Block {
 
     public:
         LBlock(int level);
+        char getType() override;
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;
         void moveLeft() override;

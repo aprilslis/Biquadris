@@ -3,6 +3,10 @@ using namespace std;
 
 JBlock::JBlock(int level): Block{level} {}
 
+char JBlock::getType(){
+	return 'J';
+}
+
 void JBlock::moveHeavy() {
         if (level == 3) {
                 moveDown();

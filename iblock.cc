@@ -10,6 +10,10 @@ void IBlock::moveHeavy() {
 	}
 }
 
+char IBlock::getType(){
+	return 'I';
+}
+
 void IBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 

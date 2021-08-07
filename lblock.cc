@@ -3,6 +3,10 @@ using namespace std;
 
 LBlock::LBlock(int level): Block{level} {}
 
+char LBlock::getType(){
+	return 'L';
+}
+
 void LBlock::moveHeavy() {
         if (level == 3) {
                 moveDown();
@@ -98,7 +102,7 @@ void LBlock::moveRight() {
     moveHeavy();
 }
 
-void LBlock::moveDownHeavy() {
+void LBlock::moveHeavyDown() {
 	moveDown();
 	moveDown();
 }

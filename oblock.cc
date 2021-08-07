@@ -3,6 +3,10 @@ using namespace std;
 
 OBlock::OBlock(int level): Block{level} {}
 
+char OBlock::getType(){
+	return 'O';
+}
+
 void OBlock::moveHeavy() {
         if (level == 3) {
                 moveDown();
