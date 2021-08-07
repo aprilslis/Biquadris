@@ -28,19 +28,19 @@ int main(int argc, char *argv[]){
             int seed;
             ss >> seed;
             if (seed > 0){
-                setSeed(seed);
+                g.setSeed(seed);
                 srand(seed);
             }
         } else if (cmd == "-scriptfile1") {
             istringstream ss(argv[i++]); 
             string fname; 
             ss >> fname; 
-            setFile1(fname); 
+            g.setFile1(fname); 
         } else if (cmd == "-scriptfile2") {
             istringstream ss(argv[i++]); 
             string fname; 
             ss >> fname; 
-            setFile2(fname);    
+            g.setFile2(fname);    
         }
         else if (cmd == "-startlevel") {
             istringstream ss(argv[i++]);

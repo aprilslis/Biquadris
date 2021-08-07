@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Game::Game():score1{}, score2{}, board1{}, board2{}, textdisplay{board1,board2} {
+Game::Game(): board1{}, board2{}, textdisplay{board1,board2} {
 }
 
 
@@ -179,7 +179,7 @@ void Game::start(){
         
 
         //check the rows, clear rows, count scores
-        
+
         
         drawText();
         drawGraphic();
@@ -191,10 +191,8 @@ void Game::start(){
 
 void Game::restart(){
     cout<<"Game starting:"<<endl;
-    //score = 0
+    
     //old boards are delete, new boards is init
-    score1.resetScore();
-    score2.resetScore();
     board1.clearGrid();
     board2.clearGrid();//remember to finish clearGrid implementation
 
@@ -202,7 +200,7 @@ void Game::restart(){
 
 void Game::end(int winner=0){
     if(winner==0){
-        if(getScore1()>getScore2()){
+        if(board1.getScore()>board2.getScore()){
             cout<<"Player 1 ";
         }
         else{
@@ -221,14 +219,6 @@ void Game::end(int winner=0){
     
 }
 
-int Game::getScore1(){
-    return score1.getScore();
-}
-
-int Game::getScore2(){
-    return score2.getScore();
-}
-
 void Game::drawText(){
 
 }
@@ -237,3 +227,15 @@ void Game::drawGraphic(){
 
 }
 
+void Game::setFile1(string file){
+
+}
+
+void Game::setFile2(string file){
+
+}
+
+void Game::setSeed(int seed){
+    board1.setSeed(seed);
+    board2.setSeed(seed);
+}

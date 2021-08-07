@@ -78,7 +78,7 @@ class Grid{
     void rotateBlockCCW();
     //void setFilename(string newfile);
 
-    
+    int getScore();
     
 };
 

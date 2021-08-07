@@ -257,3 +257,8 @@ void Grid::rotateBlockCCW(){
     cur->rotateCCW();
 }
 
+int Grid::getScore(){
+    return s->getScore();
+}
+
+

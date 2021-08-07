@@ -8,8 +8,9 @@ using namespace std;
 
 class Game{
 
-    Score score1;
-    Score score2;
+    string file1;
+    string file2;
+
     Grid board1;
     Grid board2;
 
@@ -21,11 +22,12 @@ class Game{
     void restart(); //restart game
     void end(int winner=0); //end game
 
-    int getScore1();
-    int getScore2();
-
     void drawText();
     void drawGraphic();
+
+    void setFile1(string file);
+    void setFile2(string file);
+    void setSeed(int seed);
 
 
 };
