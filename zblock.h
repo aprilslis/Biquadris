@@ -12,6 +12,7 @@ class ZBlock : public Block {
   
     public:
         ZBlock(int level);
+	char getType();
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;
         void moveLeft() override;
