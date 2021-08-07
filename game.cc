@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Game::Game():score1{0}, score2{0}, board1{}, board2{} {
+Game::Game():score1{}, score2{}, board1{}, board2{}, textdisplay{board1,board2} {
 }
 
 
@@ -90,78 +90,99 @@ void Game::start(){
         
        
         //interpret commands
-        for(int i=0;i<multiplier;i++){
+        try{
+            for(int i=0;i<multiplier;i++){
 
-            if(!validifyCmd(input)){//not interpretable command
-                cout<<"Invalid command. Please try again:"<<endl;
-                break;
-            }
+                if(!validifyCmd(input)){//not interpretable command
+                    cout<<"Invalid command. Please try again:"<<endl;
+                    break;
+                }
 
-            if(cmpString(input,"left")){
-                cur->moveBlockLeft();
-            }
-            else if(cmpString(input,"right")){
-                cur->moveBlockRight();
-            }
-            else if(cmpString(input,"down")){
-                cur->moveBlockDown();
-            }
-            else if(cmpString(input,"clockwise")){
-                cur->rotateBlockCW();
-            }
-            else if(cmpString(input,"counterclockwise")){
-                cur->rotateBlockCCW();
-            }
-            else if(cmpString(input,"levelup")){
-                cur->levelUp();
-            }
-            else if(cmpString(input,"leveldown")){
-                cur->levelDown();
-            }
-            else if(cmpString(input,"drop")){
-                cur->dropBlock();
-                cur->generateBlock();
-                if(curNum==1){//needs fixing
-                    cur = &board2;
-                    curNum = 2;
+                if(cmpString(input,"left")){
+                    cur->moveBlockLeft();
                 }
-                else{
-                    cur = &board1;
-                    curNum = 1;
+                else if(cmpString(input,"right")){
+                    cur->moveBlockRight();
                 }
-                cur->addBlock();
-            }
-            else if(cmpString(input,"I")){
-                cur->replaceBlock('i');
-            }
-            else if(cmpString(input,"J")){
-                cur->replaceBlock('j');
-            }
-            else if(cmpString(input,"L")){
-                cur->replaceBlock('l');
-            }
-            else if(cmpString(input,"restart")){
-                //when restart, call end() then restart() and return
-                end();
-                restart();
-                break; //this command should not be done more than 1 time
-            }
-            else if(cmpString(input,"hint")){
-                //needs to write this funciton in grid
-                break; //this command should not be done more than 1 time
-            }
-            else if(cmpString(input,"random")){
-                //blabla
-                break; //this command should not be done more than 1 time
-            }
-            else if(cmpString(input,"norandom")){
-                //blabla
-                break; //this command should not be done more than 1 time
+                else if(cmpString(input,"down")){
+                    cur->moveBlockDown();
+                }
+                else if(cmpString(input,"clockwise")){
+                    cur->rotateBlockCW();
+                }
+                else if(cmpString(input,"counterclockwise")){
+                    cur->rotateBlockCCW();
+                }
+                else if(cmpString(input,"levelup")){
+                    cur->levelUp();
+                }
+                else if(cmpString(input,"leveldown")){
+                    cur->levelDown();
+                }
+                else if(cmpString(input,"drop")){
+                    cur->dropBlock();
+                    cur->generateBlock();
+                    if(curNum==1){
+                        cur = &board2;
+                        curNum = 2;
+                    }
+                    else{
+                        cur = &board1;
+                        curNum = 1;
+                    }
+                    cur->addBlock();
+                }
+                else if(cmpString(input,"I")){
+                    cur->replaceBlock('i');
+                }
+                else if(cmpString(input,"J")){
+                    cur->replaceBlock('j');
+                }
+                else if(cmpString(input,"L")){
+                    cur->replaceBlock('l');
+                }
+                else if(cmpString(input,"restart")){
+                    //when restart, call end() then restart() and return
+                    end();
+                    restart();
+                    return; //this command should not be done more than 1 time
+                }
+                else if(cmpString(input,"hint")){
+                    //needs to write this funciton in grid
+                    break; //this command should not be done more than 1 time
+                }
+                else if(cmpString(input,"random")){
+                    //blabla
+                    break; //this command should not be done more than 1 time
+                }
+                else if(cmpString(input,"norandom")){
+                    //blabla
+                    break; //this command should not be done more than 1 time
+                }
             }
         }
+        catch(LostException e1){
+            if(curNum==1){
+                end(2);
+            }
+            else{
+                end(1);
+            }
+            restart();
+        }
+        catch(InvalidMoveException e2){
+            //do nothing?
+        }
+        catch(...){
+            cout<<"default error (game)"<<endl;
+        }
+        
 
         //check the rows, clear rows, count scores
-        //draw on text+graphics
+        
+        
+        drawText();
+        drawGraphic();
     }
         
     //calls end()
@@ -172,14 +193,47 @@ void Game::restart(){
     cout<<"Game starting:"<<endl;
     //score = 0
     //old boards are delete, new boards is init
-    score1 = 0;
-    score2 = 0;
+    score1.resetScore();
+    score2.resetScore();
     board1.clearGrid();
     board2.clearGrid();//remember to finish clearGrid implementation
+
 }
 
-void Game::end(){
-    //print endgame winnning message according to score
-    cout<<"blabla won~"<<endl;
+void Game::end(int winner=0){
+    if(winner==0){
+        if(getScore1()>getScore2()){
+            cout<<"Player 1 ";
+        }
+        else{
+            cout<<"Player 2 ";
+        }
+    }
+    else{
+        if(winner==1){
+            cout<<"Player 1 ";
+        }
+        else{
+            cout<<"Player 2 ";
+        }
+    }
+    cout<<"won~"<<endl;
+    
+}
+
+int Game::getScore1(){
+    return score1.getScore();
+}
+
+int Game::getScore2(){
+    return score2.getScore();
+}
+
+void Game::drawText(){
+
+}
+
+void Game::drawGraphic(){
+
 }
 

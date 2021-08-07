@@ -165,11 +165,11 @@ void Grid::setLevel() {
         case 2:
             level = new Level2{};
             break;
-        case 3:
-            level = new Level3{};
-            break;
-        case 4:
-            level = new Level4{};
+        // case 3:
+        //     level = new Level3{};
+        //     break;
+        // case 4:
+        //     level = new Level4{};
             break;
         
         default:

@@ -5,9 +5,9 @@
 class Score {
     int score;
     int highscore;
-    public:
-        Score();
-        int getScore();
+  public:
+    Score();
+    int getScore();
 	int getHighScore();
 	void updateScore(int val);
 	void resetScore();
