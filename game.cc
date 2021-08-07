@@ -143,6 +143,18 @@ void Game::start(int startlevel=0){
                 else if(cmpString(input,"L")){
                     cur->replaceBlock('l');
                 }
+                else if(cmpString(input,"O")){
+                    cur->replaceBlock('o');
+                }
+                else if(cmpString(input,"S")){
+                    cur->replaceBlock('s');
+                }
+                else if(cmpString(input,"T")){
+                    cur->replaceBlock('t');
+                }
+                else if(cmpString(input,"Z")){
+                    cur->replaceBlock('z');
+                }
                 else if(cmpString(input,"restart")){
                     //when restart, call end() then restart() and return
                     end();
