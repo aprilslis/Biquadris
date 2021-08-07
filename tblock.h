@@ -12,7 +12,7 @@ class TBlock : public Block {
 
     public:
         TBlock(int level);
-	char getType();
+	char getType() override;
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;
         void moveLeft() override;
