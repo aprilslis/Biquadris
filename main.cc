@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
             //displayTextOnly(); 
         } 
         else if (cmd == "-seed") {
-            istringstream ss(argv[i++]);
+            istringstream ss(argv[++i]);
             int seed;
             ss >> seed;
             if (seed > 0){
@@ -32,12 +32,12 @@ int main(int argc, char *argv[]){
                 srand(seed);
             }
         } else if (cmd == "-scriptfile1") {
-            istringstream ss(argv[i++]); 
+            istringstream ss(argv[++i]); 
             string fname; 
             ss >> fname; 
             setFile1(fname); 
         } else if (cmd == "-scriptfile2") {
-            istringstream ss(argv[i++]); 
+            istringstream ss(argv[++i]); 
             string fname; 
             ss >> fname; 
             setFile2(fname);    
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
         else if (cmd == "-startlevel") {
             istringstream ss(argv[i++]);
             ss >> startLevel; 
-            if (lvl < 0 && lvl > 4)  {
+            if (lvl < 0 || lvl > 4)  {
                 startLevel = 0;     // if invalid level, set it to 0 
             }
         }
