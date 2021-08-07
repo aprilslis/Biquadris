@@ -1,11 +1,11 @@
-#include <fstream.h>
+#include <fstream>
 #include <string.h>
 #include "level0.h" 
 
 using namespace std;
 
 void Level0::init(string filename) {
-	ifstream f1{sequence1.txt};
+	ifstream f1;
 	string seq((std::istreambuf_iterator<char>(f1)),(istreambuf_iterator<char>()));
 	this->sequence = seq;
 	len = seq.length();

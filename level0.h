@@ -9,7 +9,7 @@ class Level0: public Level {
 	int len;
 	int pos;
 public:
-	void init(std::string filename);
+	void init(string filename) override;
 	virtual Block * generateRandomBlock(int seed = 0) override;
 	int getLevel() override;
 };

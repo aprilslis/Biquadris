@@ -30,6 +30,7 @@ class Grid{
     int levelNum;
     Level *level; //current level
     int seed;
+    string defaultFile;
 
     Block *cur;
     Block *next;
@@ -72,6 +73,9 @@ class Grid{
 
     void setSeed(int seed);
     void generateBlock();//generate a random block 
+    void setDefaultFile(string file); //set the name of default file
+    void changeFile(string file); //change the file input block to the new one
+
     void moveBlockRight();
     void moveBlockLeft();
     void moveBlockDown();

@@ -32,12 +32,12 @@ int main(int argc, char *argv[]){
             istringstream ss(argv[++i]); 
             string fname; 
             ss >> fname; 
-            g.setFile1(fname); 
+            g.setDefaultFile1(fname); 
         } else if (cmd == "-scriptfile2") {
             istringstream ss(argv[++i]); 
             string fname; 
             ss >> fname; 
-            g.setFile2(fname);    
+            g.setDefaultFile2(fname);    
         }
         else if (cmd == "-startlevel") {
             istringstream ss(argv[i++]);

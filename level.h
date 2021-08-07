@@ -14,6 +14,7 @@ class Level {
 protected:
 	int seed;
 public:
+	virtual void init(string filename) = 0;
 	virtual Block * generateRandomBlock(int seed = 0) = 0;
 	virtual int getLevel() = 0;
 	virtual ~Level();

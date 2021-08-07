@@ -1,4 +1,11 @@
+#include <fstream>
+#include <string.h>
 #include "level1.h"
+using namespace std;
+
+void Level1::init(string filename){
+
+}
 
 Block * Level1::generateRandomBlock(int seed) {
     this->seed = seed;

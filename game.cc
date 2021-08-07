@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include "game.h"
 using namespace std;
 
@@ -58,6 +60,9 @@ bool validifyCmd(string input){
     if(cmpString(input,"norandom")){
         count++;
     }
+    if(cmpString(input,"sequence")){
+        count++;
+    }
     return count==1;
 }
 
@@ -73,12 +78,27 @@ void Game::start(int startlevel=0){
     int curNum = 1;
     Grid *cur = &board1;
     cur->addBlock();
-    while(cin>>input){
+    while(true){
+        if(useSeqFile){
+            if(!(seqFile>>input)){
+                input = "";
+                useSeqFile = false;
+            }
+        }
+        else{
+            if(!(cin>>input)){
+                break;
+            }
+        }
+        
 
         //take off multipler at the start first
         int multiplier;
-        if(!isdigit(input[0])){
-            int multiplier = 1;
+        if(input==""){
+            multiplier = 0;
+        }
+        else if(!isdigit(input[0])){
+            multiplier = 1;
         }
         else{
             multiplier = 0;
@@ -100,7 +120,7 @@ void Game::start(int startlevel=0){
                     break;
                 }
 
-                if(cmpString(input,"left")){
+                else if(cmpString(input,"left")){
                     cur->moveBlockLeft();
                 }
                 else if(cmpString(input,"right")){
@@ -172,12 +192,19 @@ void Game::start(int startlevel=0){
                 else if(cmpString(input,"norandom")){
                     string newfile;
                     cin>>newfile;
-                    //do something
+                    //do something to switch off random
+                    cur->changeFile(newfile);
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"sequence")){
                     string file;
                     cin>>file;
+                    ifstream fileInput(file);
+                    string s;
+                    while(getline(fileInput,s)){
+                        seqFile << s << endl;
+                    }
+                    useSeqFile = true;
                     break;
                 }
             }
@@ -201,9 +228,10 @@ void Game::start(int startlevel=0){
 
         //check the rows, clear rows, count scores
 
-        
-        drawText();
-        drawGraphic();
+        if(multiplier!=0){
+            drawText();
+            drawGraphic();
+        }
     }
         
     //calls end()
@@ -248,12 +276,12 @@ void Game::drawGraphic(){
 
 }
 
-void Game::setFile1(string file){
-
+void Game::setDefaultFile1(string file){
+    board1.setDefaultFile(file);
 }
 
-void Game::setFile2(string file){
-
+void Game::setDefaultFile2(string file){
+    board2.setDefaultFile(file);
 }
 
 void Game::setSeed(int seed){

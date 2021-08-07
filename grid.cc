@@ -170,7 +170,7 @@ void Grid::setLevel() {
     switch (levelNum){
         case 0:
             level = new Level0{};
-	    level.init(filename);
+	        level->init(defaultFile);
             break;
         case 1:
             level = new Level1{};
@@ -250,6 +250,7 @@ string Grid::printRow(int n){
 
 void Grid::setSeed(int seed){
     this->seed = seed;
+    //need to set the level seed too
 }
 
 void Grid::generateBlock(){
@@ -257,6 +258,15 @@ void Grid::generateBlock(){
     updateIds(cur);
     next = level->generateRandomBlock(seed);
 }
+
+void Grid::setDefaultFile(string file){
+    defaultFile = file;
+}
+
+void Grid::changeFile(string file){
+    level->init(file);
+}
+
 
 void Grid::moveBlockRight(){
     cur->moveRight();

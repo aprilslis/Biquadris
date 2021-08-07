@@ -4,12 +4,11 @@
 #include "score.h"
 #include "textdisplay.h"
 #include <vector>
-using namespace std;
 
 class Game{
 
-    string file1;
-    string file2;
+    std::stringstream seqFile; //for sequence command
+    bool useSeqFile;
 
     Grid board1;
     Grid board2;
@@ -25,8 +24,8 @@ class Game{
     void drawText();
     void drawGraphic();
 
-    void setFile1(string file);
-    void setFile2(string file);
+    void setDefaultFile1(string file);
+    void setDefaultFile2(string file);
     void setSeed(int seed);
 
 
