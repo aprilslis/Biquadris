@@ -9,6 +9,10 @@ void ZBlock::moveHeavy() {
         }
 }
 
+char Zblock::getType() {
+	return 'Z';
+}
+
 void ZBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
