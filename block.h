@@ -20,13 +20,14 @@ class Block {
         virtual void moveLeft() = 0;
         virtual void moveRight() = 0;
         virtual void moveDown() = 0;
+	virtual void moveHeavyDown() = 0;
         virtual void drop() = 0;
         virtual void rotateCW() = 0;
         virtual void rotateCCW() = 0;
         void emptyBlock();
 	int getLevel();
+	bool isHeavy();
 	void setIdentity(int identity);
-
 };
 
 class InvalidMoveException {}; // raised if move is invalid
