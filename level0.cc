@@ -1,14 +1,20 @@
+#include <fstream.h>
+#include <string.h>
 #include "level0.h" 
 
 using namespace std;
 
-void Level0::init(string sequence) {
-	this->sequence = sequence;
-	len = sequence.length();
+void Level0::init(string filename) {
+	ifstream f1{sequence1.txt};
+	string seq((std::istreambuf_iterator<char>(f1)),(istreambuf_iterator<char>()));
+	this->sequence = seq;
+	len = seq.length();
 	pos = 0;
 }
 
 Block * Level0::generateRandomBlock(int seed) {
+
+	
 	if (pos + 1 > len) {
 		pos = 0;
 	}
