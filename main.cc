@@ -27,10 +27,7 @@ int main(int argc, char *argv[]){
             istringstream ss(argv[++i]);
             int seed;
             ss >> seed;
-            if (seed > 0){
-                g.setSeed(seed);
-                srand(seed);
-            }
+            g.setSeed(seed);
         } else if (cmd == "-scriptfile1") {
             istringstream ss(argv[++i]); 
             string fname; 
