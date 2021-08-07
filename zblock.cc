@@ -3,6 +3,12 @@ using namespace std;
 
 ZBlock::ZBlock(int level): Block{level} {}
 
+void ZBlock::moveHeavy() {
+        if (level == 3) {
+                moveDown();
+        }
+}
+
 void ZBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
@@ -71,6 +77,7 @@ void ZBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
 }
 
 void ZBlock::moveRight() {
@@ -88,6 +95,12 @@ void ZBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
+}
+
+void ZBlock::moveHeavyDown() {
+	moveDown();
+	moveDown();
 }
 
 void ZBlock::moveDown() {
@@ -141,6 +154,7 @@ void ZBlock::rotateCW() {
 		switchBlocks(temp);
 	    --pos;
 	}
+	moveHeavy();
 }
 
 void ZBlock::rotateCCW() {  // CCW and CW have same effect as there are 2 positions in ZBlock

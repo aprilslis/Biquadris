@@ -4,6 +4,12 @@ using namespace std;
 
 IBlock::IBlock(int level): Block{level} {}
 
+void IBlock::moveHeavy() {
+	if (level == 3) {
+		moveDown();
+	}
+}
+
 void IBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
@@ -31,6 +37,8 @@ void IBlock::switchBlocks(vector<Cell *> other) {
 		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
+
+	
 }
 
 void IBlock::init(vector<vector<Cell *>> &g) {
@@ -70,6 +78,7 @@ void IBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
 }
 
 void IBlock::moveRight() {
@@ -87,6 +96,12 @@ void IBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
+}
+
+void IBlock::moveHeavyDown() {
+	moveDown();
+	moveDown();
 }
 
 void IBlock::moveDown() {
@@ -140,6 +155,7 @@ void IBlock::rotateCW() {
 		switchBlocks(temp);
 		--pos;
 	}
+	moveHeavy();
 
 }
 

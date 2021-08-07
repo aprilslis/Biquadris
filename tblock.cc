@@ -1,7 +1,14 @@
 #include "tblock.h"
+
 using namespace std;
 
 TBlock::TBlock(int level): Block{level} {}
+
+void TBlock::moveHeavy() {
+	if (level == 3) {
+		moveDown();
+	}
+}
 
 void TBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
@@ -71,6 +78,7 @@ void TBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
 }
 
 void TBlock::moveRight() {
@@ -88,6 +96,12 @@ void TBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
+}
+
+void TBlock::moveHeavyDown() {
+	moveDown();
+	moveDown();
 }
 
 void TBlock::moveDown() {
@@ -134,7 +148,7 @@ void TBlock::rotateCW() {
 		if (row - 1 < 0 || col + 1 > 10 || col - 1 < 0) {
 			throw InvalidMoveException();
 		}
-        temp.push_back(lowerleft);
+        	temp.push_back(lowerleft);
 		temp.push_back(grid[row][col - 1]);
 		temp.push_back(grid[row][col + 1]);
 		temp.push_back(grid[row - 1][col]);
@@ -144,7 +158,7 @@ void TBlock::rotateCW() {
 		if (row - 1 < 0 || row - 2  < 0 || col + 1 > 10) {
 			throw InvalidMoveException();
 		}
-        temp.push_back(lowerleft);
+        	temp.push_back(lowerleft);
 		temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col + 1]);
 		temp.push_back(grid[row - 2][col]);
@@ -161,6 +175,7 @@ void TBlock::rotateCW() {
 		switchBlocks(temp);
 		pos = 1;
 	}
+	moveHeavy();
 }
 
 void TBlock::rotateCCW() {
@@ -208,4 +223,5 @@ void TBlock::rotateCCW() {
 		switchBlocks(temp);
 		--pos;
 	}
+	moveHeavy();
 }

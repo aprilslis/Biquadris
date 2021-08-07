@@ -3,6 +3,12 @@ using namespace std;
 
 JBlock::JBlock(int level): Block{level} {}
 
+void JBlock::moveHeavy() {
+        if (level == 3) {
+                moveDown();
+        }
+}
+
 void JBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
@@ -72,6 +78,7 @@ void JBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
 }
 
 void JBlock::moveRight() {
@@ -89,6 +96,12 @@ void JBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
+}
+
+void JBlock::moveHeavyDown() {
+	moveDown();
+	moveDown();
 }
 
 void JBlock::moveDown() {
@@ -175,6 +188,7 @@ void JBlock::rotateCW() {
 		switchBlocks(temp);
 		pos = 1;
 	}
+	moveHeavy();
 }
 
 void JBlock::rotateCCW() {
@@ -222,4 +236,5 @@ void JBlock::rotateCCW() {
 		switchBlocks(temp);
 		--pos;
 	}
+	moveHeavy();
 }

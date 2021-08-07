@@ -3,6 +3,12 @@ using namespace std;
 
 OBlock::OBlock(int level): Block{level} {}
 
+void OBlock::moveHeavy() {
+        if (level == 3) {
+                moveDown();
+        }
+}
+
 void OBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
     for (int i = 0; i < size; i++) { 
@@ -48,8 +54,6 @@ void OBlock::init(std::vector<std::vector<Cell *>> &g) {
     }
 }
 
-
-
 void OBlock::lost() {
     if (grid[3][0]->isFull() || grid[3][1]->isFull() || grid[2][0]->isFull() || grid[2][1]->isFull()) {
         throw LostException();
@@ -71,6 +75,7 @@ void OBlock::moveLeft() {
     }
 
     switchBlocks(temp);
+    moveHeavy();
 }
 
 void OBlock::moveRight() {
@@ -88,6 +93,12 @@ void OBlock::moveRight() {
     }
 
     switchBlocks(temp);
+    moveHeavy();
+}
+
+void OBlock::moveHeavyDown() {
+	moveDown();
+	moveDown();
 }
 
 void OBlock::moveDown() {
@@ -116,10 +127,10 @@ void OBlock::drop() {
     }
 }
 
-void OBlock::rotateCW() {
-    return; // rotation does not affect spatial configuration
+void OBlock::rotateCW() { // rotation does not affect spatial configuration
+    moveHeavy();
 }
 
-void OBlock::rotateCCW() {
-    return; // rotation does not affect spatial configuration
+void OBlock::rotateCCW() { // rotation does not affect spatial configuration
+    moveHeavy();
 }

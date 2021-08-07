@@ -1,7 +1,14 @@
 #include "sblock.h"
+
 using namespace std;
 
 SBlock::SBlock(int level): Block{level} {}
+
+void SBlock::moveHeavy() {
+        if (level == 3) {
+                moveDown();
+        }
+}
 
 void SBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
@@ -71,6 +78,7 @@ void SBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
 }
 
 void SBlock::moveRight() {					// opposite of moving left
@@ -88,6 +96,12 @@ void SBlock::moveRight() {					// opposite of moving left
 	}
 
 	switchBlocks(temp);
+	moveHeavy();
+}
+
+void SBlock::moveHeavyDown() {
+	moveDown();
+	moveDown();
 }
 
 void SBlock::moveDown() {
@@ -141,6 +155,7 @@ void SBlock::rotateCW() {
 		switchBlocks(temp);
 	    --pos;
 	}
+	moveHeavy();
 }
 
 void SBlock::rotateCCW() {  // CCW and CW have same effect as there are 2 positions in SBlock

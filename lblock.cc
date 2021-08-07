@@ -1,7 +1,13 @@
 #include "lblock.h"
 using namespace std;
 
-lBlock::lBlock(int level): Block{level} {}
+LBlock::LBlock(int level): Block{level} {}
+
+void LBlock::moveHeavy() {
+        if (level == 3) {
+                moveDown();
+        }
+}
 
 void LBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
@@ -71,6 +77,7 @@ void LBlock::moveLeft() {
     }
 
     switchBlocks(temp);
+    moveHeavy();
 }
 
 void LBlock::moveRight() {
@@ -88,6 +95,12 @@ void LBlock::moveRight() {
     }
 
     switchBlocks(temp);
+    moveHeavy();
+}
+
+void LBlock::moveDownHeavy() {
+	moveDown();
+	moveDown();
 }
 
 void LBlock::moveDown() {
@@ -161,6 +174,7 @@ void LBlock::rotateCW() {
         switchBlocks(temp);
         pos = 1;
     }
+    moveHeavy();
 }
 
 void LBlock::rotateCCW() {
@@ -208,4 +222,5 @@ void LBlock::rotateCCW() {
         switchBlocks(temp);
         --pos;
     }
+    moveHeavy();
 }

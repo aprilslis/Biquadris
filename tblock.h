@@ -8,7 +8,8 @@ class TBlock : public Block {
     int pos;
     int size;
     void switchBlocks(std::vector<Cell *> other);
-  
+    void moveHeavy();
+
     public:
         TBlock(int level);
         void init(std::vector<std::vector<Cell *>> &g) override;
@@ -16,6 +17,7 @@ class TBlock : public Block {
         void moveLeft() override;
         void moveRight() override;
         void moveDown() override;
+	void moveHeavyDown() override;
         void drop() override;
         void rotateCW() override;
         void rotateCCW() override;
