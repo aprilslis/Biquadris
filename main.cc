@@ -16,7 +16,7 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     Game g;
-    g.start();
+    int startLevel = 0;
     for (int i = 1; i < argc; i++){
         string cmd;
         cmd = {argv[i]};
@@ -35,21 +35,21 @@ int main(int argc, char *argv[]){
             istringstream ss(argv[i++]); 
             string fname; 
             ss >> fname; 
-            setScript1(fname); 
+            setFile1(fname); 
         } else if (cmd == "-scriptfile2") {
             istringstream ss(argv[i++]); 
             string fname; 
             ss >> fname; 
-            setScript2(fname);    
+            setFile2(fname);    
         }
         else if (cmd == "-startlevel") {
-            int lvlin;
             istringstream ss(argv[i++]);
-            ss >> lvl; 
-            if (lvl >= 0 && lvl <= 4)  {
-                //setStartLevel(lvl); 
+            ss >> startLevel; 
+            if (lvl < 0 && lvl > 4)  {
+                startLevel = 0;     // if invalid level, set it to 0 
             }
         }
+        g.start(level);
     }
 
     // testing:
