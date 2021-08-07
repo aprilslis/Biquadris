@@ -5,7 +5,7 @@
 using namespace std;
 
 
-Game::Game(): board1{}, board2{}, textdisplay{&board1,&board2} {
+Game::Game(): board1{}, board2{}, onlyText{false}, textdisplay{&board1,&board2} {
 }
 
 
@@ -144,6 +144,8 @@ void Game::start(int startlevel=0){
                 else if(cmpString(input,"drop")){
                     cur->dropBlock();
                     cur->generateBlock();
+                    //check special effects here 
+                    //if yes: specialEffects(curNum);
                     if(curNum==1){
                         cur = &board2;
                         curNum = 2;
@@ -225,17 +227,35 @@ void Game::start(int startlevel=0){
             cout<<"default error (game)"<<endl;
         }
         
-
-        //check the rows, clear rows, count scores
-
+        //display stuffs
         if(multiplier!=0){
-            drawText();
-            drawGraphic();
+            if(onlyText){
+                drawText();
+            }
+            else{
+                drawText();
+                drawGraphic();
+            }
         }
     }
         
     //calls end()
     end();
+}
+
+void Game::specialEffects(int curNum){
+    string input;
+    cin>>input;
+
+    if(cmpString(input,"blind")){//should opperate on curNum
+        //do something
+    }
+    else if(cmpString(input,"heavy")){
+        //do something
+    }
+    else if(cmpString(input,"force")){
+        //do something
+    }
 }
 
 void Game::restart(){
@@ -269,11 +289,18 @@ void Game::end(int winner=0){
 }
 
 void Game::drawText(){
-
+    textdisplay.printDisplay();
 }
 
 void Game::drawGraphic(){
 
+}
+
+
+
+
+void Game::displayOnlyText(bool t){
+    onlyText = t;
 }
 
 void Game::setDefaultFile1(string file){

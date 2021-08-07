@@ -30,7 +30,7 @@ class Grid{
     int levelNum;
     Level *level; //current level
     int seed;
-    string defaultFile;
+    std::string defaultFile;
 
     Block *cur;
     Block *next;
@@ -68,13 +68,13 @@ class Grid{
     
     void clearGrid(); // resets the grid
     void printGrid(); // print out current board (for testing)
-    string printRow(int n); // print out current board
+    std::string printRow(int n); // print out current board
 
 
     void setSeed(int seed);
     void generateBlock();//generate a random block 
-    void setDefaultFile(string file); //set the name of default file
-    void changeFile(string file); //change the file input block to the new one
+    void setDefaultFile(std::string file); //set the name of default file
+    void changeFile(std::string file); //change the file input block to the new one
 
     void moveBlockRight();
     void moveBlockLeft();

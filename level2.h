@@ -5,7 +5,7 @@
 
 class Level2: public Level {
 	public:
-	void init(string filename) override;
+	void init(std::string filename) override;
 	Block * generateRandomBlock(int seed) override;
 	int getLevel() override;
 };

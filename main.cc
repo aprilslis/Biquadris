@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
         string cmd;
         cmd = {argv[i]};
         if (cmd == "-text") {
-            //displayTextOnly(); 
+            g.displayOnlyText(true); 
         } 
         else if (cmd == "-seed") {
             istringstream ss(argv[++i]);

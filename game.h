@@ -13,7 +13,10 @@ class Game{
     Grid board1;
     Grid board2;
 
+    bool onlyText;
     TextDisplay textdisplay;
+
+    void specialEffects(int curNum);
 
   public:
     Game();
@@ -24,8 +27,9 @@ class Game{
     void drawText();
     void drawGraphic();
 
-    void setDefaultFile1(string file);
-    void setDefaultFile2(string file);
+    void displayOnlyText(bool t); 
+    void setDefaultFile1(std::string file);
+    void setDefaultFile2(std::string file);
     void setSeed(int seed);
 
 
