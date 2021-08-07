@@ -2,7 +2,7 @@
 
 using namespace std;
 
-TextDisplay::TextDisplay(Game *g1, Game *g2) : Display{g1,g2}, height{18} {}
+TextDisplay::TextDisplay(Grid *g1, Grid *g2) : Display{g1,g2}, height{18} {}
 
 string TextDisplay::topTextBlock(char next) {
         switch(next) {
@@ -52,13 +52,13 @@ void TextDisplay::printDisplay() {
         string sscore = "Score:    ";
         string snext = "Next:     ";
         string line = "___________";
-        cout << slevel << g1->getLevel() << spacing << slevel << g2->getLevel() << endl;
+        cout << slevel << g1->getLevelNum() << spacing << slevel << g2->getLevelNum() << endl;
         cout << sscore << g1->getScore() << spacing << sscore << g2->getScore() << endl;
         cout << line << spacing << line << endl;
-        Grid *b1 = g1->getGrid();
-        Grid *b2 = g2->getGrid();
+        // Grid *b1 = g1->getGrid();
+        // Grid *b2 = g2->getGrid();
         for (int i = 0; i  < height; i++) {
-                cout << b1->printRow(i) << spacing << b2->printRow(i) << endl;
+                cout << g1->printRow(i) << spacing << g2->printRow(i) << endl;
         }
         cout << line << spacing << line << endl;
         string ttb1 = topTextBlock(g1->getNextBlock()->getType()) + "       ";

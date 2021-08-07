@@ -184,6 +184,10 @@ void Grid::setLevelNum(int n){
     delete tmp;
 }
 
+int Grid::getLevelNum(){
+    return levelNum;
+}
+
 void Grid::clearGrid() { 
     for (int i = 3; i < height; i++) {
         for (int j = 0; j < width; j++) {
@@ -218,6 +222,14 @@ void Grid::printGrid() { // prints out current board
         cout << endl;
     }
     cout << endl;
+}
+
+string Grid::printRow(int n){
+    string output="";
+    for(int i=0;i<width;i++){
+        output = output + board[n][i]->getType() + " ";
+    }
+    return output;
 }
 
 
@@ -255,6 +267,10 @@ void Grid::rotateBlockCW(){
 
 void Grid::rotateBlockCCW(){
     cur->rotateCCW();
+}
+
+Block * Grid::getNextBlock(){
+    return next;
 }
 
 int Grid::getScore(){

@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Game::Game(): board1{}, board2{}, textdisplay{board1,board2} {
+Game::Game(): board1{}, board2{}, textdisplay{&board1,&board2} {
 }
 
 
@@ -61,11 +61,13 @@ bool validifyCmd(string input){
     return count==1;
 }
 
-void Game::start(){
+void Game::start(int startlevel=0){
 
     //print welcome messages
     cout<<"Welcome to Biquadris! Input your command:"<<endl;
     
+    board1.setLevelNum(startlevel);
+    board2.setLevelNum(startlevel);
 
     string input;
     int curNum = 1;

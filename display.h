@@ -2,14 +2,14 @@
 #define _DISPLAY_H_
 
 #include <iostream>
-#include "game.h"
+#include "grid.h"
 
 class Display {
 	protected:
-        	Game g1;
-	       	Game g2;
+        	Grid *g1;
+	       	Grid *g2;
 	public:
-        	Display(Game *g1, Game *g2);
+        	Display(Grid *g1, Grid *g2);
         	virtual void printDisplay() = 0;
 };
 

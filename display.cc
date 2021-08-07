@@ -1,3 +1,3 @@
 #include "display.h"
 
-Display::Display(Game *g1, Game *g2): g1{g1}, g2{g2} {}
+Display::Display(Grid *g1, Grid *g2): g1{g1}, g2{g2} {}

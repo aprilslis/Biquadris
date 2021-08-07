@@ -18,7 +18,7 @@ class Game{
 
   public:
     Game();
-    void start(); //start game
+    void start(int startLevel=0); //start game
     void restart(); //restart game
     void end(int winner=0); //end game
 

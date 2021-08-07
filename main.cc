@@ -45,11 +45,11 @@ int main(int argc, char *argv[]){
         else if (cmd == "-startlevel") {
             istringstream ss(argv[i++]);
             ss >> startLevel; 
-            if (lvl < 0 || lvl > 4)  {
+            if (startLevel < 0 || startLevel > 4)  {
                 startLevel = 0;     // if invalid level, set it to 0 
             }
         }
-        g.start(level);
+        g.start(startLevel);
     }
 
     // testing:

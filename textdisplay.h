@@ -9,7 +9,7 @@ class TextDisplay: public Display {
         std::string topTextBlock(char next);
         std::string lowTextBlock(char next);
         public:
-        TextDisplay(Game *g1, Game *g2);
+        TextDisplay(Grid *g1, Grid *g2);
         void printDisplay() override;
 };
 
