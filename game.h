@@ -7,7 +7,6 @@
 
 class Game{
 
-    std::stringstream seqFile; //for sequence command
     std::string fileCmds;
     bool useSeqFile;
 
