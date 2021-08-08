@@ -5,7 +5,7 @@ using namespace std;
 IBlock::IBlock(int level): Block{level} {}
 
 void IBlock::moveHeavy() {
-	if (level == 3) {
+	if (level == 3 || level == 4) {
 		moveDown();
 	}
 }
