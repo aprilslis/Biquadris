@@ -148,6 +148,7 @@ void Game::start(int startlevel){
                 }
                 else if(cmpString(input,"drop")){
                     cur->dropBlock();
+                    cur->clearFullRows();
                     cur->generateBlock();
                     cur->addBlock();
                     //check special effects here 
