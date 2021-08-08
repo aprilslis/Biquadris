@@ -257,8 +257,8 @@ void Game::restart(){
     cout<<"Game starting:"<<endl;
     
     //old boards are delete, new boards is init
-    board1.clearGrid();
-    board2.clearGrid();//remember to finish clearGrid implementation
+    board1.clearGrid();//needs checking
+    board2.clearGrid();
 
 }
 
