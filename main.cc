@@ -48,7 +48,6 @@ int main(int argc, char *argv[]){
         }
     }
     g.start(startLevel);
-    g.draw();
 
     // testing:
     /*Grid g;

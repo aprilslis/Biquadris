@@ -70,6 +70,7 @@ bool validifyCmd(string input){
 void Game::start(int startlevel){
 
     //print welcome messages
+    draw();
     cout<<"Welcome to Biquadris! Input your command:"<<endl;
     
     board1.setLevelNum(startlevel);
