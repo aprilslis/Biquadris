@@ -52,6 +52,7 @@ void TextDisplay::printDisplay() {
         string sscore = "Score:    ";
         string snext = "Next:     ";
         string line = "___________";
+        cout << endl;
         cout << slevel << g1->getLevelNum() << spacing << slevel << g2->getLevelNum() << endl;
         cout << sscore << g1->getScore() << spacing << sscore << g2->getScore() << endl;
         cout << line << spacing << line << endl;
