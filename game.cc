@@ -240,7 +240,7 @@ void Game::start(int startlevel){
             cout<<"Invalid command. Please try again:"<<endl;
         }
         catch(CannotOpenFile e4){
-            cout<<"Oops: could not find/open the given file"<<endl;
+            cout<<"Oops: could not find/open the given file!"<<endl;
         }
         catch(...){
             cout<<"default error (game)"<<endl;
