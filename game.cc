@@ -79,7 +79,8 @@ void Game::start(int startlevel){
     string input;
     int curNum = 1;
     Grid *cur = &board1;
-    cur->addBlock();
+    board1.addBlock();
+    board2.addBlock();
     draw();
     while(true){
         if(useSeqFile){
@@ -116,6 +117,7 @@ void Game::start(int startlevel){
        
         //interpret commands
         try{
+            
             for(int i=0;i<multiplier;i++){
 
                 if(!validifyCmd(input)){//not interpretable command
@@ -147,6 +149,7 @@ void Game::start(int startlevel){
                 else if(cmpString(input,"drop")){
                     cur->dropBlock();
                     cur->generateBlock();
+                    cur->addBlock();
                     //check special effects here 
                     //if yes: specialEffects(curNum);
                     if(curNum==1){
@@ -157,7 +160,7 @@ void Game::start(int startlevel){
                         cur = &board1;
                         curNum = 1;
                     }
-                    cur->addBlock();
+                    
                 }
                 else if(cmpString(input,"I")){
                     cur->replaceBlock('i');
@@ -213,6 +216,10 @@ void Game::start(int startlevel){
                     break;
                 }
             }
+            //display stuffs
+            draw(multiplier);
+
+            cout<<endl<<"Currently it is Player "<<curNum<<"'s turn!"<<endl;
         }
         catch(LostException e1){
             if(curNum==1){
@@ -230,8 +237,7 @@ void Game::start(int startlevel){
             cout<<"default error (game)"<<endl;
         }
         
-        //display stuffs
-        draw(multiplier);
+        
     }
         
     //calls end()
