@@ -46,9 +46,9 @@ int main(int argc, char *argv[]){
                 startLevel = 0;     // if invalid level, set it to 0 
             }
         }
-        g.start(startLevel);
-        g.draw();
     }
+    g.start(startLevel);
+    g.draw();
 
     // testing:
     /*Grid g;
