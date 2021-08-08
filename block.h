@@ -5,16 +5,15 @@
 #include "cell.h"
 
 class Block {
-
-        protected:
+      	protected:
         Cell *lowerleft; // contains the lower-left corner cell
         std::vector <Cell *> block; // contains all cells in current block
         std::vector<std::vector<Cell *>> grid; // stores the game board
         int level; // stores current level of block
 	int identity; // stores identity
-    public:
+	public:
 	Block(int level);
-	~Block();
+	virtual ~Block();
         virtual char getType() = 0;
         virtual void init(std::vector<std::vector<Cell *>> &g) = 0; 
         virtual void lost() = 0;
@@ -28,7 +27,7 @@ class Block {
         void emptyBlock();
 	int getLevel();
 	bool isHeavy();
-	void setIdentity(int identity);
+	void setIdentity(int identity = 0);
 };
 
 class InvalidMoveException {}; // raised if move is invalid

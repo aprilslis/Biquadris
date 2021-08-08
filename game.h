@@ -1,9 +1,9 @@
 #ifndef _GAME_H_
 #define _GAME_H_
+
 #include "grid.h"
-#include "score.h"
+#include "display.h"
 #include "textdisplay.h"
-#include <vector>
 
 class Game{
 

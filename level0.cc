@@ -7,7 +7,7 @@ using namespace std;
 
 void Level0::init(string filename) {
 	ifstream f1{filename};
-	string seq((std::istreambuf_iterator<char>(f1)),(istreambuf_iterator<char>()));
+	string seq((istreambuf_iterator<char>(f1)),(istreambuf_iterator<char>()));
 	this->sequence = seq;
 	len = seq.length();
 	pos = 0;

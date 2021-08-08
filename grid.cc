@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Grid::Grid(string filename) : width{11}, height{18}, levelNum{0}, seed{0}, id{1}, defaultFile{filename} { // initialises board
+Grid::Grid(string filename) : width{11}, height{18}, blocksPlaced{0}, unclearedRows{0}, levelNum{0}, id{1}, seed{0}, defaultFile{filename} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -11,11 +11,12 @@ Grid::Grid(string filename) : width{11}, height{18}, levelNum{0}, seed{0}, id{1}
         }
         board.push_back(temp);
     }
-
+    s = new Score();
     level = new Level0{};
     level->init(defaultFile);
     cur = level->generateRandomBlock(seed);
     updateIds(cur);
+    ++blocksPlaced;
     next = level->generateRandomBlock(seed);
     
 }
@@ -26,6 +27,7 @@ Grid::~Grid() { // release all existing cells
             delete board[i][j];
         }
     }
+    delete s;
     delete level;
 }
 
@@ -37,10 +39,12 @@ int Grid::getHeight(){ //return height of grid
     return height;
 }
 
+int Grid::getScore() {
+	return s->getScore();
+}
 
-
-void Grid::setScore(Score *s) {
-	this->s = s;
+int Grid::getHighScore() {
+	return s->getHighScore();
 }
 
 Cell * Grid::getCell(int row, int col) {
@@ -80,7 +84,16 @@ void Grid::resetIds() {
 }
 
 void Grid::addBlock() { //add a new block at left top corner
-    cur->init(board); 
+	cur->init(board); 
+	++blocksPlaced;
+	if (level->getLevel() == 4) {
+                if (blocksPlaced % 5 == 0 && unclearedRows > 0) {
+			StarBlock *tempcur = new StarBlock();
+			tempcur->init(board);
+			tempcur->drop();
+			delete tempcur;
+                }
+        }
 }
 
 void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
@@ -134,6 +147,11 @@ int Grid::countFullRows() {
     } 
     int amount = count * (level->getLevel() + 1) * (level->getLevel() + 1);
     s->updateScore(amount);
+    if (count > 0) {
+	    unclearedRows = 0;
+    } else {
+	    ++unclearedRows;
+    }
     return count;
 }
 
@@ -296,7 +314,11 @@ void Grid::moveBlockLeft(){
 }
 
 void Grid::moveBlockDown(){
-    cur->moveDown();
+	if (cur->isHeavy()) {
+		cur->moveHeavyDown();
+	} else {
+   		cur->moveDown();
+	}
 }
 
 void Grid::dropBlock(){
@@ -313,10 +335,6 @@ void Grid::rotateBlockCCW(){
 
 Block * Grid::getNextBlock(){
     return next;
-}
-
-int Grid::getScore(){
-    return s->getScore();
 }
 
 

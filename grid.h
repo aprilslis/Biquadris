@@ -18,12 +18,16 @@
 #include "sblock.h"
 #include "tblock.h"
 #include "zblock.h"
+#include "starblock.h"
 #include "score.h"
 
 class Grid{
     const int width; //grid width
     const int height; //grid height
     int id; // generates ids
+    
+    int blocksPlaced;
+    int unclearedRows;
 
     std::vector<std::vector<Cell *>> board; //game board: row/height<column/width<cell>>
 
@@ -61,7 +65,8 @@ class Grid{
     void clearFullRows(); // clears the full rows one at a time
     void updateRows(int y); // used after clearing row/block, let all block fall over gravity(?)
 
-    void setScore(Score *s);
+    int getScore();
+    int getHighScore();
 
     void levelUp(); // level game up
     void levelDown(); // level game down
@@ -86,9 +91,6 @@ class Grid{
     void rotateBlockCW();
     void rotateBlockCCW();
     Block *getNextBlock();
-
-    int getScore();
-    
 };
 
 #endif

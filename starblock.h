@@ -1,18 +1,14 @@
-#ifndef _IBLOCK_H_
-#define _IBLOCK_H_
+#ifndef _STARBLOCK_H_
+#define _STARBLOCK_H_
 
 #include "block.h"
 
-class IBlock : public Block {
+class StarBlock : public Block {
 
-	int size;
-	int pos;
-    	void switchBlocks(std::vector<Cell *> other);
-	void moveHeavy();
+    void switchBlocks();
 
     public:
-
-        IBlock(int level);
+        StarBlock();
         char getType() override;
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;

@@ -1,25 +1,13 @@
-#include <iostream>
 #include <sstream>
 #include "game.h"
-// #include "grid.h"
-// #include "iblock.h"
-// #include "jblock.h"
-// #include "lblock.h"
-// #include "oblock.h"
-// #include "sblock.h"
-// #include "tblock.h"
-// #include "zblock.h"
 
 using namespace std;
-
-
 
 int main(int argc, char *argv[]){
     Game g;
     int startLevel = 0;
     for (int i = 1; i < argc; i++){
-        string cmd;
-        cmd = {argv[i]};
+        string cmd = (string)argv[i];
         if (cmd == "-text") {
             g.displayOnlyText(true); 
         } 
