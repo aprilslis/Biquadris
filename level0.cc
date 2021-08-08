@@ -1,11 +1,12 @@
 #include <fstream>
+#include <iostream>
 #include <string.h>
 #include "level0.h" 
 
 using namespace std;
 
 void Level0::init(string filename) {
-	ifstream f1;
+	ifstream f1{filename};
 	string seq((std::istreambuf_iterator<char>(f1)),(istreambuf_iterator<char>()));
 	this->sequence = seq;
 	len = seq.length();
@@ -14,7 +15,6 @@ void Level0::init(string filename) {
 
 Block * Level0::generateRandomBlock(int seed) {
 
-	
 	if (pos + 1 > len) {
 		pos = 0;
 	}
@@ -42,6 +42,7 @@ Block * Level0::generateRandomBlock(int seed) {
 			return new TBlock{0};
 		default :
 			++pos;
+			cout<<"not getting a block!!! (level 0)"<<endl;
 			return nullptr;
 	}
 }

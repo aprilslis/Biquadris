@@ -14,7 +14,7 @@ class Block {
 	int identity; // stores identity
     public:
 	Block(int level);
-	virtual ~Block();
+	~Block();
         virtual char getType() = 0;
         virtual void init(std::vector<std::vector<Cell *>> &g) = 0; 
         virtual void lost() = 0;

@@ -1,8 +1,9 @@
 #include "grid.h"
+#include <iostream>
 
 using namespace std;
 
-Grid::Grid() : width{11}, height{18}, levelNum{0}, seed{0}, id{1} { // initialises board
+Grid::Grid(string filename) : width{11}, height{18}, levelNum{0}, seed{0}, id{1}, defaultFile{filename} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -12,9 +13,11 @@ Grid::Grid() : width{11}, height{18}, levelNum{0}, seed{0}, id{1} { // initialis
     }
 
     level = new Level0{};
+    level->init(defaultFile);
     cur = level->generateRandomBlock(seed);
     updateIds(cur);
     next = level->generateRandomBlock(seed);
+    
 }
 
 Grid::~Grid() { // release all existing cells

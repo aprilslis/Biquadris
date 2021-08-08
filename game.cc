@@ -5,7 +5,8 @@
 using namespace std;
 
 
-Game::Game(): board1{}, board2{}, onlyText{false}, textdisplay{&board1,&board2} {
+Game::Game(): board1{"sequence1.txt"}, board2{"sequence2.txt"}, onlyText{false}, textdisplay{&board1,&board2} {
+    
 }
 
 

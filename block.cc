@@ -1,4 +1,6 @@
 #include "block.h"
+#include <iostream>
+using namespace std;
 
 Block::Block(int level) {
 	this->level = level;

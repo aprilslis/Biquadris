@@ -46,7 +46,7 @@ class Grid{
     void resetIds();
 
   public:
-    Grid();
+    Grid(std::string filename);
     ~Grid();
     
     Cell *getCell(int x, int y); // get cell at (row, column)  
