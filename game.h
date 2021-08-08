@@ -17,15 +17,15 @@ class Game{
     TextDisplay textdisplay;
 
     void specialEffects(int curNum);
-
+    void drawText();
+    void drawGraphic();
   public:
     Game();
     void start(int startLevel=0); //start game
     void restart(); //restart game
     void end(int winner=0); //end game
 
-    void drawText();
-    void drawGraphic();
+    void draw(int multiplier=1);
 
     void displayOnlyText(bool t); 
     void setDefaultFile1(std::string file);

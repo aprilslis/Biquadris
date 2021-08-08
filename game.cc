@@ -228,15 +228,7 @@ void Game::start(int startlevel=0){
         }
         
         //display stuffs
-        if(multiplier!=0){
-            if(onlyText){
-                drawText();
-            }
-            else{
-                drawText();
-                drawGraphic();
-            }
-        }
+        draw(multiplier);
     }
         
     //calls end()
@@ -294,6 +286,18 @@ void Game::drawText(){
 
 void Game::drawGraphic(){
 
+}
+
+void Game::draw(int multiplier=1){
+    if(multiplier!=0){
+        if(onlyText){
+            drawText();
+        }
+        else{
+            drawText();
+            drawGraphic();
+        }
+    }
 }
 
 
