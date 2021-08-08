@@ -4,6 +4,10 @@ Block::Block(int level) {
 	this->level = level;
 }
 
+Block::~Block(){
+  
+}
+
 void Block::emptyBlock() {
   for (int i = 0; i < (int)block.size(); i++) {
     block[i]->setType('\0');

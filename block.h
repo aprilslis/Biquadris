@@ -12,7 +12,7 @@ class Block {
         std::vector<std::vector<Cell *>> grid; // stores the game board
         int level; // stores current level of block
 	int identity; // stores identity
-        public:
+    public:
 	Block(int level);
 	virtual ~Block();
         virtual char getType() = 0;
