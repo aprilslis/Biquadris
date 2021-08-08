@@ -122,8 +122,7 @@ void Game::start(int startlevel){
             for(int i=0;i<multiplier;i++){
 
                 if(!validifyCmd(input)){//not interpretable command
-                    cout<<"Invalid command. Please try again:"<<endl;
-                    break;
+                    throw InvalidCommand{};
                 }
 
                 else if(cmpString(input,"left")){
@@ -229,6 +228,9 @@ void Game::start(int startlevel){
         }
         catch(InvalidMoveException e2){
             cout<<"Can't move that way: try again!"<<endl;
+        }
+        catch(InvalidCommand e3){
+            cout<<"Invalid command. Please try again:"<<endl;
         }
         catch(...){
             cout<<"default error (game)"<<endl;
