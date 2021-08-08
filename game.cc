@@ -82,9 +82,10 @@ void Game::start(int startlevel){
     board1.addBlock();
     board2.addBlock();
     draw();
+    ifstream fileInput;
     while(true){
         if(useSeqFile){
-            if(!(seqFile>>input)){
+            if(!(fileInput>>input)){
                 input = "";
                 useSeqFile = false;
             }
@@ -207,11 +208,7 @@ void Game::start(int startlevel){
                 else if(cmpString(input,"sequence")){
                     string file;
                     cin>>file;
-                    ifstream fileInput(file);
-                    string s;
-                    while(getline(fileInput,s)){
-                        seqFile << s << endl;
-                    }
+                    fileInput = ifstream(file);
                     useSeqFile = true;
                     break;
                 }
