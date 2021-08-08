@@ -66,7 +66,7 @@ bool validifyCmd(string input){
     return count==1;
 }
 
-void Game::start(int startlevel=0){
+void Game::start(int startlevel){
 
     //print welcome messages
     cout<<"Welcome to Biquadris! Input your command:"<<endl;
@@ -259,7 +259,7 @@ void Game::restart(){
 
 }
 
-void Game::end(int winner=0){
+void Game::end(int winner){
     if(winner==0){
         if(board1.getScore()>board2.getScore()){
             cout<<"Player 1 ";
@@ -288,7 +288,7 @@ void Game::drawGraphic(){
 
 }
 
-void Game::draw(int multiplier=1){
+void Game::draw(int multiplier){
     if(multiplier!=0){
         if(onlyText){
             drawText();
