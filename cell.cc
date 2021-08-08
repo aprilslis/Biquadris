@@ -24,7 +24,7 @@ int Cell::getCol() {
         return col;
 }
 
-int Cell::setIdentity(int identity) {
+void Cell::setIdentity(int identity) {
         this->identity = identity;
 }
 

@@ -10,7 +10,7 @@ void TBlock::moveHeavy() {
 	}
 }
 
-char Tblock::getType() {
+char TBlock::getType() {
 	return 'T';
 }
 

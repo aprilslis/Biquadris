@@ -16,7 +16,7 @@ class Cell {
         int getAge();
         int getRow();
         int getCol();
-        int setIdentity(int identity);
+        void setIdentity(int identity);
         int getIdentity();
         bool isFull();
         void updateAge(); // increments age of cell
