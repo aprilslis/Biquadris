@@ -1,6 +1,4 @@
 #include <iostream>
-#include <sstream>
-#include <fstream>
 #include "game.h"
 using namespace std;
 
@@ -77,17 +75,35 @@ void Game::start(int startlevel){
     board2.setLevelNum(startlevel);
 
     string input;
-    int curNum = 1;
+    bool checker = false;
+    int curNum = 1, count = 0;
     Grid *cur = &board1;
     board1.addBlock();
     board2.addBlock();
     draw();
-    ifstream fileInput;
+    cout<<endl<<"Currently it is Player "<<curNum<<"'s turn!"<<endl;
     while(true){
         if(useSeqFile){
-            if(!(fileInput>>input)){
+            if(fileCmds==""){
                 input = "";
                 useSeqFile = false;
+                checker = true;
+            }
+            else{
+                input = "";
+                while(isspace(fileCmds[0])){//get rids of whitespace
+                    fileCmds = fileCmds.substr(1,fileCmds.size());
+                    if(fileCmds=="") break;
+                }
+                while(isalpha(fileCmds[0])){
+                    input = input + fileCmds.substr(count,count+1);
+                    fileCmds = fileCmds.substr(1,fileCmds.size());
+                    if(fileCmds=="") break;
+                }
+                 while(isspace(fileCmds[0])){//get rids of whitespace
+                    fileCmds = fileCmds.substr(1,fileCmds.size());
+                    if(fileCmds=="") break;
+                }
             }
         }
         else{
@@ -208,12 +224,15 @@ void Game::start(int startlevel){
                 else if(cmpString(input,"sequence")){
                     string file;
                     cin>>file;
-                    fileInput = ifstream(file);
+                    ifstream fileInput(file);
                     if(!fileInput){
                         throw CannotOpenFile{};
                     }
                     else{
+                        string seq((std::istreambuf_iterator<char>(fileInput)),(istreambuf_iterator<char>()));
+                        fileCmds = seq;
                         useSeqFile = true;
+                        fileInput.close();
                     }
                     
                     break;
@@ -221,8 +240,13 @@ void Game::start(int startlevel){
             }
             //display stuffs
             draw(multiplier);
-
-            cout<<endl<<"Currently it is Player "<<curNum<<"'s turn!"<<endl;
+            if(checker){
+                checker = false;
+            }
+            else{
+                cout<<endl<<"Currently it is Player "<<curNum<<"'s turn!"<<endl;
+            }
+            
         }
         catch(LostException e1){
             if(curNum==1){
