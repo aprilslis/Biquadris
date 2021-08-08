@@ -2,6 +2,7 @@
 #define _LEVEL_H_
 
 #include <cstdlib>
+#include <string>
 #include "iblock.h"
 #include "jblock.h"
 #include "lblock.h"
@@ -14,7 +15,7 @@ class Level {
 protected:
 	int seed;
 public:
-	virtual void init(string filename) = 0;
+	virtual void init(std::string filename) = 0;
 	virtual Block * generateRandomBlock(int seed = 0) = 0;
 	virtual int getLevel() = 0;
 	virtual ~Level();
