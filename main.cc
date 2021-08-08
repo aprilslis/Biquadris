@@ -1,14 +1,14 @@
 #include <iostream>
 #include <sstream>
 #include "game.h"
-#include "grid.h"
-#include "iblock.h"
-#include "jblock.h"
-#include "lblock.h"
-#include "oblock.h"
-#include "sblock.h"
-#include "tblock.h"
-#include "zblock.h"
+// #include "grid.h"
+// #include "iblock.h"
+// #include "jblock.h"
+// #include "lblock.h"
+// #include "oblock.h"
+// #include "sblock.h"
+// #include "tblock.h"
+// #include "zblock.h"
 
 using namespace std;
 
