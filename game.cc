@@ -228,7 +228,7 @@ void Game::start(int startlevel){
             restart();
         }
         catch(InvalidMoveException e2){
-            //do nothing?
+            cout<<"Can't move that way: try again!"<<endl;
         }
         catch(...){
             cout<<"default error (game)"<<endl;
