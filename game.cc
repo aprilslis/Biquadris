@@ -209,7 +209,13 @@ void Game::start(int startlevel){
                     string file;
                     cin>>file;
                     fileInput = ifstream(file);
-                    useSeqFile = true;
+                    if(!fileInput){
+                        cout<<"Oops: could not find/open the given file"<<endl;
+                    }
+                    else{
+                        useSeqFile = true;
+                    }
+                    
                     break;
                 }
             }
