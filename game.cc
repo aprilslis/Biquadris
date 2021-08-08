@@ -210,7 +210,7 @@ void Game::start(int startlevel){
                     cin>>file;
                     fileInput = ifstream(file);
                     if(!fileInput){
-                        cout<<"Oops: could not find/open the given file"<<endl;
+                        throw CannotOpenFile{};
                     }
                     else{
                         useSeqFile = true;
@@ -238,6 +238,9 @@ void Game::start(int startlevel){
         }
         catch(InvalidCommand e3){
             cout<<"Invalid command. Please try again:"<<endl;
+        }
+        catch(CannotOpenFile e4){
+            cout<<"Oops: could not find/open the given file"<<endl;
         }
         catch(...){
             cout<<"default error (game)"<<endl;
