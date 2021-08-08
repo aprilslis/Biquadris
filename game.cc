@@ -266,6 +266,7 @@ void Game::restart(){
 }
 
 void Game::end(int winner){
+    cout<<"------";
     if(winner==0){
         if(board1.getScore()>board2.getScore()){
             cout<<"Player 1 ";
@@ -282,7 +283,7 @@ void Game::end(int winner){
             cout<<"Player 2 ";
         }
     }
-    cout<<"won~"<<endl;
+    cout<<"won~ ------"<<endl;
     
 }
 
