@@ -36,6 +36,6 @@ class Game{
 };
 
 class InvalidCommand{};//raised when command is invalid
-class CannotOpenFile{};//raised when command is invalid
+class CannotOpenFile{};//raised when the input file cant be found/opened
 
 #endif
