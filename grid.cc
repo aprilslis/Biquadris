@@ -29,6 +29,16 @@ Grid::~Grid() { // release all existing cells
     delete level;
 }
 
+int Grid::getWidth(){ //return width of grid
+    return width;
+}
+
+int Grid::getHeight(){ //return height of grid
+    return height;
+}
+
+
+
 void Grid::setScore(Score *s) {
 	this->s = s;
 }
@@ -243,7 +253,13 @@ void Grid::printGrid() { // prints out current board
 string Grid::printRow(int n){
     string output="";
     for(int i=0;i<width;i++){
-        output = output + board[n][i]->getType() + " ";
+        if(board[n][i]->getType()=='\0'){
+            output = output + " ";
+        }
+        else{
+            output = output + board[n][i]->getType();
+        }
+        
     }
     return output;
 }

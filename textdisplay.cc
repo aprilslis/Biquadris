@@ -61,11 +61,13 @@ void TextDisplay::printDisplay() {
                 cout << g1->printRow(i) << spacing << g2->printRow(i) << endl;
         }
         cout << line << spacing << line << endl;
+
         string ttb1 = topTextBlock(g1->getNextBlock()->getType()) + "       ";
         string ttb2 = topTextBlock(g2->getNextBlock()->getType()) + "       ";
         string ltb1 = lowTextBlock(g1->getNextBlock()->getType()) + "       ";
         string ltb2 = lowTextBlock(g2->getNextBlock()->getType()) + "       ";
-        cout << snext << spacing << snext << endl;
+
+        cout << snext << spacing << " " << snext << endl;
         cout << ttb1 << spacing << ttb2 << endl;
         cout << ltb1 << spacing << ltb2 << endl;
 }

@@ -70,7 +70,7 @@ bool validifyCmd(string input){
 void Game::start(int startlevel){
 
     //print welcome messages
-    draw();
+    cout<<"-----------------------------------------"<<endl;
     cout<<"Welcome to Biquadris! Input your command:"<<endl;
     
     board1.setLevelNum(startlevel);
@@ -80,6 +80,7 @@ void Game::start(int startlevel){
     int curNum = 1;
     Grid *cur = &board1;
     cur->addBlock();
+    draw();
     while(true){
         if(useSeqFile){
             if(!(seqFile>>input)){

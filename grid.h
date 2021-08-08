@@ -48,6 +48,9 @@ class Grid{
   public:
     Grid(std::string filename);
     ~Grid();
+
+    int getWidth(); //return width of grid
+    int getHeight(); //return height of grid
     
     Cell *getCell(int x, int y); // get cell at (row, column)  
     void addBlock(); // add a new block at left top corner
