@@ -10,7 +10,7 @@ void SBlock::moveHeavy() {
         }
 }
 
-char Sblock::getType() {
+char SBlock::getType() {
 	return 'S';
 }
 

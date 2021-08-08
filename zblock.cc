@@ -9,7 +9,7 @@ void ZBlock::moveHeavy() {
         }
 }
 
-char Zblock::getType() {
+char ZBlock::getType() {
 	return 'Z';
 }
 
