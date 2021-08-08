@@ -76,7 +76,7 @@ void Game::start(int startlevel){
     board2.setLevelNum(startlevel);
 
     string input;
-    bool checker = false;
+    bool checker = false; //sometimes it looks once anyway when it is the end of fileInput, use checker to stop printing current player messages twice
     int curNum = 1, count = 0;
     Grid *cur = &board1;
     board1.addBlock();
