@@ -29,6 +29,8 @@ Grid::~Grid() { // release all existing cells
     }
     delete s;
     delete level;
+    delete cur;
+    delete next;
 }
 
 int Grid::getWidth(){ //return width of grid
