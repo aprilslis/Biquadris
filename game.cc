@@ -190,7 +190,7 @@ void Game::start(int startlevel){
                     cur->generateBlock();
                     cur->addBlock();
                     //check special effects here
-                    if (count >= 2) {
+                    if (rows >= 2) {
                         specialEffects(curNum);
                         cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
                     }
@@ -304,7 +304,7 @@ void Game::start(int startlevel){
 
 void Game::specialEffects(int curNum){
     
-    cout<<"-----Pick a special to attack your enemy-----"<<endl;
+    cout<<"-----Pick a special action to attack your enemy-----"<<endl;
     couot<<"Options:  blind  heavy  force"<<endl;
 
     string input;
@@ -323,7 +323,8 @@ void Game::specialEffects(int curNum){
             //do something
         }
         else if(cmpString(input,"heavy")){
-            //do something
+            //make cur block heavy
+            makeNextBlockHeavy = true;
         }
         else if(cmpString(input,"force")){
             char block;
