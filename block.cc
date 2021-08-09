@@ -4,6 +4,7 @@ using namespace std;
 
 Block::Block(int level) {
 	this->level = level;
+	heavy = false;
 }
 
 Block::~Block(){
