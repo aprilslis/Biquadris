@@ -395,7 +395,7 @@ void Game::end(int winner){
             cout<<"Player 2 ";
         }
     }
-    cout<<"won~ ------"<<endl;
+    cout<<"won~ ------"<<endl<<endl;
     
 }
 
