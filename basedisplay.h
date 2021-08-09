@@ -1,15 +1,15 @@
-#ifndef _DISPLAY_H_
-#define _DISPLAY_H_
+#ifndef _BASE_DISPLAY_H_
+#define _BASE_DISPLAY_H_
 
 #include <iostream>
 #include "grid.h"
 
-class Display {
+class BaseDisplay {
 	protected:
         	Grid *g1;
 	       	Grid *g2;
 	public:
-        	Display(Grid *g1, Grid *g2);
+        	BaseDisplay(Grid *g1, Grid *g2);
         	virtual void printDisplay() = 0;
 };
 

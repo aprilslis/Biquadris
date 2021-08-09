@@ -1,10 +1,10 @@
 #ifndef _TEXT_DISPLAY_H_
 #define _TEXT_DISPLAY_H_
 
-#include "display.h"
+#include "basedisplay.h"
 #include <string>
 
-class TextDisplay: public Display {
+class TextDisplay: public BaseDisplay {
         int height;
         std::string topTextBlock(char next);
         std::string lowTextBlock(char next);

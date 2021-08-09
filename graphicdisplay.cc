@@ -1,35 +1,40 @@
 #include "graphicdisplay.h"
 
-GraphicDisplay::GraphicDisplay(Grid *g1, Grid *g2) : w{new XWindow()}, Display(g1, g2) height{10}, width{10} {}
+using namespace std;
 
+GraphicDisplay::GraphicDisplay(Grid *g1, Grid *g2) : BaseDisplay{g1,g2}, w{new Xwindow()}, height{10}, width{10} {}
+
+GraphicDisplay::~GraphicDisplay() {
+	delete w;
+}
 
 void GraphicDisplay::printCell(char type, int x, int y) {
 	switch (type) {
 		case 'I' : 
-			w->fillRectangle(x, y, width, height, Red);
+			w->fillRectangle(x, y, width, height, Xwindow::Red);
 			break;
 		case 'J' :
-			w->fillRectangle(x, y, width, height, Orange);
+			w->fillRectangle(x, y, width, height, Xwindow::Orange);
 			break;
 		case 'L' :
-			w->fillRectangle(x, y, width, height, Blue);
+			w->fillRectangle(x, y, width, height, Xwindow::Blue);
 			break;
 		case 'O' :
-			w->fillRectangle(x, y, width, height, Yellow);
+			w->fillRectangle(x, y, width, height, Xwindow::Yellow);
 			break;
 		case 'S' :
-			w->fillRectangle(x, y, width, height, Purple);
+			w->fillRectangle(x, y, width, height, Xwindow::Purple);
 			break;
 		case 'Z' :
-			w->fillRectangle(x, y, width, height, Green);
+			w->fillRectangle(x, y, width, height, Xwindow::Green);
 			break;
 		case 'T' : 
-			w->fillRectangle(x, y, width, height, Black);
+			w->fillRectangle(x, y, width, height, Xwindow::Black);
 			break;
 		case '\0':
 			break;
 		default :
-			w->fillRectangle(x, y, width, height, Brown);	
+			w->fillRectangle(x, y, width, height, Xwindow::Brown);
 			break;
 	}
 }
@@ -50,63 +55,63 @@ void GraphicDisplay::printBoard() {
         }
 }
 
-void GraphicDisplay::printNext(int x, int y, int type) {
+void GraphicDisplay::printNext(int x, int y, char type) {
 	switch (type) {
                 case 'I' :
-                        w->fillRectangle(x, y, width, height, Red);
-			w->fillRectangle(x + width, y, height, Red);
-			w->fillRectangle(x + width * 2, y, height, Red);
-			w->fillRectangle(x + width * 3, y, height, Red);
+                        w->fillRectangle(x, y, width, height, Xwindow::Red);
+			w->fillRectangle(x + width, y, height, Xwindow::Red);
+			w->fillRectangle(x + width * 2, y, height, Xwindow::Red);
+			w->fillRectangle(x + width * 3, y, height, Xwindow::Red);
                 	break;
                 case 'J' :
-                        w->fillRectangle(x, y - width, width, height, Orange);
-			w->fillRectangle(x, y, width, height, Orange);
-			w->fillRecangle(x + width, y, width, height, Orange);
-			w->fillRectangle(x + width * 2, y, width, height, orange);
+                        w->fillRectangle(x, y - width, width, height, Xwindow::Orange);
+			w->fillRectangle(x, y, width, height, Xwindow::Orange);
+			w->fillRectangle(x + width, y, width, height, Xwindow::Orange);
+			w->fillRectangle(x + width * 2, y, width, height, Xwindow::Orange);
                         break;
                 case 'L' :
-                        w->fillRectangle(x + width * 2, y - height, width, height, Blue);
-			w->fillRectangle(x, y, width, height, Blue);
-                        w->fillRecangle(x + width, y, width, height, Blue);
-                        w->fillRectangle(x + width * 2, y, width, height, Blue);
+                        w->fillRectangle(x + width * 2, y - height, width, height, Xwindow::Blue);
+			w->fillRectangle(x, y, width, height, Xwindow::Blue);
+                        w->fillRectangle(x + width, y, width, height, Xwindow::Blue);
+                        w->fillRectangle(x + width * 2, y, width, height, Xwindow::Blue);
                         break;
                 case 'O' :
-                        w->fillRectangle(x, y - height, width, height, Yellow);
-			w->fillRectangle(x + width, y - height, width, height, Yellow);
-			w->fillRectangle(x, y, width, height, Yellow);
-			w->fillRectangle(x + width, y, width, height, Yellow);
+                        w->fillRectangle(x, y - height, width, height, Xwindow::Yellow);
+			w->fillRectangle(x + width, y - height, width, height, Xwindow::Yellow);
+			w->fillRectangle(x, y, width, height, Xwindow::Yellow);
+			w->fillRectangle(x + width, y, width, height, Xwindow::Yellow);
                         break;
                 case 'S' :
-			w->fillRectangle(x + width * 2, y - height, width, height, Purple);
-			w->fillRectangle(x + width, y, width, height, Purple);
-			w->fillRectangle(x, y, width, height, Purple);
-                        w->fillRectangle(x + width, y, width, height, Purple);
+			w->fillRectangle(x + width * 2, y - height, width, height, Xwindow::Purple);
+			w->fillRectangle(x + width, y, width, height, Xwindow::Purple);
+			w->fillRectangle(x, y, width, height, Xwindow::Purple);
+                        w->fillRectangle(x + width, y, width, height, Xwindow::Purple);
                         break;
                 case 'Z' :
-			w->fillRectangle(x, y - height, width, height, Green);
-			w->fillRectangle(x + width, y - height, width, height, Green);
-			w->fillRectangle(x + width, y, width, height, Green);
-                        w->fillRectangle(x + width * 2, y, width, height, Green);
+			w->fillRectangle(x, y - height, width, height, Xwindow::Green);
+			w->fillRectangle(x + width, y - height, width, height, Xwindow::Green);
+			w->fillRectangle(x + width, y, width, height, Xwindow::Green);
+                        w->fillRectangle(x + width * 2, y, width, height, Xwindow::Green);
                         break;
                 case 'T' :
-                        w->fillRectangle(x, y - height, width, height, Black);
-			w->fillRectangle(x + width, y - height, width, height, Black);
-			w->fillRectangle(x + width * 2, y - height, width, height, Black);
-			w->fillRectangle(x + width, y, width, height, Black);
+                        w->fillRectangle(x, y - height, width, height, Xwindow::Black);
+			w->fillRectangle(x + width, y - height, width, height, Xwindow::Black);
+			w->fillRectangle(x + width * 2, y - height, width, height, Xwindow::Black);
+			w->fillRectangle(x + width, y, width, height,Xwindow::Black);
                         break;
                 case '\0':
                         break;
                 default :
-                        w->fillRectangle(x, y, width, height, Brown);
+                        w->fillRectangle(x, y, width, height, Xwindow::Brown);
         }
 
 }
 
 void GraphicDisplay::printDisplay() {
-	w->drawString(0, 0, "Level: " + (string)g1->getLevel());
-	w->drawString(width * 12, 0, "Level: " + (string)g2->getLevel()); 
-	w->drawString(0, height, "Score: " + (string)g1->getScore());
-	w->drawString(width * 12, height, "Score: " + (string)g2->getScore());
+	w->drawString(0, 0, "Level: " + to_string(g1->getLevelNum()));
+	w->drawString(width * 12, 0, "Level: " + to_string(g2->getLevelNum())); 
+	w->drawString(0, height, "Score: " + to_string(g1->getScore()));
+	w->drawString(width * 12, height, "Score: " + to_string(g2->getScore()));
 	printBoard();
 	w->drawString(0, height * 22, "Next: ");
 	w->drawString(width * 12, height * 22, "Next: ");
