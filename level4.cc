@@ -27,6 +27,6 @@ Block * Level4::generateRandomBlock(int seed) {
 }
 
 int Level4::getLevel() {
-        return 3;
+        return 4;
 }
 
