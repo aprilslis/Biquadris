@@ -2,7 +2,7 @@
 
 using namespace std;
 
-GraphicDisplay::GraphicDisplay(Grid *g1, Grid *g2) : BaseDisplay{g1,g2}, w{new Xwindow()}, height{10}, width{10} {}
+GraphicDisplay::GraphicDisplay(Grid *g1, Grid *g2) : BaseDisplay{g1,g2}, w{new Xwindow(650, 800)}, height{20}, width{20} {}
 
 GraphicDisplay::~GraphicDisplay() {
 	delete w;
@@ -44,13 +44,14 @@ void GraphicDisplay::printBoard() {
 	int ncols = 11;
 	for (int i = 0; i < nrows; i++) {
 		for (int j = 0; j < ncols; j++) {
-			printCell(g1->getCell(i, j)->getType(), j * width, (i + 1) * height + 3);
+			printCell(g1->getCell(i, j)->getType(), (j + 4) * width, (i + 7) * height);
 		}
 	}
 
+	int buffer = width * 12;
 	 for (int i = 0; i < nrows; i++) {
                 for (int j = 0; j < ncols; j++) {
-                        printCell(g2->getCell(i, j)->getType(), j * (width + 12), (i + 1) * height + 3);
+                        printCell(g2->getCell(i, j)->getType(), (j + 4) * width + buffer , (i + 7) * height);
                 }
         }
 }
@@ -83,7 +84,7 @@ void GraphicDisplay::printNext(int x, int y, char type) {
                         break;
                 case 'S' :
 			w->fillRectangle(x + width * 2, y - height, width, height, Xwindow::Purple);
-			w->fillRectangle(x + width, y, width, height, Xwindow::Purple);
+			w->fillRectangle(x + width, y - height, width, height, Xwindow::Purple);
 			w->fillRectangle(x, y, width, height, Xwindow::Purple);
                         w->fillRectangle(x + width, y, width, height, Xwindow::Purple);
                         break;
@@ -108,13 +109,13 @@ void GraphicDisplay::printNext(int x, int y, char type) {
 }
 
 void GraphicDisplay::printDisplay() {
-	w->drawString(0, 0, "Level: " + to_string(g1->getLevelNum()));
-	w->drawString(width * 12, 0, "Level: " + to_string(g2->getLevelNum())); 
-	w->drawString(0, height, "Score: " + to_string(g1->getScore()));
-	w->drawString(width * 12, height, "Score: " + to_string(g2->getScore()));
+	w->drawString(width * 4, height * 2, "Level: " + to_string(g1->getLevelNum()));
+	w->drawString(width * 16, height * 2, "Level: " + to_string(g2->getLevelNum())); 
+	w->drawString(width * 4, height * 3, "Score: " + to_string(g1->getScore()));
+	w->drawString(width * 16, height * 3, "Score: " + to_string(g2->getScore()));
 	printBoard();
-	w->drawString(0, height * 22, "Next: ");
-	w->drawString(width * 12, height * 22, "Next: ");
-	printNext(0, height * 24, g1->getNextBlock()->getType());
-	printNext(width * 12, height * 24, g2->getNextBlock()->getType());
+	w->drawString(width * 4, height * 25, "Next: ");
+	w->drawString(width * 16, height * 25, "Next: ");
+	printNext(width * 4, height * 27, g1->getNextBlock()->getType());
+	printNext(width * 16, height * 27, g2->getNextBlock()->getType());
 }
