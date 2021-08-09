@@ -7,17 +7,12 @@ char JBlock::getType(){
 	return 'J';
 }
 
-void IBlock::moveHeavy() {
+void JBlock::moveHeavy() {
 	if (this->isHeavy == true) {
 		moveDown();
 	}
 }
 
-void JBlock::moveHeavy() {
-        if (level == 3 || level == 4) {
-                moveDown();
-        }
-}
 
 void JBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
