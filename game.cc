@@ -97,6 +97,8 @@ void Game::start(int startlevel){
 
     string input;
     bool checker = false; //sometimes it looks once anyway when it is the end of fileInput, use checker to stop printing current player messages twice
+    bool restartGame = false;
+    int playerLost = 0;
     int curNum = 1, count = 0;
     Grid *cur = &board1;
     board1.addBlock();
@@ -227,8 +229,8 @@ void Game::start(int startlevel){
                 }
                 else if(cmpString(input,"restart")){
                     //when restart, call end() then restart() and return
-                    end();
-                    restart();
+                    restartGame = true;
+                    multiplier = 0;
                     return; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"hint")){
@@ -275,12 +277,12 @@ void Game::start(int startlevel){
         }
         catch(LostException e1){
             if(curNum==1){
-                end(2);
+                playerLost = 2;
             }
             else{
-                end(1);
+                playerLost = 1;
             }
-            restart();
+            restartGame = true;
         }
         catch(InvalidMoveException e2){
             cout<<"Can't move that way: try again!"<<endl;
@@ -299,7 +301,13 @@ void Game::start(int startlevel){
     }
         
     //calls end()
-    end();
+    if(playerLost==0){
+        end();
+    }
+    else{
+        end(playerLost);
+    }
+    if(restartGame) restart(startlevel);
 }
 
 void Game::specialEffects(int curNum){
@@ -368,12 +376,15 @@ void Game::specialEffects(int curNum){
     
 }
 
-void Game::restart(){
-    cout<<"Game starting:"<<endl;
-    
+void Game::restart(int startlevel){
+
     //old boards are delete, new boards is init
     board1.clearGrid();//needs checking
     board2.clearGrid();
+
+    useSeqFile = false;
+    
+    start(startlevel);
 
 }
 

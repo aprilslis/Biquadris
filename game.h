@@ -23,8 +23,8 @@ class Game{
     void drawGraphic();
   public:
     Game();
-    void start(int startLevel=0); //start game
-    void restart(); //restart game
+    void start(int startlevel=0); //start game
+    void restart(int startlevel=0); //restart game
     void end(int winner=0); //end game
 
     void draw(int multiplier=1);
