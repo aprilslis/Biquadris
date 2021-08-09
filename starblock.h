@@ -17,7 +17,9 @@ class StarBlock : public Block {
         void moveDown() override;
 	void moveHeavyDown() override;
         void drop() override;
-  
+	void rotateCW() override;
+	void rotateCCW() override;
+
 };
 
 #endif

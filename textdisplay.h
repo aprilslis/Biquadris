@@ -8,9 +8,12 @@ class TextDisplay: public BaseDisplay {
         int height;
         std::string topTextBlock(char next);
         std::string lowTextBlock(char next);
+	std::string printBlind(Grid *g, int row);
         public:
         TextDisplay(Grid *g1, Grid *g2);
         void printDisplay() override;
+	void printBlindPlayer1() override;
+	void printBlindPlayer2() override;
 };
 
 #endif

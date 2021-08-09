@@ -12,9 +12,14 @@ class GraphicDisplay: public BaseDisplay {
 	void printCell(char type, int x, int y);
 	void printBoard();
 	void printNext(int x, int y, char type);
+	void clearWindow();
+	void FirstBoardBlind();
+	void SecondBoardBlind();
 	public:
 	GraphicDisplay(Grid *g1, Grid *g2);
 	void printDisplay() override;
+	void printBlindPlayer1() override;
+	void printBlindPlayer2() override;
 	~GraphicDisplay();
 };
 

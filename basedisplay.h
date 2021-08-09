@@ -11,6 +11,8 @@ class BaseDisplay {
 	public:
         	BaseDisplay(Grid *g1, Grid *g2);
         	virtual void printDisplay() = 0;
+		virtual void printBlindPlayer1() = 0;
+		virtual void printBlindPlayer2() = 0;
 };
 
 #endif
