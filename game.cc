@@ -190,6 +190,7 @@ void Game::start(int startlevel){
                     //check special effects here
                     if (count >= 2) {
                         specialEffects(curNum);
+                        cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
                     }
                     if(curNum==1){
                         cur = &board2;
@@ -300,6 +301,10 @@ void Game::start(int startlevel){
 }
 
 void Game::specialEffects(int curNum){
+    
+    cout<<"-----Pick a special to attack your enemy-----"<<endl;
+    couot<<"Options:  blind  heavy  force"<<endl;
+
     string input;
     cin>>input;
 
@@ -311,37 +316,53 @@ void Game::specialEffects(int curNum){
         cur = &board2;
     }
 
-    if(cmpString(input,"blind")){//should opperate on curNum
-        //do something
+    try{
+        if(cmpString(input,"blind")){//should opperate on curNum
+            //do something
+        }
+        else if(cmpString(input,"heavy")){
+            //do something
+        }
+        else if(cmpString(input,"force")){
+            char block;
+            cin >> block;
+            if(block == 'I'){
+                cur->replaceBlock('i');
+            }
+            else if(block == 'J'){
+                cur->replaceBlock('j');
+            }
+            else if(block == 'L'){
+                cur->replaceBlock('l');
+            }
+            else if(block == 'O'){
+                cur->replaceBlock('o');
+            }
+            else if(block == 'S'){
+                cur->replaceBlock('s');
+            }
+            else if(block == 'T'){
+                cur->replaceBlock('t');
+            }
+            else if(block == 'Z'){
+                cur->replaceBlock('z');
+            }
+            else{
+                throw InvalidCommand{};
+            }
+        }
+        else{
+            throw InvalidCommand{};
+        }
     }
-    else if(cmpString(input,"heavy")){
-        //do something
+    catch(InvalidCommand e1){
+        specialEffects(curNum);
     }
-    else if(cmpString(input,"force")){
-        char block;
-        cin >> block;
-        if(block == 'I'){
-            cur->replaceBlock('i');
-        }
-        else if(block == 'J'){
-            cur->replaceBlock('j');
-        }
-        else if(block == 'L'){
-            cur->replaceBlock('l');
-        }
-        else if(block == 'O'){
-            cur->replaceBlock('o');
-        }
-        else if(block == 'S'){
-            cur->replaceBlock('s');
-        }
-        else if(block == 'T'){
-            cur->replaceBlock('t');
-        }
-        else if(block == 'Z'){
-            cur->replaceBlock('z');
-        }
+    catch(...){
+        cout<<"default error (game-special effects)"<<endl;
     }
+
+    
 }
 
 void Game::restart(){
