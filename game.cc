@@ -313,7 +313,7 @@ void Game::start(int startlevel){
 void Game::specialEffects(int curNum){
     
     cout<<"-----Pick a special action to attack your enemy-----"<<endl;
-    couot<<"Options:  blind  heavy  force"<<endl;
+    cout<<"Options:  blind  heavy  force"<<endl;
 
     string input;
     cin>>input;
@@ -332,7 +332,7 @@ void Game::specialEffects(int curNum){
         }
         else if(cmpString(input,"heavy")){
             //make cur block heavy
-            makeNextBlockHeavy = true;
+            //makeNextBlockHeavy = true;
         }
         else if(cmpString(input,"force")){
             char block;
