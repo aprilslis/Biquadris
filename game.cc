@@ -90,6 +90,7 @@ void Game::start(int startlevel){
     //print welcome messages
     cout<<"-----------------------------------------"<<endl;
     cout<<"Welcome to Biquadris! Input your command:"<<endl;
+    cout<<"-----------------------------------------"<<endl;
     
     board1.setLevelNum(startlevel);
     board2.setLevelNum(startlevel);
