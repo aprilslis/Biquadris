@@ -341,7 +341,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-
+    //graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){

@@ -4,6 +4,7 @@
 #include "grid.h"
 #include "basedisplay.h"
 #include "textdisplay.h"
+//#include "graphicdisplay.h"
 
 class Game{
 
@@ -15,6 +16,7 @@ class Game{
 
     bool onlyText;
     TextDisplay textdisplay;
+    //GraphicDisplay graphicdisplay;
 
     void specialEffects(int curNum);
     void drawText();
