@@ -8,6 +8,7 @@ Game::Game():
 board1{"sequence1.txt"}
 ,board2{"sequence2.txt"} 
 ,onlyText{false}
+,useSeqFile{false}
 ,textdisplay{&board1,&board2}
 ,graphicdisplay{&board1,&board2} 
 {
