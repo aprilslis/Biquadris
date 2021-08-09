@@ -5,11 +5,11 @@ using namespace std;
 
 
 Game::Game(): 
-board1{"sequence1.txt"}, 
-board2{"sequence2.txt"}, 
-onlyText{false}, 
-textdisplay{&board1,&board2}, 
-graphicdisplay{&board1,&board2} 
+board1{"sequence1.txt"}
+,board2{"sequence2.txt"} 
+,onlyText{false}
+,textdisplay{&board1,&board2}
+,graphicdisplay{&board1,&board2} 
 {
     
 }
@@ -303,6 +303,14 @@ void Game::specialEffects(int curNum){
     string input;
     cin>>input;
 
+    Grid *cur;
+    if(curNum==1){
+        cur = &board1;
+    }
+    else{
+        cur = &board2;
+    }
+
     if(cmpString(input,"blind")){//should opperate on curNum
         //do something
     }
@@ -312,7 +320,7 @@ void Game::specialEffects(int curNum){
     else if(cmpString(input,"force")){
         char block;
         cin >> block;
-        if(block == 'I)){
+        if(block == 'I'){
             cur->replaceBlock('i');
         }
         else if(block == 'J'){
