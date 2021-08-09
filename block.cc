@@ -26,5 +26,9 @@ void Block::setIdentity(int identity) {
 }
 
 bool Block::isHeavy() {
-	return (level == 3);
+	return heavy;
+}
+
+void Block::setHeavy() {
+	heavy = true;
 }
