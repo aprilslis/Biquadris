@@ -201,6 +201,7 @@ void Grid::levelUp() {
 void Grid::levelDown() {
     if(levelNum>0) levelNum--;
     Level *tmp = level;
+    setLevel();
     delete tmp;
 
     //add score sstuff
