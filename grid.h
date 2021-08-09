@@ -44,10 +44,12 @@ class Grid{
     std::vector<int> ids; // stores all ids different blocks have
     std::vector<int> levels; // stores levels corresponding to the ids
     std::vector<int> ncells;  // stores no of left cells in a block if an id
+    std::vector<Block *> pastBlocks; //stores pointers to the past blocks so we can free them later
 
     void removeIds(int row); // removes id if cleared row removes last cell of a certain block
     void updateIds(Block *b);
     void resetIds();
+    void clearAllPastBlocks(); //free all past block pointers
 
   public:
     Grid(std::string filename);

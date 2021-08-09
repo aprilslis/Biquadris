@@ -27,6 +27,7 @@ Grid::~Grid() { // release all existing cells
             delete board[i][j];
         }
     }
+    clearAllPastBlocks();
     delete s;
     delete level;
     delete cur;
@@ -83,6 +84,13 @@ void Grid::resetIds() {
 	ids.clear();
 	levels.clear();
 	ncells.clear();
+}
+
+void Grid::clearAllPastBlocks(){
+    for (auto i = pastBlocks.begin(); i != pastBlocks.end(); ++i){
+        delete *i;
+    }
+    pastBlocks.clear();
 }
 
 void Grid::addBlock() { //add a new block at left top corner
@@ -248,10 +256,14 @@ void Grid::clearGrid() {
     //need to reset sequence too
     resetIds();
     s->resetScore();
+    pastBlocks.push_back(cur);
+    pastBlocks.push_back(next);
     cur = level->generateRandomBlock(seed);
     updateIds(cur);
     next = level->generateRandomBlock(seed);
 
+    clearAllPastBlocks();
+    
 }
 void Grid::printGrid() { // prints out current board
     cout << endl;
@@ -293,6 +305,7 @@ void Grid::setSeed(int seed){
 }
 
 void Grid::generateBlock(){
+    pastBlocks.push_back(cur);
     cur = next;
     updateIds(cur);
     next = level->generateRandomBlock(seed);
