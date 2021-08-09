@@ -11,9 +11,9 @@ ${EXEC}: ${OBJECTS}
 -include ${DEPENDS}
 
 graphicdisplay.o: graphicdisplay.h graphicdisplay.cc
-        g++ -std=c++14 -c graphicdisplay.cc -lX11 -L/usr/X11/lib -I/usr/X11/include
+	g++ -std=c++14 -c graphicdisplay.cc -lX11 -L/usr/X11/lib -I/usr/X11/include
 
 .PHONY: clean
 
 clean:
-        rm ${OBJECTS} ${DEPENDS} ${EXEC}
+	rm ${OBJECTS} ${DEPENDS} ${EXEC}
