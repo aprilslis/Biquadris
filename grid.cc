@@ -87,13 +87,13 @@ void Grid::addBlock() { //add a new block at left top corner
 	cur->init(board); 
 	++blocksPlaced;
 	if (level->getLevel() == 4) {
-                if (blocksPlaced % 5 == 0 && unclearedRows > 0) {
-			StarBlock *tempcur = new StarBlock();
-			tempcur->init(board);
-			tempcur->drop();
-			delete tempcur;
-                }
-        }
+        // if (blocksPlaced % 5 == 0 && unclearedRows > 0) {
+		// 	StarBlock *tempcur = new StarBlock{};
+		// 	tempcur->init(board);
+		// 	tempcur->drop();
+		// 	//delete tempcur;
+        // }
+    }
 }
 
 void Grid::replaceBlock(char c) { // replace current block with new block I,J,L

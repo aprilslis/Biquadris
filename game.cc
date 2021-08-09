@@ -48,6 +48,18 @@ bool validifyCmd(string input){
     if(cmpString(input,"L")){
         count++;
     }
+    if(cmpString(input,"O")){
+        count++;
+    }
+    if(cmpString(input,"S")){
+        count++;
+    }
+    if(cmpString(input,"T")){
+        count++;
+    }
+    if(cmpString(input,"Z")){
+        count++;
+    }
     if(cmpString(input,"restart")){
         count++;
     }
