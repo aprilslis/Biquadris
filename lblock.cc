@@ -8,9 +8,9 @@ char LBlock::getType(){
 }
 
 void LBlock::moveHeavy() {
-        if (level == 3 || level == 4) {
-                moveDown();
-        }
+	if (this->isHeavy == true) {
+		moveDown();
+	}
 }
 
 void LBlock::switchBlocks(vector<Cell *> other) {
