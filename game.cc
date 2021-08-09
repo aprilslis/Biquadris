@@ -94,7 +94,7 @@ void Game::start(int startlevel){
     
     board1.setLevelNum(startlevel);
     board2.setLevelNum(startlevel);
-
+    
     string input;
     bool checker = false; //sometimes it looks once anyway when it is the end of fileInput, use checker to stop printing current player messages twice
     bool restartGame = false;
@@ -103,6 +103,7 @@ void Game::start(int startlevel){
     Grid *cur = &board1;
     board1.addBlock();
     board2.addBlock();
+    
     draw();
     cout<<endl<<"Currently it is Player "<<curNum<<"'s turn!"<<endl;
     while(true){

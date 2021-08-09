@@ -244,7 +244,7 @@ int Grid::getLevelNum(){
 }
 
 void Grid::clearGrid() { 
-    for (int i = 3; i < height; i++) {
+    for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             board[i][j]->clearCell(); // resets each cell
         }
@@ -267,6 +267,8 @@ void Grid::clearGrid() {
     clearAllPastBlocks();
     
 }
+
+
 void Grid::printGrid() { // prints out current board
     cout << endl;
     for (int i = 0; i < height; i++) {
