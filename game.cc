@@ -380,8 +380,11 @@ void Game::end(int winner){
         if(board1.getScore()>board2.getScore()){
             cout<<"Player 1 ";
         }
-        else{
+        else if(board1.getScore()<board2.getScore()){
             cout<<"Player 2 ";
+        }
+        else{
+            cout<<"No one ";
         }
     }
     else{
