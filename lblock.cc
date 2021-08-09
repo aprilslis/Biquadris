@@ -8,7 +8,7 @@ char LBlock::getType(){
 }
 
 void LBlock::moveHeavy() {
-	if (this->isHeavy == true) {
+	if (this->isHeavy() == true) {
 		moveDown();
 	}
 }

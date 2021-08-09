@@ -5,7 +5,7 @@ using namespace std;
 TBlock::TBlock(int level): Block{level} {}
 
 void TBlock::moveHeavy() {
-	if (this->isHeavy == true) {
+	if (this->isHeavy() == true) {
 		moveDown();
 	}
 }

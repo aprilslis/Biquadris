@@ -4,7 +4,7 @@ using namespace std;
 ZBlock::ZBlock(int level): Block{level} {}
 
 void ZBlock::moveHeavy() {
-        if (this->isHeavy == true) {
+        if (this->isHeavy() == true) {
                 moveDown();
         }
 }

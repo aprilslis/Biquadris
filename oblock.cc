@@ -8,7 +8,7 @@ char OBlock::getType(){
 }
 
 void OBlock::moveHeavy() {
-        if (this->isHeavy == true) {
+        if (this->isHeavy() == true) {
                 moveDown();
         }
 }
