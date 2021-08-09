@@ -2,7 +2,7 @@
 #define _GAME_H_
 
 #include "grid.h"
-#include "display.h"
+#include "basedisplay.h"
 #include "textdisplay.h"
 
 class Game{
