@@ -183,11 +183,14 @@ void Game::start(int startlevel){
                 }
                 else if(cmpString(input,"drop")){
                     cur->dropBlock();
+                    int rows = cur->countFullRows();
                     cur->clearFullRows();
                     cur->generateBlock();
                     cur->addBlock();
-                    //check special effects here 
-                    //if yes: specialEffects(curNum);
+                    //check special effects here
+                    if (count >= 2) {
+                        specialEffects(curNum);
+                    }
                     if(curNum==1){
                         cur = &board2;
                         curNum = 2;
@@ -307,7 +310,29 @@ void Game::specialEffects(int curNum){
         //do something
     }
     else if(cmpString(input,"force")){
-        //do something
+        char block;
+        cin >> block;
+        if(block == 'I)){
+            cur->replaceBlock('i');
+        }
+        else if(block == 'J'){
+            cur->replaceBlock('j');
+        }
+        else if(block == 'L'){
+            cur->replaceBlock('l');
+        }
+        else if(block == 'O'){
+            cur->replaceBlock('o');
+        }
+        else if(block == 'S'){
+            cur->replaceBlock('s');
+        }
+        else if(block == 'T'){
+            cur->replaceBlock('t');
+        }
+        else if(block == 'Z'){
+            cur->replaceBlock('z');
+        }
     }
 }
 
