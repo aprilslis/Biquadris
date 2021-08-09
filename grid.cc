@@ -250,6 +250,7 @@ void Grid::clearGrid() {
     }
     Level *tmp = level;
     level = new Level0{};
+    level->init(defaultFile);
     delete tmp;
 
     levelNum = 0;
