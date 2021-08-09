@@ -1,4 +1,3 @@
-#include <sstream>
 #include "game.h"
 
 using namespace std;
@@ -12,24 +11,32 @@ int main(int argc, char *argv[]){
             g.displayOnlyText(true); 
         } 
         else if (cmd == "-seed") {
-            istringstream ss(argv[++i]);
-            int seed;
-            ss >> seed;
+            // istringstream ss(argv[++i]);
+            // int seed;
+            // ss >> seed;
+
+            int seed = stoi(argv[++i]);
             g.setSeed(seed);
         } else if (cmd == "-scriptfile1") {
-            istringstream ss(argv[++i]); 
-            string fname; 
-            ss >> fname; 
+            // istringstream ss(argv[++i]); 
+            // string fname; 
+            // ss >> fname;
+
+            string fname = argv[++i];
             g.setDefaultFile1(fname); 
         } else if (cmd == "-scriptfile2") {
-            istringstream ss(argv[++i]); 
-            string fname; 
-            ss >> fname; 
+            // istringstream ss(argv[++i]); 
+            // string fname; 
+            // ss >> fname; 
+
+            string fname = argv[++i];
             g.setDefaultFile2(fname);    
         }
         else if (cmd == "-startlevel") {
-            istringstream ss(argv[i++]);
-            ss >> startLevel; 
+            // istringstream ss(argv[i++]);
+            // ss >> startLevel; 
+
+            startLevel = stoi(argv[++i]);
             if (startLevel < 0 || startLevel > 4)  {
                 startLevel = 0;     // if invalid level, set it to 0 
             }
@@ -37,23 +44,5 @@ int main(int argc, char *argv[]){
     }
     g.start(startLevel);
 
-    // testing:
-    /*Grid g;
-    g.printGrid();
-    cout<<"---------------------------------------"<<endl;
-
-    IBlock *i = new IBlock{};
-    JBlock *j = new JBlock{};
-    LBlock *l = new LBlock{};
-    OBlock *o = new OBlock{};
-    TBlock *t = new TBlock{};
-    ZBlock *z = new ZBlock{};
-    SBlock *s = new SBlock{};
-    
-    g.addBlock(i);
-    i->moveRight();
-    i->drop();
-    g.printGrid();
-    */ 
     return 0;
 }
