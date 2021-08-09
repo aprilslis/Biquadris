@@ -8,7 +8,7 @@ char JBlock::getType(){
 }
 
 void JBlock::moveHeavy() {
-	if (this->isHeavy == true) {
+	if (this->isHeavy() == true) {
 		moveDown();
 	}
 }

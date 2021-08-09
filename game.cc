@@ -10,7 +10,7 @@ board1{"sequence1.txt"}
 ,onlyText{false}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
-,graphicdisplay{&board1,&board2} 
+//,graphicdisplay{&board1,&board2} 
 {
     
 }
@@ -231,7 +231,7 @@ void Game::start(int startlevel){
                     //when restart, call end() then restart() and return
                     restartGame = true;
                     multiplier = 0;
-                    return; //this command should not be done more than 1 time
+                    break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"hint")){
                     //needs to write this funciton in grid
@@ -273,6 +273,8 @@ void Game::start(int startlevel){
             else{
                 cout<<endl<<"Currently it is Player "<<curNum<<"'s turn!"<<endl;
             }
+
+            if(restartGame) break;
             
         }
         catch(LostException e1){
@@ -418,7 +420,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    graphicdisplay.printDisplay();
+    //graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){
