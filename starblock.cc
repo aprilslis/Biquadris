@@ -56,9 +56,4 @@ void StarBlock::drop() {
 	}
 }
 
-void StarBlock::rotateCW() {
-}
-
-void StarBlock::rotateCCW() {
-}
 
