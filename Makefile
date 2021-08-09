@@ -6,7 +6,7 @@ DEPENDS=${OBJECTS:.o=.d}
 EXEC=test
 
 ${EXEC}: ${OBJECTS}
-        ${CXX} ${OBJECTS} -o ${EXEC}
+	${CXX} ${OBJECTS} -o ${EXEC}
 
 -include ${DEPENDS}
 
