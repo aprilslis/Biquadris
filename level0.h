@@ -5,11 +5,7 @@
 #include <string>
 
 class Level0: public Level {
-	std::string sequence;
-	int len;
-	int pos;
 public:
-	void init(std::string filename) override;
 	Block * generateRandomBlock(int seed = 0) override;
 	int getLevel() override;
 };

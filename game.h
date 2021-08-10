@@ -16,7 +16,7 @@ class Game{
 
     bool onlyText;
     TextDisplay textdisplay;
-    //GraphicDisplay graphicdisplay;
+    GraphicDisplay graphicdisplay;
 
     void specialEffects(int curNum);
     void drawText();

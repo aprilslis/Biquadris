@@ -3,10 +3,6 @@
 #include "level2.h"
 using namespace std;
 
-void Level2::init(string filename){
-
-}
-
 Block * Level2::generateRandomBlock(int seed) {
     this->seed = seed;
     srand(seed);

@@ -3,6 +3,8 @@
 
 #include <cstdlib>
 #include <string>
+#include <iostream>
+#include <fstream>
 #include "iblock.h"
 #include "jblock.h"
 #include "lblock.h"
@@ -13,12 +15,19 @@
 
 class Level {
 protected:
+	std::string sequence;
 	int seed;
+	int len;
+	int pos;
+	bool isRandom;
 public:
-	virtual void init(std::string filename) = 0;
+	Level();
+	void init(std::string filename);
 	virtual Block * generateRandomBlock(int seed = 0) = 0;
 	virtual int getLevel() = 0;
 	virtual ~Level();
+	void setRandom();
+	void setNoRandom();
 };
 
 #endif

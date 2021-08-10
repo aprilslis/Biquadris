@@ -43,7 +43,7 @@ void GraphicDisplay::printCell(char type, int x, int y) {
 }
 
 void GraphicDisplay::clearWindow() {
-	w->fillRectangle(0, 0, 650, 800, Xwindow::White);
+	w->fillRectangle(0, 0, 30 * width, height * 34, Xwindow::White);
 }
 
 void GraphicDisplay::printBoard() {	
@@ -108,9 +108,9 @@ void GraphicDisplay::printNext(int x, int y, char type) {
 	switch (type) {
                 case 'I' :
                         w->fillRectangle(x, y, width, height, Xwindow::Red);
-			w->fillRectangle(x + width, y, height, Xwindow::Red);
-			w->fillRectangle(x + width * 2, y, height, Xwindow::Red);
-			w->fillRectangle(x + width * 3, y, height, Xwindow::Red);
+			w->fillRectangle(x + width, y, width, height, Xwindow::Red);
+			w->fillRectangle(x + width * 2, y, width, height, Xwindow::Red);
+			w->fillRectangle(x + width * 3, y, width, height, Xwindow::Red);
                 	break;
                 case 'J' :
                         w->fillRectangle(x, y - width, width, height, Xwindow::Orange);

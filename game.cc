@@ -10,7 +10,7 @@ board1{"sequence1.txt"}
 ,onlyText{false}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
-//,graphicdisplay{&board1,&board2} 
+,graphicdisplay{&board1,&board2} 
 {
     
 }
@@ -421,7 +421,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    //graphicdisplay.printDisplay();
+    graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){
