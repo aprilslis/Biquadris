@@ -36,6 +36,7 @@ class Grid{
     int seed;
     std::string defaultFile;
 
+
     Block *cur;
     Block *next;
 
@@ -62,6 +63,10 @@ class Grid{
     void addBlock(); // add a new block at left top corner
     void replaceBlock(char c); // replace current block with new block I,J,L
     
+    void updateScore();
+
+    std::string hint();
+
     bool isFullRow(int row); // checks if row is full
     int countFullRows(); // returns number of full rows
     void clearFullRows(); // clears the full rows one at a time
@@ -79,7 +84,6 @@ class Grid{
     void clearGrid(); // resets the grid
     void printGrid(); // print out current board (for testing)
     std::string printRow(int n); // print out current board
-
 
     void setSeed(int seed);
     void generateBlock();//generate a random block 

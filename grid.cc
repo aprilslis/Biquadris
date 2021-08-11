@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Grid::Grid(string filename) : width{11}, height{18}, blocksPlaced{0}, unclearedRows{0}, levelNum{0}, id{1}, seed{0}, defaultFile{filename} { // initialises board
+Grid::Grid(string filename) : width{11}, height{18}, id{1}, blocksPlaced{0}, unclearedRows{0}, levelNum{0}, seed{0}, defaultFile{filename} { // initialises board
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -96,14 +96,14 @@ void Grid::clearAllPastBlocks(){
 void Grid::addBlock() { //add a new block at left top corner
 	cur->init(board); 
 	++blocksPlaced;
-//	if (level->getLevel() == 4) {
-//		if (blocksPlaced % 5 == 0 && unclearedRows > 0) {
-//		 	StarBlock *tempcur = new StarBlock{};
-//		 	tempcur->init(board);
-//		 	tempcur->drop();
-//		 	delete tempcur;
-        
-    
+	if (level->getLevel() == 4) {
+		if (blocksPlaced % 5 == 0 && unclearedRows > 0) {
+		 	StarBlock *tempcur = new StarBlock{};
+		 	tempcur->init(board);
+		 	tempcur->drop();
+		 	delete tempcur;
+		}
+	}
 }
 
 void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
@@ -139,6 +139,64 @@ void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
     delete tmp;
 }
 
+void Grid::updateScore() {
+	int count = countFullRows();
+	int amount = count * (level->getLevel() + 1) * (level->getLevel() + 1);
+    	s->updateScore(amount);
+    	if (count > 0) {
+        	    unclearedRows = 0;
+    	} else {
+        	    ++unclearedRows;
+    	}
+    	clearFullRows();
+}
+
+std::string Grid::hint() {
+	int maxcur = countFullRows();
+	int maxright = maxcur;
+	int maxleft = maxcur;
+	int times = 0;
+	try {
+		while (true) {
+			moveBlockRight();
+			int count = countFullRows();
+			if (count > maxright) {
+				maxright = count;
+			}
+			++times;
+		}
+	} catch (InvalidMoveException &e) {
+		for (int i = 0; i < times; i++) {
+			moveBlockLeft();
+		}
+	
+	}
+	times = 0;
+       	try {
+                while (true) {
+                        moveBlockLeft();
+                        int count = countFullRows();
+                        if (count > maxleft) {
+                                maxleft = count;
+                        }
+                        ++times;
+                }
+        } catch (InvalidMoveException &e) {
+                for (int i = 0; i < times; i++) {
+                        moveBlockRight();
+                }
+        }
+	if (maxright > maxleft) {
+		return "Try moving rightwards";
+	} else if (maxright < maxleft) {
+		return "Try moving leftwards";
+	} else if (maxleft > maxcur && maxleft == maxright) {
+		return "Try moving leftwards or rightwards";
+	} else {
+		return "lateral movement doesn't help";
+	}
+}
+
 bool Grid::isFullRow(int row) {
     for (int j = 0; j < width; j++) {
         if (board[row][j]->getType() == '\0') {
@@ -155,13 +213,6 @@ int Grid::countFullRows() {
             count++;
         }
     } 
-    int amount = count * (level->getLevel() + 1) * (level->getLevel() + 1);
-    s->updateScore(amount);
-    if (count > 0) {
-	    unclearedRows = 0;
-    } else {
-	    ++unclearedRows;
-    }
     return count;
 }
 
@@ -243,6 +294,7 @@ int Grid::getLevelNum(){
     return levelNum;
 }
 
+
 void Grid::clearGrid() { 
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
@@ -267,7 +319,6 @@ void Grid::clearGrid() {
     clearAllPastBlocks();
     
 }
-
 
 void Grid::printGrid() { // prints out current board
     cout << endl;
