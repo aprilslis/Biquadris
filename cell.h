@@ -4,7 +4,6 @@
 class Cell {
 
         char type;
-        int age;
         int row;
         int col;
         int identity;
@@ -13,13 +12,11 @@ class Cell {
         Cell(int row, int col);
         void setType(char type); 
         char getType();
-        int getAge();
         int getRow();
         int getCol();
         void setIdentity(int identity);
         int getIdentity();
         bool isFull();
-        void updateAge(); // increments age of cell
         void copyCell(Cell *other); // copies the contents of other
         void clearCell(); // resets the cell
         
