@@ -267,15 +267,19 @@ void Grid::setLevel() {
             break;
         case 1:
             level = new Level1{};
+            level->init(defaultFile);
             break;
         case 2:
             level = new Level2{};
+            level->init(defaultFile);
             break;
-        // case 3:
-        //     level = new Level3{};
-        //     break;
-        // case 4:
-        //     level = new Level4{};
+        case 3:
+            level = new Level3{};
+            level->init(defaultFile);
+            break;
+        case 4:
+            level = new Level4{};
+            level->init(defaultFile);
             break;
         
         default:
