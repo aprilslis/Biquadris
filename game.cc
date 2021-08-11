@@ -189,14 +189,10 @@ void Game::start(int startlevel){
                 else if(cmpString(input,"drop")){
                     cur->dropBlock();
                     int rows = cur->countFullRows();
-                    cur->clearFullRows();
+                    cur->updateScore(); //this counts score and clear full rows
                     cur->generateBlock();
                     cur->addBlock();
-                    //check special effects here
-                    if (rows >= 2) {
-                        specialEffects(curNum);
-                        cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
-                    }
+            
                     if(curNum==1){
                         cur = &board2;
                         curNum = 2;
@@ -204,6 +200,11 @@ void Game::start(int startlevel){
                     else{
                         cur = &board1;
                         curNum = 1;
+                    }
+                    //check special effects here
+                    if (rows >= 2) {
+                        specialEffects(curNum);
+                        cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
                     }
                     
                 }
@@ -315,7 +316,7 @@ void Game::start(int startlevel){
     if(restartGame) restart(startlevel);
 }
 
-void Game::specialEffects(int curNum){
+void Game::specialEffects(int curNum){//curNum is the opponent's number
     
     cout<<"-----Pick a special action to attack your enemy-----"<<endl;
     cout<<"Options:  blind  heavy  force"<<endl;
@@ -324,7 +325,7 @@ void Game::specialEffects(int curNum){
     cin>>input;
 
     Grid *cur;
-    if(curNum==1){
+    if(curNum==1){ 
         cur = &board1;
     }
     else{
@@ -332,14 +333,20 @@ void Game::specialEffects(int curNum){
     }
 
     try{
-        if(cmpString(input,"blind")){//should opperate on curNum
+        if(cmpString(input,"blind")){
+            cout<<endl<<"**Blind** effect would be applied to Player "<<curNum<<endl;
             //do something
+            
         }
         else if(cmpString(input,"heavy")){
+            cout<<endl<<"**Heavy** effect would be applied to Player "<<curNum<<endl;
             //make cur block heavy
             //makeNextBlockHeavy = true;
+            cur->setHeavy();
+
         }
         else if(cmpString(input,"force")){
+            cout<<endl<<"**Force** effect would be applied to Player "<<curNum<<endl;
             char block;
             cin >> block;
             if(block == 'I'){
@@ -372,6 +379,7 @@ void Game::specialEffects(int curNum){
         }
     }
     catch(InvalidCommand e1){
+        cout<<"That was an invalid effect: try again"<<endl;
         specialEffects(curNum);
     }
     catch(...){

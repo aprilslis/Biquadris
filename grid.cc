@@ -420,3 +420,8 @@ Block * Grid::getNextBlock(){
 }
 
 
+
+void Grid::setHeavy(){ //this handles the special effect Heavy
+    cur->setHeavy();
+}
+
