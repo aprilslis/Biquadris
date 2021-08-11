@@ -294,13 +294,6 @@ int Grid::getLevelNum(){
     return levelNum;
 }
 
-void Grid::random() {
-	level->setRandom();
-}
-
-void Grid::norandom() {
-	level->setNoRandom();
-}
 
 void Grid::clearGrid() { 
     for (int i = 0; i < height; i++) {
@@ -326,7 +319,6 @@ void Grid::clearGrid() {
     clearAllPastBlocks();
     
 }
-
 
 void Grid::printGrid() { // prints out current board
     cout << endl;
@@ -381,6 +373,18 @@ void Grid::setDefaultFile(string file){
 void Grid::changeFile(string file){
     level->init(file);
 }
+
+void Grid::isRandom(bool t){
+    if(t){
+        level->setRandom();
+    }
+    else{
+        level->setNoRandom();
+    }
+}
+
+
+
 
 
 void Grid::moveBlockRight(){

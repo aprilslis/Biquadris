@@ -240,12 +240,14 @@ void Game::start(int startlevel){
                 }
                 else if(cmpString(input,"random")){
                     //blabla
+                    cur->isRandom(true);
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"norandom")){
                     string newfile;
                     cin>>newfile;
                     //do something to switch off random
+                    cur->isRandom(false);
                     cur->changeFile(newfile);
                     break; //this command should not be done more than 1 time
                 }
