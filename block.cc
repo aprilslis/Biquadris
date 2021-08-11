@@ -26,14 +26,21 @@ void Block::setIdentity(int identity) {
 	this->identity = identity;
 }
 
-bool Block::isHeavy() {
-	return heavy;
-}
+// bool Block::isHeavy() {
+// 	return heavy;
+// }
 
 void Block::setHeavy() {
 	heavy = true;
 }
 
-void Block::unsetHeavy() {
-        heavy = false;
+void Block::moveHeavy() {
+	if (level == 4 || level == 3) { // if is heavy from levels
+		moveDown();
+	}
+	if(heavy){ //if is heavy from special effects
+		moveDown();
+		moveDown();
+		heavy = false;
+	}
 }

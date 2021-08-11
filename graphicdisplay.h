@@ -17,13 +17,13 @@ class GraphicDisplay: public BaseDisplay {
 	void clearWindow();
 	void FirstBoardBlind();
 	void SecondBoardBlind();
-	void printNormally() override;
-	void printBlindPlayer1() override;
-	void printBlindPlayer2() override;
+	
 	public:
 	GraphicDisplay(Grid *g1, Grid *g2);
 	~GraphicDisplay();
-	
+	void printNormally() override;
+	void printBlindPlayer1() override;
+	void printBlindPlayer2() override;
 	
 };
 

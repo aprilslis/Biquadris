@@ -7,11 +7,11 @@ char OBlock::getType(){
 	return 'O';
 }
 
-void OBlock::moveHeavy() {
-        if (level == 4 || level == 3) {
-                moveDown();
-        }
-}
+// void OBlock::moveHeavy() {
+//         if (level == 4 || level == 3) {
+//                 moveDown();
+//         }
+// }
 
 void OBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
@@ -80,9 +80,6 @@ void OBlock::moveLeft() {
 
     switchBlocks(temp);
     moveHeavy();
-    if (heavy) {
-                moveDown();
-    }
 }
 
 void OBlock::moveRight() {
@@ -101,15 +98,12 @@ void OBlock::moveRight() {
 
     switchBlocks(temp);
     moveHeavy();
-    if (heavy) {
-                moveDown();
-    }
 }
 
-void OBlock::moveHeavyDown() {
-	moveDown();
-	moveDown();
-}
+// void OBlock::moveHeavyDown() {
+// 	moveDown();
+// 	moveDown();
+// }
 
 void OBlock::moveDown() {
     for (int i = 0; i < size; i++) {
@@ -126,6 +120,7 @@ void OBlock::moveDown() {
     }
 
     switchBlocks(temp);
+    
 }
 
 void OBlock::drop() {

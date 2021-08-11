@@ -8,7 +8,6 @@ class IBlock : public Block {
 	int size;
 	int pos;
     	void switchBlocks(std::vector<Cell *> other);
-	void moveHeavy();
 
     public:
 
@@ -19,7 +18,6 @@ class IBlock : public Block {
         void moveLeft() override;
         void moveRight() override;
         void moveDown() override;
-	void moveHeavyDown() override;
         void drop() override;
         void rotateCW() override;
         void rotateCCW() override;

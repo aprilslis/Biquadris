@@ -7,11 +7,11 @@ char JBlock::getType(){
 	return 'J';
 }
 
-void JBlock::moveHeavy() {
-	if (level == 4 || level == 3) {
-		moveDown();
-	}
-}
+// void JBlock::moveHeavy() {
+// 	if (level == 4 || level == 3) {
+// 		moveDown();
+// 	}
+// }
 
 
 void JBlock::switchBlocks(vector<Cell *> other) {
@@ -84,9 +84,6 @@ void JBlock::moveLeft() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-        }
 }
 
 void JBlock::moveRight() {
@@ -105,15 +102,8 @@ void JBlock::moveRight() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-        }
 }
 
-void JBlock::moveHeavyDown() {
-	moveDown();
-	moveDown();
-}
 
 void JBlock::moveDown() {
 	for (int i = 0; i < size; i++) {

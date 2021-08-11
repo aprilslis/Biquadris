@@ -400,11 +400,8 @@ void Grid::moveBlockLeft(){
 }
 
 void Grid::moveBlockDown(){
-	if (cur->isHeavy()) {
-		cur->moveHeavyDown();
-	} else {
-   		cur->moveDown();
-	}
+   	cur->moveDown();
+    cur->moveHeavy();
 }
 
 void Grid::dropBlock(){

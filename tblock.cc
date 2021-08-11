@@ -4,11 +4,11 @@ using namespace std;
 
 TBlock::TBlock(int level): Block{level} {}
 
-void TBlock::moveHeavy() {
-	if (level == 4 || level == 3) {
-		moveDown();
-	}
-}
+// void TBlock::moveHeavy() {
+// 	if (level == 4 || level == 3) {
+// 		moveDown();
+// 	}
+// }
 
 char TBlock::getType() {
 	return 'T';
@@ -83,9 +83,6 @@ void TBlock::moveLeft() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-        }
 }
 
 void TBlock::moveRight() {
@@ -104,15 +101,12 @@ void TBlock::moveRight() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-        }
 }
 
-void TBlock::moveHeavyDown() {
-	moveDown();
-	moveDown();
-}
+// void TBlock::moveHeavyDown() {
+// 	moveDown();
+// 	moveDown();
+// }
 
 void TBlock::moveDown() {
 	for (int i = 0; i < size; i++) {

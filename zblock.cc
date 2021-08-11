@@ -3,11 +3,11 @@ using namespace std;
 
 ZBlock::ZBlock(int level): Block{level} {}
 
-void ZBlock::moveHeavy() {
-        if (level == 4 || level == 3) {
-                moveDown();
-        }
-}
+// void ZBlock::moveHeavy() {
+//         if (level == 4 || level == 3) {
+//                 moveDown();
+//         }
+// }
 
 char ZBlock::getType() {
 	return 'Z';
@@ -82,9 +82,6 @@ void ZBlock::moveLeft() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-        }
 }
 
 void ZBlock::moveRight() {
@@ -103,15 +100,12 @@ void ZBlock::moveRight() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-        }
 }
 
-void ZBlock::moveHeavyDown() {
-	moveDown();
-	moveDown();
-}
+// void ZBlock::moveHeavyDown() {
+// 	moveDown();
+// 	moveDown();
+// }
 
 void ZBlock::moveDown() {
 	for (int i = 0; i < size; i++) {

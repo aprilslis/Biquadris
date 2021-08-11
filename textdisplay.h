@@ -10,13 +10,13 @@ class TextDisplay: public BaseDisplay {
         std::string topTextBlock(char next);
         std::string lowTextBlock(char next);
 	std::string printBlind(Grid *g, int row);
-        void printNormally() override;
-        void printBlindPlayer1() override;
-	void printBlindPlayer2() override;
+        
 
         public:
         TextDisplay(Grid *g1, Grid *g2);
-	
+	void printNormally() override;
+        void printBlindPlayer1() override;
+	void printBlindPlayer2() override;
 };
 
 #endif

@@ -7,11 +7,11 @@ char LBlock::getType(){
 	return 'L';
 }
 
-void LBlock::moveHeavy() {
-	if (level == 4 || level == 3) {
-		moveDown();
-	}
-}
+// void LBlock::moveHeavy() {
+// 	if (level == 4 || level == 3) {
+// 		moveDown();
+// 	}
+// }
 
 void LBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
@@ -82,9 +82,6 @@ void LBlock::moveLeft() {
 
     switchBlocks(temp);
     moveHeavy();
-    if (heavy) {
-                moveDown();
-    }
 }
 
 void LBlock::moveRight() {
@@ -103,15 +100,12 @@ void LBlock::moveRight() {
 
     switchBlocks(temp);
     moveHeavy();
-    if (heavy) {
-                moveDown();
-    }
 }
 
-void LBlock::moveHeavyDown() {
-	moveDown();
-	moveDown();
-}
+// void LBlock::moveHeavyDown() {
+// 	moveDown();
+// 	moveDown();
+// }
 
 void LBlock::moveDown() {
     for (int i = 0; i < size; i++) {

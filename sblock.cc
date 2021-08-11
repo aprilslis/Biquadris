@@ -4,11 +4,11 @@ using namespace std;
 
 SBlock::SBlock(int level): Block{level} {}
 
-void SBlock::moveHeavy() {
-        if (level == 4 || level == 3) {
-                moveDown();
-        }
-}
+// void SBlock::moveHeavy() {
+//         if (level == 4 || level == 3) {
+//                 moveDown();
+//         }
+// }
 
 char SBlock::getType() {
 	return 'S';
@@ -83,9 +83,6 @@ void SBlock::moveLeft() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-	}
 }
 
 void SBlock::moveRight() {					// opposite of moving left
@@ -104,15 +101,12 @@ void SBlock::moveRight() {					// opposite of moving left
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-	}
 }
 
-void SBlock::moveHeavyDown() {
-	moveDown();
-	moveDown();
-}
+// void SBlock::moveHeavyDown() {
+// 	moveDown();
+// 	moveDown();
+// }
 
 void SBlock::moveDown() {
 	for (int i = 0; i < size; i++) {

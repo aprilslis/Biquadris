@@ -12,7 +12,8 @@ class Block {
         int level; // stores current level of block
 	int identity; // stores identity
 	bool heavy;
-	public:
+        
+        public:
 	Block(int level);
 	virtual ~Block();
         virtual char getType() = 0;
@@ -21,16 +22,15 @@ class Block {
         virtual void moveLeft() = 0;
         virtual void moveRight() = 0;
         virtual void moveDown() = 0;
-	virtual void moveHeavyDown() = 0;
         virtual void drop() = 0;
         virtual void rotateCW() = 0;
         virtual void rotateCCW() = 0;
         void emptyBlock();
 	int getLevel();
-	bool isHeavy();
+	// bool isHeavy();
 	void setHeavy();
-	void unsetHeavy();
 	void setIdentity(int identity = 0);
+        void moveHeavy(); //move down if heavy
 };
 
 class InvalidMoveException {}; // raised if move is invalid

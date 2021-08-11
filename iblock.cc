@@ -4,11 +4,16 @@ using namespace std;
 
 IBlock::IBlock(int level): Block{level} {}
 
-void IBlock::moveHeavy() {
-	if (level == 4 || level == 3) {
-		moveDown();
-	}
-}
+// void IBlock::moveHeavy() {
+// 	if (level == 4 || level == 3) {
+// 		moveDown();
+// 	}
+// 	if(heavy){
+// 		moveDown();
+// 		moveDown();
+// 		heavy = true;
+// 	}
+// }
 
 char IBlock::getType(){
 	return 'I';
@@ -83,9 +88,6 @@ void IBlock::moveLeft() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-		moveDown();
-	}
 }
 
 void IBlock::moveRight() {
@@ -104,15 +106,12 @@ void IBlock::moveRight() {
 
 	switchBlocks(temp);
 	moveHeavy();
-	if (heavy) {
-                moveDown();
-        }
 }
 
-void IBlock::moveHeavyDown() {
-	moveDown();
-	moveDown();
-}
+// void IBlock::moveHeavyDown() {
+// 	moveDown();
+// 	moveDown();
+// }
 
 void IBlock::moveDown() {
 	for (int i = 0; i < size; i++) {
