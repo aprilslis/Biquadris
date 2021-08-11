@@ -119,12 +119,7 @@ void Game::start(int startlevel){
                     fileCmds = fileCmds.substr(1,fileCmds.size());
                     if(fileCmds=="") break;
                 }
-                while(isalpha(fileCmds[0])){
-                    input = input + fileCmds.substr(count,count+1);
-                    fileCmds = fileCmds.substr(1,fileCmds.size());
-                    if(fileCmds=="") break;
-                }
-                while(isdigit(fileCmds[0])){
+                while(isalpha(fileCmds[0]) || isdigit(fileCmds[0])){
                     input = input + fileCmds.substr(count,count+1);
                     fileCmds = fileCmds.substr(1,fileCmds.size());
                     if(fileCmds=="") break;
