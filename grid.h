@@ -85,6 +85,7 @@ class Grid{
     void generateBlock();//generate a random block 
     void setDefaultFile(std::string file); //set the name of default file
     void changeFile(std::string file); //change the file input block to the new one
+    void isRandom(bool t); //set board to generate random block or not
 
     void moveBlockRight();
     void moveBlockLeft();

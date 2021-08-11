@@ -323,6 +323,18 @@ void Grid::changeFile(string file){
     level->init(file);
 }
 
+void Grid::isRandom(bool t){
+    if(t){
+        level->setRandom();
+    }
+    else{
+        level->setNoRandom();
+    }
+}
+
+
+
+
 
 void Grid::moveBlockRight(){
     cur->moveRight();
