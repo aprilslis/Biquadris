@@ -334,19 +334,19 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
 
     try{
         if(cmpString(input,"blind")){
-            cout<<"**Blind** effect would be applied to Player "<<curNum<<endl;
+            cout<<endl<<"**Blind** effect would be applied to Player "<<curNum<<endl;
             //do something
             
         }
         else if(cmpString(input,"heavy")){
-            cout<<"**Heavy** effect would be applied to Player "<<curNum<<endl;
+            cout<<endl<<"**Heavy** effect would be applied to Player "<<curNum<<endl;
             //make cur block heavy
             //makeNextBlockHeavy = true;
             cur->setHeavy();
 
         }
         else if(cmpString(input,"force")){
-            cout<<"**Force** effect would be applied to Player "<<curNum<<endl;
+            cout<<endl<<"**Force** effect would be applied to Player "<<curNum<<endl;
             char block;
             cin >> block;
             if(block == 'I'){
