@@ -44,3 +44,8 @@ void Block::moveHeavy() {
 		heavy = false;
 	}
 }
+
+void Block::setLevel(int l){
+	level = l;
+}
+

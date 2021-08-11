@@ -245,8 +245,8 @@ void Grid::levelUp() {
     setLevel();
     delete tmp;
 
-    //add score sstuff
-    //score.setScore(levelNum);
+    cur->setLevel(levelNum);
+    next->setLevel(levelNum);
 } 
 
 void Grid::levelDown() {
@@ -255,8 +255,8 @@ void Grid::levelDown() {
     setLevel();
     delete tmp;
 
-    //add score sstuff
-    //score.setScore(levelNum);
+    cur->setLevel(levelNum);
+    next->setLevel(levelNum);
 }
 
 void Grid::setLevel() {

@@ -31,6 +31,8 @@ class Block {
 	void setHeavy();
 	void setIdentity(int identity = 0);
         void moveHeavy(); //move down if heavy
+
+        void setLevel(int l); //changes level of block when level of games changes
 };
 
 class InvalidMoveException {}; // raised if move is invalid
