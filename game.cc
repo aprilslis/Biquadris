@@ -335,8 +335,12 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
     try{
         if(cmpString(input,"blind")){
             cout<<endl<<"**Blind** effect would be applied to Player "<<curNum<<endl;
-            //do something
-            
+            if(curNum==1){
+                textdisplay.setBlind(1);
+            }
+            else{
+                textdisplay.setBlind(2);
+            }
         }
         else if(cmpString(input,"heavy")){
             cout<<endl<<"**Heavy** effect would be applied to Player "<<curNum<<endl;

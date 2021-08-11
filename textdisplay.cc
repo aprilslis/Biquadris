@@ -2,7 +2,7 @@
 
 using namespace std;
 
-TextDisplay::TextDisplay(Grid *g1, Grid *g2) : BaseDisplay{g1,g2}, height{18} {}
+TextDisplay::TextDisplay(Grid *g1, Grid *g2) : BaseDisplay{g1,g2}, height{18}, blind{0} {}
 
 string TextDisplay::topTextBlock(char next) {
         switch(next) {
@@ -63,7 +63,7 @@ string TextDisplay::printBlind(Grid *g, int row) {
 	}
 }
 
-void TextDisplay::printDisplay() {
+void TextDisplay::printNormally() {
         string spacing = "               ";
         string slevel = "Level:    ";
         string sscore = "Score:    ";
@@ -138,3 +138,26 @@ void TextDisplay::printBlindPlayer2() {
         cout << ttb1 << spacing << ttb2 << endl;
         cout << ltb1 << spacing << ltb2 << endl;
 }
+
+
+void TextDisplay::printDisplay(){
+        if(blind==0){
+                printNormally();
+        }
+        else if(blind==1){
+                printBlindPlayer1();
+                blind = 0;
+        }
+        else if(blind==2){
+                printBlindPlayer2();
+                blind = 0;
+        }
+        else{
+                cout<<"error occured in textdisplay"<<endl;
+        }
+}
+
+void TextDisplay::setBlind(int blindness){
+        blind = blindness;
+}
+
