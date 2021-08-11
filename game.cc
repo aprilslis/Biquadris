@@ -324,7 +324,7 @@ void Game::specialEffects(int curNum){
     cin>>input;
 
     Grid *cur;
-    if(curNum==1){
+    if(curNum==2){ //should operate on the other number since you want the opponent to have the effect
         cur = &board1;
     }
     else{
@@ -332,12 +332,15 @@ void Game::specialEffects(int curNum){
     }
 
     try{
-        if(cmpString(input,"blind")){//should opperate on curNum
+        if(cmpString(input,"blind")){
             //do something
+            
         }
         else if(cmpString(input,"heavy")){
             //make cur block heavy
             //makeNextBlockHeavy = true;
+            cur->setHeavy();
+
         }
         else if(cmpString(input,"force")){
             char block;
@@ -372,6 +375,7 @@ void Game::specialEffects(int curNum){
         }
     }
     catch(InvalidCommand e1){
+        cout<<"That was an invalid effect: try again"<<endl;
         specialEffects(curNum);
     }
     catch(...){

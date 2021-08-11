@@ -94,6 +94,8 @@ class Grid{
     void rotateBlockCW();
     void rotateBlockCCW();
     Block *getNextBlock();
+
+    void setHeavy(); //this handles the special effect Heavy
 };
 
 #endif
