@@ -8,7 +8,7 @@ char LBlock::getType(){
 }
 
 void LBlock::moveHeavy() {
-	if (this->isHeavy() == true) {
+	if (level == 4 || level == 3) {
 		moveDown();
 	}
 }
@@ -82,6 +82,9 @@ void LBlock::moveLeft() {
 
     switchBlocks(temp);
     moveHeavy();
+    if (heavy) {
+                moveDown();
+    }
 }
 
 void LBlock::moveRight() {
@@ -100,6 +103,9 @@ void LBlock::moveRight() {
 
     switchBlocks(temp);
     moveHeavy();
+    if (heavy) {
+                moveDown();
+    }
 }
 
 void LBlock::moveHeavyDown() {

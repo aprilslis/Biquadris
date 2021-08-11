@@ -33,3 +33,7 @@ bool Block::isHeavy() {
 void Block::setHeavy() {
 	heavy = true;
 }
+
+void Block::unsetHeavy() {
+        heavy = false;
+}

@@ -8,7 +8,7 @@ char JBlock::getType(){
 }
 
 void JBlock::moveHeavy() {
-	if (this->isHeavy() == true) {
+	if (level == 4 || level == 3) {
 		moveDown();
 	}
 }
@@ -84,6 +84,9 @@ void JBlock::moveLeft() {
 
 	switchBlocks(temp);
 	moveHeavy();
+	if (heavy) {
+                moveDown();
+        }
 }
 
 void JBlock::moveRight() {
@@ -102,6 +105,9 @@ void JBlock::moveRight() {
 
 	switchBlocks(temp);
 	moveHeavy();
+	if (heavy) {
+                moveDown();
+        }
 }
 
 void JBlock::moveHeavyDown() {

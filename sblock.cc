@@ -5,7 +5,7 @@ using namespace std;
 SBlock::SBlock(int level): Block{level} {}
 
 void SBlock::moveHeavy() {
-        if (this->isHeavy() == true) {
+        if (level == 4 || level == 3) {
                 moveDown();
         }
 }
@@ -83,6 +83,9 @@ void SBlock::moveLeft() {
 
 	switchBlocks(temp);
 	moveHeavy();
+	if (heavy) {
+                moveDown();
+	}
 }
 
 void SBlock::moveRight() {					// opposite of moving left
@@ -101,6 +104,9 @@ void SBlock::moveRight() {					// opposite of moving left
 
 	switchBlocks(temp);
 	moveHeavy();
+	if (heavy) {
+                moveDown();
+	}
 }
 
 void SBlock::moveHeavyDown() {

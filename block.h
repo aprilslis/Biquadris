@@ -29,6 +29,7 @@ class Block {
 	int getLevel();
 	bool isHeavy();
 	void setHeavy();
+	void unsetHeavy();
 	void setIdentity(int identity = 0);
 };
 

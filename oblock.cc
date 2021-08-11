@@ -8,7 +8,7 @@ char OBlock::getType(){
 }
 
 void OBlock::moveHeavy() {
-        if (this->isHeavy() == true) {
+        if (level == 4 || level == 3) {
                 moveDown();
         }
 }
@@ -80,6 +80,9 @@ void OBlock::moveLeft() {
 
     switchBlocks(temp);
     moveHeavy();
+    if (heavy) {
+                moveDown();
+    }
 }
 
 void OBlock::moveRight() {
@@ -98,6 +101,9 @@ void OBlock::moveRight() {
 
     switchBlocks(temp);
     moveHeavy();
+    if (heavy) {
+                moveDown();
+    }
 }
 
 void OBlock::moveHeavyDown() {
