@@ -236,7 +236,8 @@ void Game::start(int startlevel){
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"hint")){
-                    //needs to write this funciton in grid
+                    cout << cur->hint() << endl;//gives a hint
+
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"random")){
