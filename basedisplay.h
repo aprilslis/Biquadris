@@ -8,12 +8,14 @@ class BaseDisplay {
 	protected:
 		Grid *g1;
 		Grid *g2;
+		int blind;
 		virtual void printNormally() = 0;
 		virtual void printBlindPlayer1() = 0;
 		virtual void printBlindPlayer2() = 0;
 	public:
         BaseDisplay(Grid *g1, Grid *g2);
-		virtual void printDisplay() = 0;
+		void printDisplay();
+		void setBlind(int blindness);
         	
 };
 

@@ -16,8 +16,6 @@ class TextDisplay: public BaseDisplay {
 
         public:
         TextDisplay(Grid *g1, Grid *g2);
-        void printDisplay() override;
-        void setBlind(int blindness);
 	
 };
 

@@ -2,7 +2,13 @@
 
 using namespace std;
 
-GraphicDisplay::GraphicDisplay(Grid *g1, Grid *g2) : BaseDisplay{g1,g2}, w{new Xwindow(650, 800)}, height{20}, width{20} {}
+GraphicDisplay::GraphicDisplay(Grid *g1, Grid *g2) : 
+BaseDisplay{g1,g2}
+,w{new Xwindow(650, 800)}
+,height{20}
+,width{20}
+,blind{0} 
+{}
 
 GraphicDisplay::~GraphicDisplay() {
 	delete w;
@@ -156,7 +162,7 @@ void GraphicDisplay::printNext(int x, int y, char type) {
 
 }
 
-void GraphicDisplay::printDisplay() {
+void GraphicDisplay::printNormally() {
 	clearWindow();
 	w->drawString(width * 4, height * 2, "Level: " + to_string(g1->getLevelNum()));
 	w->drawString(width * 16, height * 2, "Level: " + to_string(g2->getLevelNum())); 
@@ -194,3 +200,4 @@ void GraphicDisplay::printBlindPlayer2() {
         printNext(width * 4, height * 30, g1->getNextBlock()->getType());
         printNext(width * 16, height * 30, g2->getNextBlock()->getType());
 }
+

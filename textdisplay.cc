@@ -139,25 +139,3 @@ void TextDisplay::printBlindPlayer2() {
         cout << ltb1 << spacing << ltb2 << endl;
 }
 
-
-void TextDisplay::printDisplay(){
-        if(blind==0){
-                printNormally();
-        }
-        else if(blind==1){
-                printBlindPlayer1();
-                blind = 0;
-        }
-        else if(blind==2){
-                printBlindPlayer2();
-                blind = 0;
-        }
-        else{
-                cout<<"error occured in textdisplay"<<endl;
-        }
-}
-
-void TextDisplay::setBlind(int blindness){
-        blind = blindness;
-}
-
