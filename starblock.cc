@@ -43,8 +43,8 @@ void StarBlock::moveLeft() {
 void StarBlock::moveRight() {
 }
 
-void StarBlock::moveHeavyDown() {
-}
+// void StarBlock::moveHeavyDown() {
+// }
 
 void StarBlock::moveDown() {
 }
