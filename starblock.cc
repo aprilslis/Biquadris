@@ -2,13 +2,8 @@
 
 using namespace std;
 
-<<<<<<< HEAD
-StarBlock::StarBlock() : Block{4,-1} {
-=======
-StarBlock::StarBlock(int id) : Block{4, id} {
->>>>>>> 57fe672252728412a9af4452e6e6b7ea457ffa95
-	setIdentity();
-}
+
+StarBlock::StarBlock(int id) : Block{4, id} {}
 
 char StarBlock::getType(){
 	return '*';
