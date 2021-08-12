@@ -36,7 +36,7 @@ Block * Level3::generateRandomBlock(int seed) {
 		}
 	} else {
     		this->seed = seed;
-    		srand(seed);
+    		//srand(seed);
     		int random = rand() % 9 + 1;
     		switch(random) {
         	case 1 : 

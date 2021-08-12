@@ -5,7 +5,6 @@ using namespace std;
 
 Block * Level1::generateRandomBlock(int seed) {
     this->seed = seed;
-    srand(seed);
     int random = rand() % 12 + 1;
     switch(random) {
         case 1 : 
