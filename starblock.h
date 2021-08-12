@@ -8,7 +8,7 @@ class StarBlock : public Block {
     void switchBlocks();
 
     public:
-        StarBlock();
+        StarBlock(int id);
         char getType() override;
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;
