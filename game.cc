@@ -188,11 +188,14 @@ void Game::start(){
                     cur->levelDown();
                 }
                 else if(cmpString(input,"drop")){
-                    cur->dropBlock();
+
+                    for(int i=0;i<multiplier;i++){
+                        cur->dropBlock();
+                        cur->generateBlock();
+                        cur->addBlock();
+                    }
                     int rows = cur->countFullRows();
                     cur->updateScore(); //this counts score and clear full rows
-                    cur->generateBlock();
-                    cur->addBlock();
             
                     if(curNum==1){
                         cur = &board2;
@@ -208,6 +211,8 @@ void Game::start(){
                         specialEffects(curNum);
                         cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
                     }
+
+                    break;
                     
                 }
                 else if(cmpString(input,"I")){
@@ -445,6 +450,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
+    //cout<<"drawing graphic!!!"<<endl;
     //graphicdisplay.printDisplay();
 }
 
@@ -455,12 +461,10 @@ void Game::draw(int multiplier){
         }
         else{
             drawText();
-            //drawGraphic();
+            drawGraphic();
         }
     }
 }
-
-
 
 
 void Game::displayOnlyText(bool t){

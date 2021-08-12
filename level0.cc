@@ -6,6 +6,7 @@
 using namespace std;
 
 Block * Level0::generateRandomBlock(int seed) {
+	cout<<seed<<endl;
 
 	if (pos + 1 == len) {
 		pos = 0;
