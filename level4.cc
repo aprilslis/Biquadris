@@ -38,6 +38,7 @@ Block * Level4::generateRandomBlock(int seed) {
    		 this->seed = seed;
    		 srand(seed);
    		 int random = rand() % 9 + 1;
+                cout<<random<<endl;
    		 switch(random) {
 			 case 1 :
 				 return new IBlock{4};

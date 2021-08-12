@@ -95,7 +95,7 @@ void Grid::clearAllPastBlocks(){
 void Grid::addBlock() { //add a new block at left top corner
 	cur->init(board); 
 	++blocksPlaced;
-	cout << blocksPlaced << " " << unclearedRows << endl;
+	//cout << blocksPlaced << " " << unclearedRows << endl;
 	if (level->getLevel() == 4) {
 		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {
 		 	StarBlock *tempcur = new StarBlock{};

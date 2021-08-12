@@ -9,7 +9,8 @@ board1{"sequence1.txt"}
 ,onlyText{false}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
-,graphicdisplay{&board1,&board2} {}
+//,graphicdisplay{&board1,&board2} 
+{}
 
 bool cmpString(string input, string command){
     return input==command.substr(0,input.size());
@@ -125,10 +126,11 @@ void Game::start(int startlevel){
                 }
             }
         }
-        else{
-            if(!(cin>>input)){
-                break;
-            }
+        else if(restart){
+            break;
+        }
+        else if(!(cin>>input)){
+            break;
         }
         
 
@@ -278,6 +280,7 @@ void Game::start(int startlevel){
             
         }
         catch(LostException e1){
+            cout<<"Player "<<curNum<<"can't make moves anymore!"<<endl;
             if(curNum==1){
                 playerLost = 2;
             }
@@ -334,11 +337,11 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
             cout<<endl<<"**Blind** effect would be applied to Player "<<curNum<<endl;
             if(curNum==1){
                 textdisplay.setBlind(1);
-                graphicdisplay.setBlind(1);
+                //graphicdisplay.setBlind(1);
             }
             else{
                 textdisplay.setBlind(2);
-                graphicdisplay.setBlind(2);
+                //graphicdisplay.setBlind(2);
             }
         }
         else if(cmpString(input,"heavy")){
@@ -434,7 +437,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    graphicdisplay.printDisplay();
+    //graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){
