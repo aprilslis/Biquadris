@@ -188,15 +188,19 @@ void Game::start(){
                     cur->levelDown();
                 }
                 else if(cmpString(input,"drop")){
-
+                    int rows = 0;
                     for(int i=0;i<multiplier;i++){
                         cur->dropBlock();
+                        rows += cur->countFullRows();
+                        cur->updateScore(); //this counts score and clear full rows
                         cur->generateBlock();
                         cur->addBlock();
                     }
-                    int rows = cur->countFullRows();
-                    cur->updateScore(); //this counts score and clear full rows
-            
+                    
+
+                    textdisplay.setBlind(0);
+                    //graphicdisplay.setBlind(0);
+
                     if(curNum==1){
                         cur = &board2;
                         curNum = 2;

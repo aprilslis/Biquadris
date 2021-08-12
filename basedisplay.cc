@@ -10,11 +10,9 @@ void BaseDisplay::printDisplay(){
         }
         else if(blind==1){
                 printBlindPlayer1();
-                blind = 0;
         }
         else if(blind==2){
                 printBlindPlayer2();
-                blind = 0;
         }
         else{
                 cout<<"error occured in textdisplay"<<endl;

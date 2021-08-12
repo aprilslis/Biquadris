@@ -78,12 +78,14 @@ Cell * Grid::getCell(int row, int col) {
 void Grid::removeIds(int row) {
 	for (int i = 0; i < (int)ids.size(); i++) {
 		for (int j = 0; j < width; j++) {
-            //cout<< board[row][j]->getIdentity()<<endl;
 
 			if (ids[i] == board[row][j]->getIdentity()) {
 				--ncells[i];
+            
 				if (ncells[i] == 0) {
 					int amount = (levels[i] + 1) * (levels[i] + 1);
+                    cout<<amount<<endl;
+
 					s->updateScore(amount);
 					ids.erase(ids.begin() + i);
 					levels.erase(levels.begin() + i);
@@ -165,7 +167,7 @@ void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
 
 void Grid::updateScore() {
 	int count = countFullRows();
-	int amount = count * (level->getLevel() + 1) * (level->getLevel() + 1);
+	int amount = (level->getLevel() + count) * (level->getLevel() + count);
     	s->updateScore(amount);
     	if (count > 0) {
         	    unclearedRows = 0;
@@ -240,11 +242,11 @@ int Grid::countFullRows() {
     return count;
 }
 
-void Grid::clearFullRows() { // check for completed rows, return number of rows cleared
+void Grid::clearFullRows() {
     for (int i = height-1; i >= 3; i--) {
         if (isFullRow(i)) {
-		removeIds(i);
-		updateRows(i);
+            removeIds(i);
+            updateRows(i);
             break;
         }
     }
