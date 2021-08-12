@@ -133,7 +133,8 @@ void Grid::addBlock() { //add a new block at left top corner
 	//cout << blocksPlaced << " " << unclearedRows << endl;
 	if (level->getLevel() == 4) {
 		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {
-		 	StarBlock *tempcur = new StarBlock{};
+		 	StarBlock *tempcur = new StarBlock{id};
+			id++;
 		 	tempcur->init(board);
 		 	tempcur->drop();
 		 	delete tempcur;
