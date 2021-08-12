@@ -36,9 +36,9 @@ width{11}
 
     setLevelNum(startLevel);
 
-    cur = level->generateRandomBlock(seed);
+    cur = level->generateRandomBlock(seed, id);
     updateIds(cur);
-    next = level->generateRandomBlock(seed);
+    next = level->generateRandomBlock(seed, id);
     
 }
 
@@ -344,9 +344,9 @@ void Grid::clearGrid() {
     s->resetScore();
     pastBlocks.push_back(cur);
     pastBlocks.push_back(next);
-    cur = level->generateRandomBlock(seed);
+    cur = level->generateRandomBlock(seed, id);
     updateIds(cur);
-    next = level->generateRandomBlock(seed);
+    next = level->generateRandomBlock(seed, id);
 
     blocksPlaced = 0;
     unclearedRows = 0;
@@ -398,7 +398,7 @@ void Grid::generateBlock(){
     pastBlocks.push_back(cur);
     cur = next;
     updateIds(cur);
-    next = level->generateRandomBlock(seed);
+    next = level->generateRandomBlock(seed, id);
 }
 
 void Grid::setDefaultFile(string file){
