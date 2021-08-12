@@ -287,7 +287,8 @@ void Game::start(int startlevel){
             restartGame = true;
         }
         catch(InvalidMoveException e2){
-            cout<<"Can't move that way: try again!"<<endl;
+            draw(multiplier);
+            cout<<"Can't move that way anymore"<<endl;
         }
         catch(InvalidCommand e3){
             cout<<"Invalid command. Please try again:"<<endl;
