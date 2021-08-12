@@ -22,16 +22,14 @@ class Game{
     void drawText();
     void drawGraphic();
   public:
-    Game();
-    void start(int startlevel=0); //start game
-    void restart(int startlevel=0); //restart game
+    Game(std::string file1, std::string file2, int startlevel);
+    void start(); //start game
+    void restart(); //restart game
     void end(int winner=0); //end game
 
     void draw(int multiplier=1);
 
-    void displayOnlyText(bool t); 
-    void setDefaultFile1(std::string file);
-    void setDefaultFile2(std::string file);
+    void displayOnlyText(bool t);
     void setSeed(int seed);
 
 };

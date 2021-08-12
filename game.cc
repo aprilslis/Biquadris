@@ -3,9 +3,9 @@
 
 using namespace std;
 
-Game::Game(): 
-board1{"sequence1.txt"}
-,board2{"sequence2.txt"} 
+Game::Game(string file1, string file2, int startlevel): 
+board1{file1,startlevel}
+,board2{file2,startlevel} 
 ,onlyText{false}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
@@ -81,15 +81,15 @@ bool validifyCmd(string input){
     return count==1;
 }
 
-void Game::start(int startlevel){
+void Game::start(){
 
     //print welcome messages
     cout<<"-----------------------------------------"<<endl;
     cout<<"Welcome to Biquadris! Input your command:"<<endl;
     cout<<"-----------------------------------------"<<endl;
     
-    board1.setLevelNum(startlevel);
-    board2.setLevelNum(startlevel);
+    // board1.setLevelNum(startlevel);
+    // board2.setLevelNum(startlevel);
     
     string input;
     bool checker = false; //sometimes it looks once anyway when it is the end of fileInput, use checker to stop printing current player messages twice
@@ -315,7 +315,7 @@ void Game::start(int startlevel){
     else{
         end(playerLost);
     }
-    if(restartGame) restart(startlevel);
+    if(restartGame) restart();
 }
 
 void Game::specialEffects(int curNum){//curNum is the opponent's number
@@ -397,7 +397,7 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
     
 }
 
-void Game::restart(int startlevel){
+void Game::restart(){
 
     //old boards are delete, new boards is init
     board1.clearGrid();//needs checking
@@ -405,7 +405,7 @@ void Game::restart(int startlevel){
 
     useSeqFile = false;
     
-    start(startlevel);
+    start();
 
 }
 
@@ -459,14 +459,6 @@ void Game::draw(int multiplier){
 
 void Game::displayOnlyText(bool t){
     onlyText = t;
-}
-
-void Game::setDefaultFile1(string file){
-    board1.setDefaultFile(file);
-}
-
-void Game::setDefaultFile2(string file){
-    board2.setDefaultFile(file);
 }
 
 void Game::setSeed(int seed){

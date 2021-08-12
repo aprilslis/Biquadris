@@ -35,7 +35,7 @@ class Grid{
     Level *level; //current level
     int seed;
     std::string defaultFile;
-
+    int startLevel;
 
     Block *cur;
     Block *next;
@@ -53,7 +53,7 @@ class Grid{
     void clearAllPastBlocks(); //free all past block pointers
 
   public:
-    Grid(std::string filename);
+    Grid(std::string filename, int startlevel);
     ~Grid();
 
     int getWidth(); //return width of grid

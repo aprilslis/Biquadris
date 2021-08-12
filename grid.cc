@@ -3,7 +3,28 @@
 
 using namespace std;
 
-Grid::Grid(string filename) : width{11}, height{18}, id{1}, blocksPlaced{0}, unclearedRows{0}, levelNum{0}, seed{0}, defaultFile{filename} { // initialises board
+Grid::Grid(string filename, int startlevel) : 
+width{11}
+,height{18}
+,id{1}
+,blocksPlaced{0}
+,unclearedRows{0}
+,levelNum{startlevel}
+,seed{0}
+,defaultFile{filename}
+,startLevel{startlevel}
+,cur{nullptr}
+,next{nullptr}
+,level{nullptr}
+,s{nullptr}
+{ // initialises board
+    // level = nullptr;
+    // s=nullptr;
+    // cur=nullptr;
+    // next=nullptr;
+
+    
+
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -12,8 +33,9 @@ Grid::Grid(string filename) : width{11}, height{18}, id{1}, blocksPlaced{0}, unc
         board.push_back(temp);
     }
     s = new Score();
-    level = new Level0{};
-    level->init(defaultFile);
+
+    setLevelNum(startLevel);
+
     cur = level->generateRandomBlock(seed);
     updateIds(cur);
     next = level->generateRandomBlock(seed);
@@ -246,6 +268,9 @@ void Grid::levelUp() {
     Level *tmp = level;
     setLevel();
     delete tmp;
+
+    cur->setLevel(levelNum);
+    next->setLevel(levelNum);
 } 
 
 void Grid::levelDown() {
@@ -253,6 +278,9 @@ void Grid::levelDown() {
     Level *tmp = level;
     setLevel();
     delete tmp;
+
+    cur->setLevel(levelNum);
+    next->setLevel(levelNum);
 }
 
 void Grid::setLevel() {
@@ -281,8 +309,7 @@ void Grid::setLevel() {
         default:
             break;
     }
-    cur->setLevel(levelNum);
-    next->setLevel(levelNum);
+    
 }
 
 void Grid::setLevelNum(int n){
@@ -303,12 +330,13 @@ void Grid::clearGrid() {
             board[i][j]->clearCell(); // resets each cell
         }
     }
-    Level *tmp = level;
-    level = new Level0{};
-    level->init(defaultFile);
-    delete tmp;
+    // Level *tmp = level;
+    // level = new Level0{};
+    // level->init(defaultFile);
+    // delete tmp;
+    setLevelNum(startLevel);
 
-    levelNum = 0;
+    levelNum = startLevel;
     //need to reset sequence too
     resetIds();
     s->resetScore();

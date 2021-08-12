@@ -7,7 +7,7 @@ using namespace std;
 
 Block * Level0::generateRandomBlock(int seed) {
 
-	if (pos + 1 > len) {
+	if (pos + 1 == len) {
 		pos = 0;
 	}
 	switch(sequence[pos]) {

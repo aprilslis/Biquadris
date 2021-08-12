@@ -4,7 +4,7 @@ using namespace std;
 
 Block * Level3::generateRandomBlock(int seed) {
 	if (!isRandom) {
-		if (pos + 1 > len) { //considering it is already initilised with filename
+		if (pos + 1 == len) { //considering it is already initilised with filename
 			pos = 0;
 		} 
 		switch(sequence[pos]) {
