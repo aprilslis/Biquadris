@@ -23,7 +23,7 @@ protected:
 public:
 	Level();
 	void init(std::string filename);
-	virtual Block * generateRandomBlock(int seed = 0, int id) = 0;
+	virtual Block * generateRandomBlock(int id, int seed = 0) = 0;
 	virtual int getLevel() = 0;
 	virtual ~Level();
 	void setRandom();

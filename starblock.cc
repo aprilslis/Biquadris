@@ -2,7 +2,7 @@
 
 using namespace std;
 
-StarBlock::StarBlock() : Block{4} {
+StarBlock::StarBlock() : Block{4,-1} {
 	setIdentity();
 }
 

@@ -1,7 +1,7 @@
 #include "oblock.h"
 using namespace std;
 
-OBlock::OBlock(int level): Block{level} {}
+OBlock::OBlock(int level, int i): Block{level,i}{}
 
 char OBlock::getType(){
 	return 'O';

@@ -36,9 +36,9 @@ width{11}
 
     setLevelNum(startLevel);
 
-    cur = level->generateRandomBlock(seed, id);
+    cur = level->generateRandomBlock(id, seed);
     updateIds(cur);
-    next = level->generateRandomBlock(seed, id);
+    next = level->generateRandomBlock(id, seed);
     
 }
 
@@ -80,11 +80,20 @@ void Grid::removeIds(int row) {
 		for (int j = 0; j < width; j++) {
 
 			if (ids[i] == board[row][j]->getIdentity()) {
-				--ncells[i];
+				ncells[i]--;
             
 				if (ncells[i] == 0) {
 					int amount = (levels[i] + 1) * (levels[i] + 1);
                     //cout<<amount<<endl;
+                    
+                    // cout<<"id "<<amount<<endl;
+                    // cout<<"identity "<<ids[i]<<endl;
+                    // cout<<"type "<<board[row][j]->getType()<<endl;
+                    // cout<<"row num "<<row<<endl;
+                    // cout<<"ncells"<<endl;
+                    // for(auto i:ncells){
+                    //     cout<<i<<endl;
+                    // }
 
 					s->updateScore(amount);
 					ids.erase(ids.begin() + i);
@@ -136,25 +145,25 @@ void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
     Block *tmp = cur;
     switch (c){
 	    case 'i':
-            cur = new IBlock{level->getLevel()};
+            cur = new IBlock{level->getLevel(),id};
             break;
         case 'j':
-            cur = new JBlock{level->getLevel()};
+            cur = new JBlock{level->getLevel(),id};
             break;
         case 'l':
-            cur = new LBlock{level->getLevel()};
+            cur = new LBlock{level->getLevel(),id};
             break;
         case 'o':
-            cur = new OBlock{level->getLevel()};
+            cur = new OBlock{level->getLevel(),id};
             break;
         case 's':
-            cur = new SBlock{level->getLevel()};
+            cur = new SBlock{level->getLevel(),id};
             break;
         case 't':
-            cur = new TBlock{level->getLevel()};
+            cur = new TBlock{level->getLevel(),id};
             break;
         case 'z':
-            cur = new ZBlock{level->getLevel()};
+            cur = new ZBlock{level->getLevel(),id};
             break;
         
         default:
@@ -169,6 +178,9 @@ void Grid::updateScore() {
 	int count = countFullRows();
 	int amount = (level->getLevel() + count) * (level->getLevel() + count);
     	s->updateScore(amount);
+
+        // cout<<"rows "<<amount<<endl;
+        
     	if (count > 0) {
         	    unclearedRows = 0;
     	} else {
@@ -344,9 +356,9 @@ void Grid::clearGrid() {
     s->resetScore();
     pastBlocks.push_back(cur);
     pastBlocks.push_back(next);
-    cur = level->generateRandomBlock(seed, id);
+    cur = level->generateRandomBlock(id, seed);
     updateIds(cur);
-    next = level->generateRandomBlock(seed, id);
+    next = level->generateRandomBlock(id, seed);
 
     blocksPlaced = 0;
     unclearedRows = 0;
@@ -398,7 +410,7 @@ void Grid::generateBlock(){
     pastBlocks.push_back(cur);
     cur = next;
     updateIds(cur);
-    next = level->generateRandomBlock(seed, id);
+    next = level->generateRandomBlock(id, seed);
 }
 
 void Grid::setDefaultFile(string file){

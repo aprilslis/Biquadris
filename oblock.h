@@ -10,7 +10,7 @@ class OBlock : public Block {
     void switchBlocks(std::vector<Cell *> other);
   
     public:
-        OBlock(int level);
+        OBlock(int level, int i);
         char getType() override;
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;

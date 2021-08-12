@@ -2,7 +2,7 @@
 
 using namespace std;
 
-TBlock::TBlock(int level): Block{level} {}
+TBlock::TBlock(int level, int i): Block{level,i}{}
 
 // void TBlock::moveHeavy() {
 // 	if (level == 4 || level == 3) {

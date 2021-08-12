@@ -3,7 +3,7 @@
 #include "level1.h"
 using namespace std;
 
-Block * Level1::generateRandomBlock(int seed, int id) {
+Block * Level1::generateRandomBlock(int id, int seed) {
     this->seed = seed;
     int random = rand() % 12 + 1;
     switch(random) {

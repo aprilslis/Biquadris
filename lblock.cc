@@ -1,7 +1,7 @@
 #include "lblock.h"
 using namespace std;
 
-LBlock::LBlock(int level): Block{level} {}
+LBlock::LBlock(int level, int i): Block{level,i}{}
 
 char LBlock::getType(){
 	return 'L';

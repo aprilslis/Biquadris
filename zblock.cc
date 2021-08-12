@@ -1,7 +1,7 @@
 #include "zblock.h"
 using namespace std;
 
-ZBlock::ZBlock(int level): Block{level} {}
+ZBlock::ZBlock(int level, int i): Block{level,i}{}
 
 // void ZBlock::moveHeavy() {
 //         if (level == 4 || level == 3) {

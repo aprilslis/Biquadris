@@ -1,7 +1,7 @@
 #include "jblock.h"
 using namespace std;
 
-JBlock::JBlock(int level): Block{level} {}
+JBlock::JBlock(int level, int i): Block{level,i}{}
 
 char JBlock::getType(){
 	return 'J';

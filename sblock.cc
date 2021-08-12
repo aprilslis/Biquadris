@@ -2,7 +2,7 @@
 
 using namespace std;
 
-SBlock::SBlock(int level): Block{level} {}
+SBlock::SBlock(int level, int i): Block{level,i}{}
 
 // void SBlock::moveHeavy() {
 //         if (level == 4 || level == 3) {

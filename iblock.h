@@ -11,7 +11,7 @@ class IBlock : public Block {
 
     public:
 
-        IBlock(int level);
+        IBlock(int level, int i);
         char getType() override;
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;

@@ -10,7 +10,7 @@ class TBlock : public Block {
     void switchBlocks(std::vector<Cell *> other);
 
     public:
-        TBlock(int level);
+        TBlock(int level, int i);
 	char getType() override;
         void init(std::vector<std::vector<Cell *>> &g) override;
         void lost() override;

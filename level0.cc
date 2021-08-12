@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Block * Level0::generateRandomBlock(int seed, int id) {
+Block * Level0::generateRandomBlock(int id, int seed) {
 
 	if (pos + 1 == len) {
 		pos = 0;
