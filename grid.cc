@@ -84,7 +84,7 @@ void Grid::removeIds(int row) {
             
 				if (ncells[i] == 0) {
 					int amount = (levels[i] + 1) * (levels[i] + 1);
-                    cout<<amount<<endl;
+                    //cout<<amount<<endl;
 
 					s->updateScore(amount);
 					ids.erase(ids.begin() + i);
