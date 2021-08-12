@@ -6,11 +6,13 @@
 using namespace std;
 
 Block * Level0::generateRandomBlock(int seed) {
-	cout<<seed<<endl;
 
 	if (pos + 1 == len) {
 		pos = 0;
 	}
+
+	cout<<sequence[pos]<<endl;
+
 	switch(sequence[pos]) {
 		case 'I' : 
 			++pos;
@@ -38,6 +40,7 @@ Block * Level0::generateRandomBlock(int seed) {
 			cout<<"not getting a block!!! (level 0)"<<endl;
 			return nullptr;
 	}
+
 }
 
 int Level0::getLevel() {

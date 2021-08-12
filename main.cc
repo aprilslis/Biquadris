@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
             }
         }
     }
-    Game g{file1,file1,startLevel};
+    Game g{file1,file2,startLevel};
     if(onlyText) g.displayOnlyText(true);
     g.setSeed(seed);
     srand(seed);
