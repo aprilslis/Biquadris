@@ -83,7 +83,6 @@ void JBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 void JBlock::moveRight() {
@@ -101,7 +100,6 @@ void JBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 
@@ -189,7 +187,6 @@ void JBlock::rotateCW() {
 		switchBlocks(temp);
 		pos = 1;
 	}
-	moveHeavy();
 }
 
 void JBlock::rotateCCW() {
@@ -237,5 +234,4 @@ void JBlock::rotateCCW() {
 		switchBlocks(temp);
 		--pos;
 	}
-	moveHeavy();
 }

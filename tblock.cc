@@ -82,7 +82,6 @@ void TBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 void TBlock::moveRight() {
@@ -100,7 +99,6 @@ void TBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 // void TBlock::moveHeavyDown() {
@@ -179,7 +177,6 @@ void TBlock::rotateCW() {
 		switchBlocks(temp);
 		pos = 1;
 	}
-	moveHeavy();
 }
 
 void TBlock::rotateCCW() {
@@ -227,5 +224,4 @@ void TBlock::rotateCCW() {
 		switchBlocks(temp);
 		--pos;
 	}
-	moveHeavy();
 }

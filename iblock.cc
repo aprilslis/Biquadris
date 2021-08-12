@@ -87,7 +87,7 @@ void IBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
+	//moveHeavy();
 }
 
 void IBlock::moveRight() {
@@ -105,7 +105,7 @@ void IBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
+	//moveHeavy();
 }
 
 // void IBlock::moveHeavyDown() {
@@ -164,7 +164,7 @@ void IBlock::rotateCW() {
 		switchBlocks(temp);
 		--pos;
 	}
-	moveHeavy();
+	//moveHeavy();
 
 }
 

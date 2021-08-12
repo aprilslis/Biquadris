@@ -79,7 +79,6 @@ void OBlock::moveLeft() {
     }
 
     switchBlocks(temp);
-    moveHeavy();
 }
 
 void OBlock::moveRight() {
@@ -97,7 +96,6 @@ void OBlock::moveRight() {
     }
 
     switchBlocks(temp);
-    moveHeavy();
 }
 
 // void OBlock::moveHeavyDown() {
@@ -133,9 +131,7 @@ void OBlock::drop() {
 }
 
 void OBlock::rotateCW() { // rotation does not affect spatial configuration
-    moveHeavy();
 }
 
 void OBlock::rotateCCW() { // rotation does not affect spatial configuration
-    moveHeavy();
 }

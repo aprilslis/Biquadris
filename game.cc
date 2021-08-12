@@ -152,7 +152,6 @@ void Game::start(int startlevel){
         }
 
         
-       
         //interpret commands
         try{
             
@@ -267,6 +266,8 @@ void Game::start(int startlevel){
                     break;
                 }
             }
+            if(multiplier!=0) cur->moveHeavy();
+            
             //display stuffs
             draw(multiplier);
             if(checker){

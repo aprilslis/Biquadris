@@ -100,6 +100,7 @@ class Grid{
     Block *getNextBlock();
 
     void setHeavy(); //this handles the special effect Heavy
+    void moveHeavy();
 };
 
 #endif

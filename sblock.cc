@@ -82,7 +82,6 @@ void SBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 void SBlock::moveRight() {					// opposite of moving left
@@ -100,7 +99,6 @@ void SBlock::moveRight() {					// opposite of moving left
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 // void SBlock::moveHeavyDown() {
@@ -159,7 +157,6 @@ void SBlock::rotateCW() {
 		switchBlocks(temp);
 	    --pos;
 	}
-	moveHeavy();
 }
 
 void SBlock::rotateCCW() {  // CCW and CW have same effect as there are 2 positions in SBlock

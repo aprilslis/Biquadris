@@ -427,3 +427,6 @@ void Grid::setHeavy(){ //this handles the special effect Heavy
     cur->setHeavy();
 }
 
+void Grid::moveHeavy(){
+    cur->moveHeavy();
+}

@@ -81,7 +81,6 @@ void LBlock::moveLeft() {
     }
 
     switchBlocks(temp);
-    moveHeavy();
 }
 
 void LBlock::moveRight() {
@@ -99,7 +98,6 @@ void LBlock::moveRight() {
     }
 
     switchBlocks(temp);
-    moveHeavy();
 }
 
 // void LBlock::moveHeavyDown() {
@@ -178,7 +176,6 @@ void LBlock::rotateCW() {
         switchBlocks(temp);
         pos = 1;
     }
-    moveHeavy();
 }
 
 void LBlock::rotateCCW() {
@@ -226,5 +223,4 @@ void LBlock::rotateCCW() {
         switchBlocks(temp);
         --pos;
     }
-    moveHeavy();
 }

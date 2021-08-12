@@ -81,7 +81,6 @@ void ZBlock::moveLeft() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 void ZBlock::moveRight() {
@@ -99,7 +98,6 @@ void ZBlock::moveRight() {
 	}
 
 	switchBlocks(temp);
-	moveHeavy();
 }
 
 // void ZBlock::moveHeavyDown() {
@@ -158,7 +156,6 @@ void ZBlock::rotateCW() {
 		switchBlocks(temp);
 	    --pos;
 	}
-	moveHeavy();
 }
 
 void ZBlock::rotateCCW() {  // CCW and CW have same effect as there are 2 positions in ZBlock
