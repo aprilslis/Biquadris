@@ -199,6 +199,7 @@ void Game::start(int startlevel){
                     }
                     //check special effects here
                     if (rows >= 2) {
+                        draw(multiplier);
                         specialEffects(curNum);
                         cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
                     }
@@ -267,7 +268,7 @@ void Game::start(int startlevel){
                 }
             }
             if(multiplier!=0) cur->moveHeavy();
-            
+
             //display stuffs
             draw(multiplier);
             if(checker){
