@@ -13,7 +13,7 @@ char StarBlock::getType(){
 void StarBlock::switchBlocks() {
 	int row = lowerleft->getRow();
 	int col = lowerleft->getCol();
-	if (row + 1 > 10 || grid[row + 1][col]->getType() != '\0') {
+	if (row + 1 > 17 || grid[row + 1][col]->getType() != '\0') {
 		throw InvalidMoveException {};
 	}
 	Cell *other = grid[row + 1][col];
@@ -51,7 +51,9 @@ void StarBlock::moveDown() {
 
 void StarBlock::drop() {
 	try {
-		switchBlocks();
+		while (true) {
+			switchBlocks();
+		}
 	} catch (InvalidMoveException &e) {
 	}
 }
