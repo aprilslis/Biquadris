@@ -11,7 +11,7 @@ class BaseDisplay {
 		int blind;
 		
 	public:
-        BaseDisplay(Grid *g1, Grid *g2);
+       		BaseDisplay(Grid *g1, Grid *g2);
 		virtual void printNormally() = 0;
 		virtual void printBlindPlayer1() = 0;
 		virtual void printBlindPlayer2() = 0;

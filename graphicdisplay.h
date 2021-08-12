@@ -7,8 +7,8 @@
 
 class GraphicDisplay: public BaseDisplay {
 	Xwindow *w;
-    const int height;
-    const int width;
+    	const int height;
+    	const int width;
 	int blind; //records if special effect blind is applied (0 is no one, 1 is player 1, 2 is player 2)
 
 	void printCell(char type, int x, int y);

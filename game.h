@@ -34,7 +34,6 @@ class Game{
     void setDefaultFile2(std::string file);
     void setSeed(int seed);
 
-
 };
 
 class InvalidCommand{};//raised when command is invalid

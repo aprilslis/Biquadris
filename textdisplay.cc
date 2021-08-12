@@ -49,7 +49,7 @@ string TextDisplay::lowTextBlock(char next) {
 string TextDisplay::printBlind(Grid *g, int row) {
 	string qmarks = "???????";
 	string result = "";
-	if (row > 2 && row < 12) {
+	if (row >= 5 && row <= 16) {
 		for (int j = 0; j < 2; j++) {
 			result += g->getCell(row, j)->getType();
 		}

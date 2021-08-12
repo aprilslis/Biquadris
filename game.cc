@@ -3,18 +3,13 @@
 
 using namespace std;
 
-
 Game::Game(): 
 board1{"sequence1.txt"}
 ,board2{"sequence2.txt"} 
 ,onlyText{false}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
-,graphicdisplay{&board1,&board2} 
-{
-    
-}
-
+,graphicdisplay{&board1,&board2} {}
 
 bool cmpString(string input, string command){
     return input==command.substr(0,input.size());
@@ -448,7 +443,7 @@ void Game::draw(int multiplier){
         }
         else{
             drawText();
-            drawGraphic();
+            //drawGraphic();
         }
     }
 }
