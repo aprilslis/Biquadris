@@ -5,7 +5,7 @@
 
 class Level1: public Level {
 	public:
-	Block * generateRandomBlock(int seed = 0) override;
+	Block * generateRandomBlock(int seed = 0, int id) override;
 	int getLevel() override;
 };
 
