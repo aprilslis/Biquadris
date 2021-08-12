@@ -16,7 +16,6 @@ Grid::Grid(string filename) : width{11}, height{18}, id{1}, blocksPlaced{0}, unc
     level->init(defaultFile);
     cur = level->generateRandomBlock(seed);
     updateIds(cur);
-    ++blocksPlaced;
     next = level->generateRandomBlock(seed);
     
 }
@@ -98,7 +97,7 @@ void Grid::addBlock() { //add a new block at left top corner
 	++blocksPlaced;
 	cout << blocksPlaced << " " << unclearedRows << endl;
 	if (level->getLevel() == 4) {
-		if (blocksPlaced % 5 == 0 && unclearedRows > 0) {
+		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {
 		 	StarBlock *tempcur = new StarBlock{};
 		 	tempcur->init(board);
 		 	tempcur->drop();
@@ -320,6 +319,9 @@ void Grid::clearGrid() {
     cur = level->generateRandomBlock(seed);
     updateIds(cur);
     next = level->generateRandomBlock(seed);
+
+    blocksPlaced = 0;
+    unclearedRows = 0;
 
     clearAllPastBlocks();
     
