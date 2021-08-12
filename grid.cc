@@ -56,6 +56,8 @@ Cell * Grid::getCell(int row, int col) {
 void Grid::removeIds(int row) {
 	for (int i = 0; i < (int)ids.size(); i++) {
 		for (int j = 0; j < width; j++) {
+            //cout<< board[row][j]->getIdentity()<<endl;
+
 			if (ids[i] == board[row][j]->getIdentity()) {
 				--ncells[i];
 				if (ncells[i] == 0) {
@@ -244,9 +246,6 @@ void Grid::levelUp() {
     Level *tmp = level;
     setLevel();
     delete tmp;
-
-    cur->setLevel(levelNum);
-    next->setLevel(levelNum);
 } 
 
 void Grid::levelDown() {
@@ -254,9 +253,6 @@ void Grid::levelDown() {
     Level *tmp = level;
     setLevel();
     delete tmp;
-
-    cur->setLevel(levelNum);
-    next->setLevel(levelNum);
 }
 
 void Grid::setLevel() {
@@ -285,6 +281,8 @@ void Grid::setLevel() {
         default:
             break;
     }
+    cur->setLevel(levelNum);
+    next->setLevel(levelNum);
 }
 
 void Grid::setLevelNum(int n){

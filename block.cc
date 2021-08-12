@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Block::Block(int level) {
+Block::Block(int level):identity{0} {
 	this->level = level;
 	heavy = false;
 }

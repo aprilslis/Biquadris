@@ -126,7 +126,7 @@ void Game::start(int startlevel){
                 }
             }
         }
-        else if(restart){
+        else if(restartGame){
             break;
         }
         else if(!(cin>>input)){

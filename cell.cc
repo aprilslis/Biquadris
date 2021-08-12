@@ -25,6 +25,7 @@ void Cell::setIdentity(int identity) {
 }
 
 int Cell::getIdentity() {
+        
         return identity;
 }
 
