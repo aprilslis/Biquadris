@@ -14,7 +14,7 @@ class Block {
 	bool heavy;
         
         public:
-	Block(int level);
+	Block(int level, int i);
 	virtual ~Block();
         virtual char getType() = 0;
         virtual void init(std::vector<std::vector<Cell *>> &g) = 0; 
