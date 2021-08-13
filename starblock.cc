@@ -3,7 +3,7 @@
 using namespace std;
 
 
-StarBlock::StarBlock(int level, int id) : Block{4, id} {}
+StarBlock::StarBlock(int level, int id) : Block{level, id} {}
 
 char StarBlock::getType(){
 	return '*';
