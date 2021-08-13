@@ -2,9 +2,8 @@
 #include <iostream>
 using namespace std;
 
-Block::Block(int level, int i) : identity{i} {
-	this->level = level;
-	heavy = false;
+Block::Block(int level, int i) : level{level}, identity{i}, heavy{false} {
+
 }
 
 Block::~Block(){
