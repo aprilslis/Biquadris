@@ -68,9 +68,9 @@ void Grid::updateIds(Block *b) {
 	ids.push_back(id); 
 	levels.push_back(level->getLevel());
 	if (b->getType() == '*') {
-		ncells.push_back(4);
-	} else {
 		ncells.push_back(1);
+	} else {
+		ncells.push_back(4);
 	}
 	++id;
 }
