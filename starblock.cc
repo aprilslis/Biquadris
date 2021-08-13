@@ -21,7 +21,6 @@ void StarBlock::switchBlocks() {
 	block.clear();
 	lowerleft = other;
 	block.push_back(lowerleft);
-	block[0]->setIdentity(identity);
 }
 
 void StarBlock::init(vector<vector<Cell *>> &g) {
@@ -29,6 +28,7 @@ void StarBlock::init(vector<vector<Cell *>> &g) {
 	lost();
 	lowerleft = grid[3][5];
 	block.push_back(lowerleft);
+	block[0]->setIdentity(identity);
 }
 
 void StarBlock::lost() {
