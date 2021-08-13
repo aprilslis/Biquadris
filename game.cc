@@ -160,23 +160,23 @@ void Game::start(){
 
                 else if(cmpString(input,"left")){
                     cur->moveBlockLeft();
-                    if(i==1) cur->moveHeavy();
+                    if(i==0) cur->moveHeavy();
                 }
                 else if(cmpString(input,"right")){
                     cur->moveBlockRight();
-                    if(i==1) cur->moveHeavy();
+                    if(i==0) cur->moveHeavy();
                 }
                 else if(cmpString(input,"down")){
                     cur->moveBlockDown();
-                    if(i==1) cur->moveHeavy();
+                    if(i==0) cur->moveHeavy();
                 }
                 else if(cmpString(input,"clockwise")){
                     cur->rotateBlockCW();
-                    if(i==1) cur->moveHeavy();
+                    if(i==0) cur->moveHeavy();
                 }
                 else if(cmpString(input,"counterclockwise")){
                     cur->rotateBlockCCW();
-                    if(i==1) cur->moveHeavy();
+                    if(i==0) cur->moveHeavy();
                 }
                 else if(cmpString(input,"levelup")){
                     cur->levelUp();
