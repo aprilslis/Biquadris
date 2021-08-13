@@ -1,19 +1,8 @@
-T
-2cl
-dr
-O
-ri
-dr
-S
+seq tests/t2
+blind
+I
 cl
-2ri
 dr
-T
-5ri
-dr
-O
-4ri
-dr
-S
-3ri
+heavy
+6ri
 dr
