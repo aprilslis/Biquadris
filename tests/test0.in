@@ -1,5 +1,5 @@
 sequence tests/t0
 restart
-sequence tests/t0
+seq tests/t0
 hint
-10dr
+10drop

@@ -413,7 +413,7 @@ void Game::restart(){
     board2.clearGrid();
     useSeqFile = false;
     textdisplay.setBlind(0);
-    graphicdisplay.setBlind(0);
+    //graphicdisplay.setBlind(0);
 
     start();
 }
@@ -450,7 +450,7 @@ void Game::end(int winner){
     }
     cout<<highscore;
     cout<<" achieved by";
-    cout<<"Player 1"<<;;
+    cout<<"Player 1"<<endl;
     cout<<" ------"<<endl<<endl;
 }
 
@@ -459,7 +459,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    graphicdisplay.printDisplay();
+    //graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){
