@@ -31,33 +31,34 @@ Block * Level3::generateRandomBlock(int id, int seed) {
 				return new TBlock{3, id};
 			default :
 				++pos;
-				cout<<"not getting a block!!! (level 3)"<<endl;
+				cout<<"not getting a block!!! (level 3)"<<endl; //an error message useful for testing
 				return nullptr;
 		}
-	} else {
-    		this->seed = seed;
-    		//srand(seed);
-    		int random = rand() % 9 + 1;
-    		switch(random) {
-        	case 1 : 
-            		return new IBlock{3, id};
-        	case 2 :
-       		     	return new JBlock{3, id};
-       		case 3:
-            		return new LBlock{3, id};
-        	case 4 : 
-        	    	return new OBlock{3, id};
-        	case 5 :
-		case 6 :
-           		return new SBlock{3, id};
-        	case 7 :
-		case 8 : 
-            		return new ZBlock{3, id};
-        	case 9 : 
-            		return new TBlock{3, id};
-		default :
-	    		return nullptr;    
-    		}
+	} 
+    else {
+        this->seed = seed;
+        //srand(seed);
+        int random = rand() % 9 + 1;
+        switch(random) {
+            case 1 : 
+                return new IBlock{3, id};
+            case 2 :
+                return new JBlock{3, id};
+            case 3:
+                return new LBlock{3, id};
+            case 4 : 
+                return new OBlock{3, id};
+            case 5 :
+            case 6 :
+                return new SBlock{3, id};
+            case 7 :
+            case 8 : 
+                return new ZBlock{3, id};
+            case 9 : 
+                return new TBlock{3, id};
+            default :
+                return nullptr;    
+    	}
 	}
 }
 

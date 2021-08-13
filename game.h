@@ -8,33 +8,33 @@
 
 class Game{
 
-    std::string fileCmds;
-    bool useSeqFile;
+    std::string fileCmds; //this is for the commannd "sequence file", this would store the content of input file
+    bool useSeqFile;      //if current game is using the file input, fileCmds
 
-    Grid board1;
-    Grid board2;
+    Grid board1; //player 1's game board
+    Grid board2; //player 2's game board
 
-    bool onlyText;
-    TextDisplay textdisplay;
-    //GraphicDisplay graphicdisplay;
+    bool onlyText;                 //if game only displays text (no graphic display)
+    TextDisplay textdisplay;       //text display of game
+    //GraphicDisplay graphicdisplay; //graphic display of game
 
-    void specialEffects(int curNum);
-    void drawText();
-    void drawGraphic();
-  public:
-    Game(std::string file1, std::string file2, int startlevel);
-    void start(); //start game
-    void restart(); //restart game
-    void end(int winner=0); //end game
+    void specialEffects(int curNum); //handle special actions of player when cleared more than 1 row
+    void drawText();                 //show text display of current game
+    void drawGraphic();              //show graphic display current game
 
-    void draw(int multiplier=1);
+public:
+    Game(std::string file1, std::string file2, int startlevel); //constructor
+    void start();                                               //start game
+    void restart();                                             //restart game
+    void end(int winner = 0);                                   //end game
 
-    void displayOnlyText(bool t);
-    void setSeed(int seed);
+    void draw(int multiplier = 1); //show display of game
 
+    void displayOnlyText(bool t); //set value of field onlyText
+    void setSeed(int seed);       //set seed of game
 };
 
-class InvalidCommand{};//raised when command is invalid
-class CannotOpenFile{};//raised when the input file cant be found/opened
+class InvalidCommand{}; //raised when command is invalid
+class CannotOpenFile{}; //raised when the input file cant be found/opened
 
 #endif

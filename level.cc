@@ -4,6 +4,10 @@ using namespace std;
 
 Level::Level(): pos{-1}, isRandom{true} {}
 
+Level::~Level(){
+    //empty
+}
+
 void Level::init(string filename) {
 	ifstream f{filename};
 	string seq((istreambuf_iterator<char>(f)),(istreambuf_iterator<char>()));
@@ -18,8 +22,4 @@ void Level::setRandom() {
 
 void Level::setNoRandom() {
 	isRandom = false;
-}
-
-Level::~Level(){
-    //empty
 }

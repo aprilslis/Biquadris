@@ -4,12 +4,6 @@ using namespace std;
 
 SBlock::SBlock(int level, int i): Block{level,i}{}
 
-// void SBlock::moveHeavy() {
-//         if (level == 4 || level == 3) {
-//                 moveDown();
-//         }
-// }
-
 char SBlock::getType() {
 	return 'S';
 }
@@ -17,7 +11,7 @@ char SBlock::getType() {
 void SBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
-	        block[i]->setType('\0'); 
+	    block[i]->setType('\0'); 
 		block[i]->setIdentity(0);
 	}
 
@@ -26,10 +20,10 @@ void SBlock::switchBlocks(vector<Cell *> other) {
 	    if (other[i]->isFull()) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
-	                block[j]->setType('S');
-			block[j]->setIdentity(identity);
-	         }
-	         throw InvalidMoveException();
+	            block[j]->setType('S');
+			    block[j]->setIdentity(identity);
+	        }
+	        throw InvalidMoveException();
 	    }
 	} 
 
@@ -37,7 +31,7 @@ void SBlock::switchBlocks(vector<Cell *> other) {
 	block.clear();
 	block = other;
 	for (int i = 0; i < size; i++) {
-	        block[i]->setType('S'); 
+	    block[i]->setType('S'); 
 		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
@@ -101,11 +95,6 @@ void SBlock::moveRight() {					// opposite of moving left
 	switchBlocks(temp);
 }
 
-// void SBlock::moveHeavyDown() {
-// 	moveDown();
-// 	moveDown();
-// }
-
 void SBlock::moveDown() {
 	for (int i = 0; i < size; i++) {
 		if (block[i]->getRow() + 1 > 17) {
@@ -128,7 +117,8 @@ void SBlock::drop() {
 		while(true) {
 			moveDown();
 		}
-	} catch (InvalidMoveException &e) {
+	}
+    catch (InvalidMoveException &e) {
 	}
 }
 
@@ -140,10 +130,10 @@ void SBlock::rotateCW() {
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException();
 		}
-        	temp.push_back(grid[row][col + 1]);
-        	temp.push_back(grid[row - 1][col]);
+        temp.push_back(grid[row][col + 1]);
+        temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col+1]);
-        	temp.push_back(grid[row - 2][col]);
+        temp.push_back(grid[row - 2][col]);
 		switchBlocks(temp);
 		++pos;
 	} else if (pos == 2) {

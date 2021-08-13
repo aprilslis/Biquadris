@@ -1,18 +1,17 @@
 #ifndef _SCORE_H_
 #define _SCORE_H_
 
+class Score{
+    int score;     //current score
+    int highscore; //highest score ever achieved
 
-class Score {
-    int score;
-    int highscore;
-  public:
-    	Score();
-    	int getScore();
-	int getHighScore();
-	void updateScore(int val);
-	void resetScore();
-	virtual ~Score();
-  
+public:
+    Score();                   //constructor
+    virtual ~Score();          //destructor
+    int getScore();            //return current score
+    int getHighScore();        //return highest score
+    void updateScore(int val); //update the score to be integar val
+    void resetScore();         //reset the score
 };
 
 #endif

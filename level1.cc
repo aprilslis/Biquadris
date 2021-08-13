@@ -27,10 +27,10 @@ Block * Level1::generateRandomBlock(int id, int seed) {
         case 12 : 
             return new SBlock{1, id};
         default :
-	    return nullptr;
+	        return nullptr;
     }
 } 
 
 int Level1::getLevel() {
-        return 1;
+    return 1;
 }

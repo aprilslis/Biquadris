@@ -4,10 +4,10 @@
 #include "level.h"
 #include <string>
 
-class Level0: public Level {
+class Level0 : public Level{
 public:
-	Block * generateRandomBlock(int id, int seed = 0) override;
-	int getLevel() override;
+    Block *generateRandomBlock(int id, int seed = 0) override; //generate a block input
+    int getLevel() override;                                   //return current level
 };
 
 #endif

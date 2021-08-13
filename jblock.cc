@@ -7,17 +7,11 @@ char JBlock::getType(){
 	return 'J';
 }
 
-// void JBlock::moveHeavy() {
-// 	if (level == 4 || level == 3) {
-// 		moveDown();
-// 	}
-// }
-
 
 void JBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
-	        block[i]->setType('\0'); 
+	    block[i]->setType('\0'); 
 		block[i]->setIdentity(0);
 	}
 
@@ -26,10 +20,10 @@ void JBlock::switchBlocks(vector<Cell *> other) {
 	    if (other[i]->isFull()) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
-	                block[j]->setType('J');
-			block[j]->setIdentity(identity);
-	         }
-	         throw InvalidMoveException();
+	            block[j]->setType('J');
+			    block[j]->setIdentity(identity);
+	        }
+	        throw InvalidMoveException();
 	    }
 	} 
 
@@ -37,7 +31,7 @@ void JBlock::switchBlocks(vector<Cell *> other) {
 	block.clear();
 	block = other;
 	for (int i = 0; i < size; i++) {
-	        block[i]->setType('J');
+	    block[i]->setType('J');
 		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
@@ -48,7 +42,7 @@ void JBlock::init(std::vector<std::vector<Cell *>> &g) {
 	pos = 1;
 	size = 4;
 	lost(); // checking whether the initial position of the block is empty
-	//pushing the initial configuration into our block vector 
+	        //pushing the initial configuration into our block vector 
 	lowerleft = grid[3][0];
 	block.push_back(lowerleft);
 	block.push_back(grid[3][1]);
@@ -156,7 +150,8 @@ void JBlock::rotateCW() {
 		temp.push_back(grid[row - 2][col + 1]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 2) { // pos 2 -> pos 3
+	} 
+    else if (pos == 2) { // pos 2 -> pos 3
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException();
 		}
@@ -166,7 +161,8 @@ void JBlock::rotateCW() {
 		temp.push_back(grid[row - 1][col + 2]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 3) { // pos 3 -> pos 4
+	} 
+    else if (pos == 3) { // pos 3 -> pos 4
 		if (row - 1 < 0 || row - 2  < 0 || col - 1 < 0 || col - 2 < 0) {
 			throw InvalidMoveException();
 		}
@@ -176,7 +172,8 @@ void JBlock::rotateCW() {
 		temp.push_back(grid[row - 2][col - 1]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 4) { // pos 4 -> pos 1
+	} 
+    else if (pos == 4) { // pos 4 -> pos 1
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException();
 		}
@@ -203,7 +200,8 @@ void JBlock::rotateCCW() {
 		temp.push_back(grid[row - 2][col + 1]);
 		switchBlocks(temp);
 		pos = 4;
-	} else if (pos == 4) { // pos 4 -> pos 3
+	} 
+    else if (pos == 4) { // pos 4 -> pos 3
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException();
 		}
@@ -213,7 +211,8 @@ void JBlock::rotateCCW() {
 		temp.push_back(grid[row - 1][col + 2]);
 		switchBlocks(temp);
 		--pos;
-	} else if (pos == 3) { // pos 3 -> pos 2
+	} 
+    else if (pos == 3) { // pos 3 -> pos 2
 		if (row - 1 < 0 || row - 2 < 0 || col - 1 < 0 || col - 2 < 0) {
 			throw InvalidMoveException();
 		}
@@ -223,7 +222,8 @@ void JBlock::rotateCCW() {
 		temp.push_back(grid[row - 2][col - 1]);
 		switchBlocks(temp);
 		--pos;
-	} else if (pos == 2) { // pos 2 -> pos 1
+	} 
+    else if (pos == 2) { // pos 2 -> pos 1
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException();
 		}

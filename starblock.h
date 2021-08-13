@@ -5,19 +5,19 @@
 
 class StarBlock : public Block {
 
-    void switchBlocks();
+    void switchBlocks(); //helper function of moveDown()
 
-    public:
-        StarBlock(int id);
-        char getType() override;
-        void init(std::vector<std::vector<Cell *>> &g) override;
-        void lost() override;
-        void moveLeft() override;
-        void moveRight() override;
-        void moveDown() override;
-        void drop() override;
-	void rotateCW() override;
-	void rotateCCW() override;
+public:
+    StarBlock(int level, int i);                             //constructor
+    char getType() override;                                 //return the type of block (*)
+    void init(std::vector<std::vector<Cell *>> &g) override; //initialize the block
+    void lost() override;                                    //check if losing condition has been met
+    void moveLeft() override;                                //not used
+    void moveRight() override;                               //not used
+    void moveDown() override;                                //not used
+    void drop() override;                                    //drop the block down
+    void rotateCW() override;                                //not used
+    void rotateCCW() override;                               //not used
 
 };
 

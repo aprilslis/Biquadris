@@ -3,12 +3,6 @@ using namespace std;
 
 ZBlock::ZBlock(int level, int i): Block{level,i}{}
 
-// void ZBlock::moveHeavy() {
-//         if (level == 4 || level == 3) {
-//                 moveDown();
-//         }
-// }
-
 char ZBlock::getType() {
 	return 'Z';
 }
@@ -16,7 +10,7 @@ char ZBlock::getType() {
 void ZBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
-	        block[i]->setType('\0'); 
+	    block[i]->setType('\0'); 
 		block[i]->setIdentity(0);
 	}
 
@@ -25,10 +19,10 @@ void ZBlock::switchBlocks(vector<Cell *> other) {
 	    if (other[i]->isFull()) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
-	                block[j]->setType('Z');
-			block[j]->setIdentity(identity);
-	         }
-	         throw InvalidMoveException();
+	            block[j]->setType('Z');
+			    block[j]->setIdentity(identity);
+	        }
+	        throw InvalidMoveException();
 	    }
 	} 
 
@@ -36,7 +30,7 @@ void ZBlock::switchBlocks(vector<Cell *> other) {
 	block.clear();
 	block = other;
 	for (int i = 0; i < size; i++) {
-	        block[i]->setType('Z');
+	    block[i]->setType('Z');
 		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
@@ -100,11 +94,6 @@ void ZBlock::moveRight() {
 	switchBlocks(temp);
 }
 
-// void ZBlock::moveHeavyDown() {
-// 	moveDown();
-// 	moveDown();
-// }
-
 void ZBlock::moveDown() {
 	for (int i = 0; i < size; i++) {
 		if (block[i]->getRow() + 1 > 17) {
@@ -127,7 +116,8 @@ void ZBlock::drop() {
 		while(true) {
 			moveDown();
 		}
-	} catch (InvalidMoveException &e) {
+	} 
+    catch (InvalidMoveException &e) {
 	}
 }
 
@@ -145,7 +135,8 @@ void ZBlock::rotateCW() {
         	temp.push_back(grid[row - 2][col]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 2) {
+	} 
+    else if (pos == 2) {
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException();
 		}

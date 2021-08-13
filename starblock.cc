@@ -3,7 +3,7 @@
 using namespace std;
 
 
-StarBlock::StarBlock(int id) : Block{4, id} {}
+StarBlock::StarBlock(int level, int id) : Block{4, id} {}
 
 char StarBlock::getType(){
 	return '*';
@@ -42,9 +42,6 @@ void StarBlock::moveLeft() {
 void StarBlock::moveRight() {
 }
 
-// void StarBlock::moveHeavyDown() {
-// }
-
 void StarBlock::moveDown() {
 }
 
@@ -53,14 +50,13 @@ void StarBlock::drop() {
 		while (true) {
 			switchBlocks();
 		}
-	} catch (InvalidMoveException &e) {
+	} 
+    catch (InvalidMoveException &e) {
 	}
 }
 
 void StarBlock::rotateCW(){
-	
 }
 
 void StarBlock::rotateCCW(){
-	
 }

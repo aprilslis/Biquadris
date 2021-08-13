@@ -5,26 +5,24 @@
 #include "window.h"
 #include <string>
 
-class GraphicDisplay: public BaseDisplay {
-	Xwindow *w;
-    	const int height;
-    	const int width;
-	int blind; //records if special effect blind is applied (0 is no one, 1 is player 1, 2 is player 2)
+class GraphicDisplay : public BaseDisplay{
+    Xwindow *w;       //display window
+    const int height; //height of display
+    const int width;  //width of display
 
-	void printCell(char type, int x, int y);
-	void printBoard();
-	void printNext(int x, int y, char type);
-	void clearWindow();
-	void FirstBoardBlind();
-	void SecondBoardBlind();
-	
-	public:
-	GraphicDisplay(Grid *g1, Grid *g2);
-	~GraphicDisplay();
-	void printNormally() override;
-	void printBlindPlayer1() override;
-	void printBlindPlayer2() override;
-	
+    void printCell(char type, int x, int y); //print out the cell at position (x,y)
+    void printBoard();                       //helper function of printNormally()
+    void printNext(int x, int y, char type); //print the next upcoming block
+    void clearWindow();                      //clearing block's previous position's color
+    void FirstBoardBlind();                  //helper function of printBlindPlayer1()
+    void SecondBoardBlind();                 //helper function of printBlindPlayer2()
+
+public:
+    GraphicDisplay(Grid *g1, Grid *g2); //constructor
+    ~GraphicDisplay();                  //destructor
+    void printNormally() override;      //print board when no one is blinded
+    void printBlindPlayer1() override;  //print board when player 1 is blinded
+    void printBlindPlayer2() override;  //print board when player 2 is blinded
 };
 
 #endif

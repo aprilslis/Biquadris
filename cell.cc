@@ -5,40 +5,39 @@ using namespace std;
 Cell::Cell(int row, int col): type{'\0'}, row{row}, col{col}, identity{0} {} // '\0' reperesents no type 
 
 void Cell::setType(char type) {
-        this->type = type;
+    this->type = type;
 }
 
 char Cell::getType() {
-        return type;
+    return type;
 }
 
 int Cell::getRow() {
-        return row;
+    return row;
 }
 
 int Cell::getCol() {
-        return col;
+    return col;
 }
 
 void Cell::setIdentity(int identity) {
-        this->identity = identity;
+    this->identity = identity;
 }
 
 int Cell::getIdentity() {
-        
-        return identity;
+    return identity;
 }
 
 bool Cell::isFull() {
-        return (type != '\0');
+    return (type != '\0');
 }
 
 void Cell::copyCell(Cell *other) {
-        type = other->type;
-        identity = other->identity;
+    type = other->type;
+    identity = other->identity;
 }
 
 void Cell::clearCell() {
-        type = '\0';
-        identity = 0;
+    type = '\0';
+    identity = 0;
 }

@@ -4,12 +4,6 @@ using namespace std;
 
 TBlock::TBlock(int level, int i): Block{level,i}{}
 
-// void TBlock::moveHeavy() {
-// 	if (level == 4 || level == 3) {
-// 		moveDown();
-// 	}
-// }
-
 char TBlock::getType() {
 	return 'T';
 }
@@ -17,7 +11,7 @@ char TBlock::getType() {
 void TBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
-	        block[i]->setType('\0');
+	    block[i]->setType('\0');
 		block[i]->setIdentity(0);
 	}
 
@@ -26,10 +20,10 @@ void TBlock::switchBlocks(vector<Cell *> other) {
 	    if (other[i]->isFull()) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
-	                block[j]->setType('T');
-			block[j]->setIdentity(identity);
-	         }
-	         throw InvalidMoveException();
+	            block[j]->setType('T');
+			    block[j]->setIdentity(identity);
+	        }
+	        throw InvalidMoveException();
 	    }
 	} 
 
@@ -37,7 +31,7 @@ void TBlock::switchBlocks(vector<Cell *> other) {
 	block.clear();
 	block = other;
 	for (int i = 0; i < size; i++) {
-	        block[i]->setType('T'); 
+	    block[i]->setType('T'); 
 		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
@@ -101,11 +95,6 @@ void TBlock::moveRight() {
 	switchBlocks(temp);
 }
 
-// void TBlock::moveHeavyDown() {
-// 	moveDown();
-// 	moveDown();
-// }
-
 void TBlock::moveDown() {
 	for (int i = 0; i < size; i++) {
 		if (block[i]->getRow() + 1 > 17) {
@@ -128,7 +117,8 @@ void TBlock::drop() {
 		while(true) {
 			moveDown();
 		}
-	} catch (InvalidMoveException &e) {
+	} 
+    catch (InvalidMoveException &e) {
 	}
 }
 
@@ -146,7 +136,8 @@ void TBlock::rotateCW() {
 		temp.push_back(grid[row - 2][col]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 2) {
+	} 
+    else if (pos == 2) {
 		if (row - 1 < 0 || col + 1 > 10 || col - 1 < 0) {
 			throw InvalidMoveException();
 		}
@@ -156,7 +147,8 @@ void TBlock::rotateCW() {
 		temp.push_back(grid[row - 1][col]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 3) {
+	} 
+    else if (pos == 3) {
 		if (row - 1 < 0 || row - 2  < 0 || col + 1 > 10) {
 			throw InvalidMoveException();
 		}
@@ -166,7 +158,8 @@ void TBlock::rotateCW() {
 		temp.push_back(grid[row - 2][col]);
 		switchBlocks(temp);
 		++pos;
-	} else if (pos == 4) {
+	} 
+    else if (pos == 4) {
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException ();
 		}
@@ -193,7 +186,8 @@ void TBlock::rotateCCW() {
 		temp.push_back(grid[row - 2][col - 1]);
 		switchBlocks(temp);
 		pos = 4;
-	} else if (pos == 4) {
+	} 
+    else if (pos == 4) {
 		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
 			throw InvalidMoveException();
 		}
@@ -203,7 +197,8 @@ void TBlock::rotateCCW() {
 		temp.push_back(grid[row - 1][col + 1]);
 		switchBlocks(temp);
 		--pos;
-	} else if (pos == 3) {
+	} 
+    else if (pos == 3) {
 		if (row - 1 < 0 || row - 2 < 0 || col + 1 > 10) {
 			throw InvalidMoveException();
 		}
@@ -213,7 +208,8 @@ void TBlock::rotateCCW() {
 		temp.push_back(grid[row - 2][col + 1]);
 		switchBlocks(temp);
 		--pos;
-	} else if (pos == 2) {
+	} 
+    else if (pos == 2) {
 		if (row - 1 < 0 || col + 1 > 10 || col - 1 < 0) {
 			throw InvalidMoveException();
 		}

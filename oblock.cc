@@ -7,17 +7,11 @@ char OBlock::getType(){
 	return 'O';
 }
 
-// void OBlock::moveHeavy() {
-//         if (level == 4 || level == 3) {
-//                 moveDown();
-//         }
-// }
-
 void OBlock::switchBlocks(vector<Cell *> other) {
     // emptying block temporarily
     for (int i = 0; i < size; i++) { 
-            block[i]->setType('\0');
-            block[i]->setIdentity(0);
+        block[i]->setType('\0');
+        block[i]->setIdentity(0);
     }
 
     // asserting invariants
@@ -25,10 +19,10 @@ void OBlock::switchBlocks(vector<Cell *> other) {
         if (other[i]->isFull()) {
             // rewinding block
             for (int j = 0; j < size; j++) {
-                    block[j]->setType('O');
-                    block[j]->setIdentity(identity);
-             }
-             throw InvalidMoveException();
+                block[j]->setType('O');
+                block[j]->setIdentity(identity);
+            }
+            throw InvalidMoveException();
         }
     } 
 
@@ -36,8 +30,8 @@ void OBlock::switchBlocks(vector<Cell *> other) {
     block.clear();
     block = other;
     for (int i = 0; i < size; i++) {
-            block[i]->setType('O');
-            block[i]->setIdentity(identity);
+        block[i]->setType('O');
+        block[i]->setIdentity(identity);
     }
     lowerleft = other[0];
 }
@@ -97,11 +91,6 @@ void OBlock::moveRight() {
 
     switchBlocks(temp);
 }
-
-// void OBlock::moveHeavyDown() {
-// 	moveDown();
-// 	moveDown();
-// }
 
 void OBlock::moveDown() {
     for (int i = 0; i < size; i++) {

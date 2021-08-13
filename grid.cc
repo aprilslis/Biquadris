@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Grid::Grid(string filename, int startlevel) : 
+Grid::Grid(string filename, int startlevel): 
 width{11}
 ,height{18}
 ,id{1}
@@ -17,14 +17,7 @@ width{11}
 ,next{nullptr}
 ,level{nullptr}
 ,s{nullptr}
-{ // initialises board
-    // level = nullptr;
-    // s=nullptr;
-    // cur=nullptr;
-    // next=nullptr;
-
-    
-
+{
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -32,17 +25,16 @@ width{11}
         }
         board.push_back(temp);
     }
+
     s = new Score();
-
     setLevelNum(startLevel);
-
     cur = level->generateRandomBlock(id, seed);
     updateIds(cur);
     next = level->generateRandomBlock(id, seed);
     
 }
 
-Grid::~Grid() { // release all existing cells
+Grid::~Grid() {
     for(int i = 0; i < height; i++) {
         for(int j = 0; j < width; j++) {
             delete board[i][j];
@@ -55,46 +47,15 @@ Grid::~Grid() { // release all existing cells
     delete next;
 }
 
-int Grid::getWidth(){ //return width of grid
-    return width;
-}
 
-int Grid::getHeight(){ //return height of grid
-    return height;
-}
-
-int Grid::getScore() {
-	return s->getScore();
-}
-
-int Grid::getHighScore() {
-	return s->getHighScore();
-}
-
-Cell * Grid::getCell(int row, int col) {
-    return board[row][col];
-} //get cell at x,y
 
 void Grid::removeIds(int row) {
 	for (int i = 0; i < (int)ids.size(); i++) {
 		for (int j = 0; j < width; j++) {
-
 			if (ids[i] == board[row][j]->getIdentity()) {
 				ncells[i]--;
-            
 				if (ncells[i] == 0) {
 					int amount = (levels[i] + 1) * (levels[i] + 1);
-                    //cout<<amount<<endl;
-                    
-                    // cout<<"id "<<amount<<endl;
-                    // cout<<"identity "<<ids[i]<<endl;
-                    // cout<<"type "<<board[row][j]->getType()<<endl;
-                    // cout<<"row num "<<row<<endl;
-                    // cout<<"ncells"<<endl;
-                    // for(auto i:ncells){
-                    //     cout<<i<<endl;
-                    // }
-
 					s->updateScore(amount);
 					ids.erase(ids.begin() + i);
 					levels.erase(levels.begin() + i);
@@ -135,13 +96,28 @@ void Grid::clearAllPastBlocks(){
     pastBlocks.clear();
 }
 
-void Grid::addBlock() { //add a new block at left top corner
+
+
+int Grid::getWidth(){
+    return width;
+}
+
+int Grid::getHeight(){ 
+    return height;
+}
+
+
+
+Cell * Grid::getCell(int row, int col) {
+    return board[row][col];
+}
+
+void Grid::addBlock() { 
 	cur->init(board); 
 	++blocksPlaced;
-	//cout << blocksPlaced << " " << unclearedRows << endl;
 	if (level->getLevel() == 4) {
 		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {
-		 	StarBlock *tempcur = new StarBlock{id};
+		 	StarBlock *tempcur = new StarBlock{levelNum,id};
 			updateStarBlockId(tempcur);
 		 	tempcur->init(board);
 		 	tempcur->drop();
@@ -150,7 +126,7 @@ void Grid::addBlock() { //add a new block at left top corner
 	}
 }
 
-void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
+void Grid::replaceBlock(char c) {
     Block *tmp = cur;
     switch (c){
 	    case 'i':
@@ -183,22 +159,9 @@ void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
     delete tmp;
 }
 
-void Grid::updateScore() {
-	int count = countFullRows();
-	int amount = (level->getLevel() + count) * (level->getLevel() + count);
-    	s->updateScore(amount);
 
-        // cout<<"rows "<<amount<<endl;
-        
-    	if (count > 0) {
-        	    unclearedRows = 0;
-    	} else {
-        	    ++unclearedRows;
-    	}
-    	clearFullRows();
-}
 
-std::string Grid::hint() {
+string Grid::hint() {
 	int maxcur = countFullRows();
 	int maxright = maxcur;
 	int maxleft = maxcur;
@@ -220,29 +183,34 @@ std::string Grid::hint() {
 	}
 	times = 0;
        	try {
-                while (true) {
-                        moveBlockLeft();
-                        int count = countFullRows();
-                        if (count > maxleft) {
-                                maxleft = count;
-                        }
-                        ++times;
+            while (true) {
+                moveBlockLeft();
+                int count = countFullRows();
+                if (count > maxleft) {
+                    maxleft = count;
                 }
+                ++times;
+            }
         } catch (InvalidMoveException &e) {
-                for (int i = 0; i < times; i++) {
-                        moveBlockRight();
-                }
+            for (int i = 0; i < times; i++) {
+                moveBlockRight();
+            }
         }
 	if (maxright > maxleft) {
 		return "Try moving rightwards";
-	} else if (maxright < maxleft) {
+	} 
+    else if (maxright < maxleft) {
 		return "Try moving leftwards";
-	} else if (maxleft > maxcur && maxleft == maxright) {
+	} 
+    else if (maxleft > maxcur && maxleft == maxright) {
 		return "Try moving leftwards or rightwards";
-	} else {
-		return "lateral movement doesn't help";
+	} 
+    else {
+		return "No rows can be cleared right now";
 	}
 }
+
+
 
 bool Grid::isFullRow(int row) {
     for (int j = 0; j < width; j++) {
@@ -273,11 +241,10 @@ void Grid::clearFullRows() {
     }
 }
 
-void Grid::updateRows(int row) { // each row moves down and top row gets cleared
+void Grid::updateRows(int row) {
     for (int i = row; i >= 4; i--) {
         for (int j = 0; j < width; j++) {
             board[i][j]->copyCell(board[i - 1][j]);
-            //board[i][j] = board[i - 1][j];
         }
     }
     for (int k = 0; k < width; k++) {
@@ -285,6 +252,32 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
     }
     clearFullRows(); // after we clear one row we check again if the updated grid has any more such full rows
 }
+
+
+
+void Grid::updateScore() {
+	int count = countFullRows();
+	int amount = (level->getLevel() + count) * (level->getLevel() + count);
+    s->updateScore(amount);
+
+    if (count > 0) {
+        unclearedRows = 0;
+    } 
+    else {
+        ++unclearedRows;
+    }
+    clearFullRows();
+}
+
+int Grid::getScore() {
+	return s->getScore();
+}
+
+int Grid::getHighScore() {
+	return s->getHighScore();
+}
+
+
 
 void Grid::levelUp() { 
     if(levelNum<4) levelNum++;
@@ -328,7 +321,6 @@ void Grid::setLevel() {
             level = new Level4{};
             level->init(defaultFile);
             break;
-        
         default:
             break;
     }
@@ -347,20 +339,16 @@ int Grid::getLevelNum(){
 }
 
 
+
 void Grid::clearGrid() { 
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             board[i][j]->clearCell(); // resets each cell
         }
     }
-    // Level *tmp = level;
-    // level = new Level0{};
-    // level->init(defaultFile);
-    // delete tmp;
-    setLevelNum(startLevel);
 
+    setLevelNum(startLevel);
     levelNum = startLevel;
-    //need to reset sequence too
     resetIds();
     s->resetScore();
     pastBlocks.push_back(cur);
@@ -376,7 +364,7 @@ void Grid::clearGrid() {
     
 }
 
-void Grid::printGrid() { // prints out current board
+void Grid::printGrid() {
     cout << endl;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
@@ -386,7 +374,6 @@ void Grid::printGrid() { // prints out current board
             else{
                 cout << board[i][j]->getType() << " ";
             }
-            
         }
         cout << endl;
     }
@@ -409,10 +396,8 @@ string Grid::printRow(int n){
 
 
 
-
 void Grid::setSeed(int seed){
     this->seed = seed;
-    //need to set the level seed too
 }
 
 void Grid::generateBlock(){
@@ -441,8 +426,6 @@ void Grid::isRandom(bool t){
 
 
 
-
-
 void Grid::moveBlockRight(){
     cur->moveRight();
 }
@@ -468,16 +451,14 @@ void Grid::rotateBlockCCW(){
     cur->rotateCCW();
 }
 
-Block * Grid::getNextBlock(){
-    return next;
-}
-
-
-
-void Grid::setHeavy(){ //this handles the special effect Heavy
+void Grid::setHeavy(){
     cur->setHeavy();
 }
 
 void Grid::moveHeavy(){
     cur->moveHeavy();
+}
+
+Block * Grid::getNextBlock(){
+    return next;
 }

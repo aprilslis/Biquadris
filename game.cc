@@ -88,9 +88,6 @@ void Game::start(){
     cout<<"Welcome to Biquadris! Input your command:"<<endl;
     cout<<"-----------------------------------------"<<endl;
     
-    // board1.setLevelNum(startlevel);
-    // board2.setLevelNum(startlevel);
-    
     string input;
     bool checker = false; //sometimes it looks once anyway when it is the end of fileInput, use checker to stop printing current player messages twice
     bool restartGame = false;
@@ -120,7 +117,7 @@ void Game::start(){
                     fileCmds = fileCmds.substr(1,fileCmds.size());
                     if(fileCmds=="") break;
                 }
-                 while(isspace(fileCmds[0])){//get rids of whitespace
+                while(isspace(fileCmds[0])){//get rids of whitespace
                     fileCmds = fileCmds.substr(1,fileCmds.size());
                     if(fileCmds=="") break;
                 }
@@ -215,7 +212,6 @@ void Game::start(){
                         specialEffects(curNum);
                         cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
                     }
-
                     break;
                     
                 }
@@ -241,25 +237,21 @@ void Game::start(){
                     cur->replaceBlock('z');
                 }
                 else if(cmpString(input,"restart")){
-                    //when restart, call end() then restart() and return
                     restartGame = true;
                     multiplier = 0;
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"hint")){
-                    cout << cur->hint() << endl;//gives a hint
-
+                    cout << cur->hint() << endl;
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"random")){
-                    //blabla
                     cur->isRandom(true);
                     break; //this command should not be done more than 1 time
                 }
                 else if(cmpString(input,"norandom")){
                     string newfile;
                     cin>>newfile;
-                    //do something to switch off random
                     cur->isRandom(false);
                     cur->changeFile(newfile);
                     break; //this command should not be done more than 1 time
@@ -278,13 +270,11 @@ void Game::start(){
                         fileInput.close();
                     }
                     
-                    break;
+                    break; //this command should not be done more than 1 time
                 }
                 
             }
             
-
-            //display stuffs
             draw(multiplier);
             if(checker){
                 checker = false;
@@ -363,8 +353,6 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
         }
         else if(cmpString(input,"heavy")){
             cout<<endl<<"**Heavy** effect would be applied to Player "<<curNum<<endl;
-            //make cur block heavy
-            //makeNextBlockHeavy = true;
             cur->setHeavy();
 
         }
@@ -414,12 +402,9 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
 
 void Game::restart(){
 
-    //old boards are delete, new boards is init
-    board1.clearGrid();//needs checking
+    board1.clearGrid();
     board2.clearGrid();
-
     useSeqFile = false;
-    
     start();
 
 }
@@ -454,7 +439,6 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    //cout<<"drawing graphic!!!"<<endl;
     //graphicdisplay.printDisplay();
 }
 

@@ -12,10 +12,10 @@ Block::~Block(){
 }
 
 void Block::emptyBlock() {
-  for (int i = 0; i < (int)block.size(); i++) {
-    block[i]->setType('\0');
-    block[i]->setIdentity(0);
-  }
+    for (int i = 0; i < (int)block.size(); i++) {
+        block[i]->setType('\0');
+        block[i]->setIdentity(0);
+    }
 }
 
 int Block::getLevel() {
@@ -26,19 +26,16 @@ void Block::setIdentity(int identity) {
 	this->identity = identity;
 }
 
-// bool Block::isHeavy() {
-// 	return heavy;
-// }
 
 void Block::setHeavy() {
 	heavy = true;
 }
 
 void Block::moveHeavy() {
-	if (level == 4 || level == 3) { // if is heavy from levels
+	if (level == 4 || level == 3) { // if is block is heavy from level effect
 		moveDown();
 	}
-	if(heavy){ //if is heavy from special effects
+	if(heavy){ //if block is heavy from special effects
 		moveDown();
 		moveDown();
 		heavy = false;

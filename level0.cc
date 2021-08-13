@@ -11,8 +11,6 @@ Block * Level0::generateRandomBlock(int id, int seed) {
 		pos = 0;
 	}
 
-	cout<<sequence[pos]<<endl;
-
 	switch(sequence[pos]) {
 		case 'I' : 
 			++pos;
@@ -37,7 +35,7 @@ Block * Level0::generateRandomBlock(int id, int seed) {
 			return new TBlock{0, id};
 		default :
 			++pos;
-			cout<<"not getting a block!!! (level 0)"<<endl;
+			cout<<"not getting a block!!! (level 0)"<<endl; //an error message useful for testing
 			return nullptr;
 	}
 
