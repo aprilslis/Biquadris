@@ -9,7 +9,7 @@ board1{file1,startlevel}
 ,onlyText{false}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
-//,graphicdisplay{&board1,&board2} 
+,graphicdisplay{&board1,&board2} 
 {
     
 }
@@ -198,7 +198,7 @@ void Game::start(){
                     
 
                     textdisplay.setBlind(0);
-                    //graphicdisplay.setBlind(0);
+                    graphicdisplay.setBlind(0);
 
                     if(curNum==1){
                         cur = &board2;
@@ -211,8 +211,8 @@ void Game::start(){
                     //check special effects here
                     if (rows >= 2) {
                         draw(multiplier);
-                        specialEffects(curNum);
                         cout<<"Great Job!!! You cleared more than 1 row!!!"<<endl;
+                        specialEffects(curNum);
                     }
                     break;
                     
@@ -351,11 +351,11 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
             cout<<endl<<"**Blind** effect would be applied to Player "<<curNum<<endl;
             if(curNum==1){
                 textdisplay.setBlind(1);
-                //graphicdisplay.setBlind(1);
+                graphicdisplay.setBlind(1);
             }
             else{
                 textdisplay.setBlind(2);
-                //graphicdisplay.setBlind(2);
+                graphicdisplay.setBlind(2);
             }
         }
         else if(cmpString(input,"heavy")){
@@ -413,7 +413,7 @@ void Game::restart(){
     board2.clearGrid();
     useSeqFile = false;
     textdisplay.setBlind(0);
-    //graphicdisplay.setBlind(0);
+    graphicdisplay.setBlind(0);
 
     start();
 }
@@ -425,8 +425,22 @@ void Game::end(int winner){
     int score2 = board2.getScore();
     int highscore1 = board1.getHighScore();
     int highscore2 = board2.getHighScore();
+    
+    // calculate highscore between both games 
+    if(highscore1>highscore2){
+        cout<<"Player 1 ";
+        highscore=highscore1;
+    }
+    else if(highscore1<highscore2){
+        cout<<"Player 2 ";
+        highscore=highscore2;
+    } else {
+        cout << "Both players";
+        highscore=highscore1;
+    }
+    cout<<" achieved a highscore of "<<highscore<<endl;
+
     cout<<"------";
-    // find the winner and their score
     if(winner==0){
         if(score1>score2){
             cout<<"Player 1 ";
@@ -451,21 +465,8 @@ void Game::end(int winner){
             winnerScore=score1;
         }
     }
-    cout<<"won with a score of "<<winnerScore<<endl;
-    // calculate highscore between both games 
-    if(highscore1>highscore2){
-        cout<<"Player 1 ";
-        highscore=highscore1;
-    }
-    else if(highscore1<highscore2){
-        cout<<"Player 2 ";
-        highscore=highscore2;
-    } else {
-        cout << "Both players";
-        highscore=highscore1;
-    }
-    cout<<" achieved a highscore of "<<highscore<<endl;
-    cout<<" ------"<<endl<<endl;
+    cout<<"won~ ------"<<endl;
+    
 }
 
 void Game::drawText(){
@@ -473,7 +474,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    //graphicdisplay.printDisplay();
+    graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){

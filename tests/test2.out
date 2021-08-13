@@ -1679,11 +1679,11 @@ I S  ZZ                    OOSSTTTZZI
 Next:                     Next:     
  SS                       ZZ         
 SS                         ZZ        
+Great Job!!! You cleared more than 1 row!!!
 -----Pick a special action to attack your enemy-----
 Options:  blind  heavy  force
 
 **Blind** effect would be applied to Player 2
-Great Job!!! You cleared more than 1 row!!!
 
 Level:    0               Level:    0
 Score:    10               Score:    0
@@ -1794,11 +1794,11 @@ I S  ZZ                   ILLL J   TI
 Next:                     Next:     
  SS                       ZZ         
 SS                         ZZ        
+Great Job!!! You cleared more than 1 row!!!
 -----Pick a special action to attack your enemy-----
 Options:  blind  heavy  force
 
 **Heavy** effect would be applied to Player 1
-Great Job!!! You cleared more than 1 row!!!
 
 Level:    0               Level:    0
 Score:    10               Score:    17
@@ -1883,5 +1883,5 @@ TTT                       ZZ
  T                         ZZ        
 
 Currently it is Player 2's turn!
+Player 2  achieved a highscore of 17
 ------Player 2 won~ ------
-
