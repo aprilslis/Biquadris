@@ -22,86 +22,66 @@
 #include "score.h"
 
 class Grid{
-    const int width; //grid width
-    const int height; //grid height
+    const int width; // grid width
+    const int height; // grid height
     int id; // generates ids
-    
-    int blocksPlaced;
-    int unclearedRows;
-
-    std::vector<std::vector<Cell *>> board; //game board: row/height<column/width<cell>>
-
+    int blocksPlaced; // number of blocks placed in grid
+    int unclearedRows; // number of uncleared rows in consecutive moves
+    std::vector<std::vector<Cell *>> board; // game board: row/height<column/width<cell>>
     int levelNum;
-    Level *level; //current level
+    Level *level; // current level
     int seed;
     std::string defaultFile;
     int startLevel;
-
-    Block *cur;
-    Block *next;
-
-    Score *s; //score member to track score
-
+    Block *cur; // current working block
+    Block *next; // next working block
+    Score *s; // score member to track score
     std::vector<int> ids; // stores all ids different blocks have
     std::vector<int> levels; // stores levels corresponding to the ids
     std::vector<int> ncells;  // stores no of left cells in a block if an id
     std::vector<Block *> pastBlocks; //stores pointers to the past blocks so we can free them later
-
     void removeIds(int row); // removes id if cleared row removes last cell of a certain block
-    void updateIds(Block *b);
-    void updateStarBlockId(Block *b);
-    void resetIds();
-    void clearAllPastBlocks(); //free all past block pointers
-
+    void updateIds(Block *b); // assigns ids to blocks as added 
+    void resetIds(); 
+    void clearAllPastBlocks(); // free all past block pointers
   public:
     Grid(std::string filename, int startlevel);
     ~Grid();
-
-    int getWidth(); //return width of grid
-    int getHeight(); //return height of grid
-    
+    int getWidth(); // return width of grid
+    int getHeight(); // return height of grid
     Cell *getCell(int x, int y); // get cell at (row, column)  
     void addBlock(); // add a new block at left top corner
     void replaceBlock(char c); // replace current block with new block I,J,L
-    
-    void updateScore();
-
-    std::string hint();
-
+    void updateScore(); // increments score
+    std::string hint(); // provides a string as a hint
     bool isFullRow(int row); // checks if row is full
     int countFullRows(); // returns number of full rows
     void clearFullRows(); // clears the full rows one at a time
     void updateRows(int y); // used after clearing row/block, let all block fall over gravity(?)
-
-    int getScore();
-    int getHighScore();
-
+    int getScore(); // gets current score
+    int getHighScore(); // gets high score
     void levelUp(); // level game up
     void levelDown(); // level game down
     void setLevel(); //update the level
     void setLevelNum(int n); //set the levelNum to be n
     int getLevelNum(); //get levelNum
-    
     void clearGrid(); // resets the grid
     void printGrid(); // print out current board (for testing)
     std::string printRow(int n); // print out current board
-
     void setSeed(int seed);
-    void generateBlock();//generate a random block 
-    void setDefaultFile(std::string file); //set the name of default file
-    void changeFile(std::string file); //change the file input block to the new one
-    void isRandom(bool t); //set board to generate random block or not
-
-    void moveBlockRight();
-    void moveBlockLeft();
-    void moveBlockDown();
-    void dropBlock();
-    void rotateBlockCW();
-    void rotateBlockCCW();
-    Block *getNextBlock();
-
+    void generateBlock();// generate a random block 
+    void setDefaultFile(std::string file); // set the name of default file
+    void changeFile(std::string file); // change the file input block to the new one
+    void isRandom(bool t); // set board to generate random block or not
+    void moveBlockRight(); // moves block to right
+    void moveBlockLeft(); // moves block to left
+    void moveBlockDown(); // moves block down
+    void dropBlock(); // drops a block 
+    void rotateBlockCW(); // counterclockwise rotation of block
+    void rotateBlockCCW(); // anti-counterclockwise rotation of block
+    Block *getNextBlock(); // returns the next block
     void setHeavy(); //this handles the special effect Heavy
-    void moveHeavy();
+    void moveHeavy(); // moves heavy block
 };
 
 #endif

@@ -16,15 +16,7 @@ width{11}
 ,cur{nullptr}
 ,next{nullptr}
 ,level{nullptr}
-,s{nullptr}
-{ // initialises board
-    // level = nullptr;
-    // s=nullptr;
-    // cur=nullptr;
-    // next=nullptr;
-
-    
-
+,s{nullptr} {
     for (int i = 0; i < height; i++) {
         vector <Cell *> temp;
         for (int j = 0 ; j < width; j++) {
@@ -33,13 +25,9 @@ width{11}
         board.push_back(temp);
     }
     s = new Score();
-
     setLevelNum(startLevel);
-
     cur = level->generateRandomBlock(id, seed);
-    updateIds(cur);
     next = level->generateRandomBlock(id, seed);
-    
 }
 
 Grid::~Grid() { // release all existing cells
@@ -55,11 +43,11 @@ Grid::~Grid() { // release all existing cells
     delete next;
 }
 
-int Grid::getWidth(){ //return width of grid
+int Grid::getWidth() {
     return width;
 }
 
-int Grid::getHeight(){ //return height of grid
+int Grid::getHeight() {
     return height;
 }
 
@@ -73,30 +61,18 @@ int Grid::getHighScore() {
 
 Cell * Grid::getCell(int row, int col) {
     return board[row][col];
-} //get cell at x,y
+} 
 
 void Grid::removeIds(int row) {
 	for (int i = 0; i < (int)ids.size(); i++) {
-		for (int j = 0; j < width; j++) {
-
+		for (int j = 0; j < width; j++) { // decreasing the ncells for each matched identity
 			if (ids[i] == board[row][j]->getIdentity()) {
 				ncells[i]--;
-            
 				if (ncells[i] == 0) {
 					int amount = (levels[i] + 1) * (levels[i] + 1);
-                    //cout<<amount<<endl;
-                    
-                    // cout<<"id "<<amount<<endl;
-                    // cout<<"identity "<<ids[i]<<endl;
-                    // cout<<"type "<<board[row][j]->getType()<<endl;
-                    // cout<<"row num "<<row<<endl;
-                    // cout<<"ncells"<<endl;
-                    // for(auto i:ncells){
-                    //     cout<<i<<endl;
-                    // }
-
 					s->updateScore(amount);
-					ids.erase(ids.begin() + i);
+					// removing the ith identity and its corresponding parts
+					ids.erase(ids.begin() + i); 
 					levels.erase(levels.begin() + i);
 					ncells.erase(ncells.begin() + i);
 				}
@@ -106,18 +82,14 @@ void Grid::removeIds(int row) {
 }
 
 void Grid::updateIds(Block *b) {
-	b->setIdentity(id);
-	ids.push_back(id);
+	b->setIdentity(id); // assigning id to block
+	ids.push_back(id); 
 	levels.push_back(level->getLevel());
-	ncells.push_back(4);
-	++id;
-}
-
-void Grid::updateStarBlockId(Block *b) {
-	b->setIdentity(id);
-	ids.push_back(id);
-	levels.push_back(level->getLevel());
-	ncells.push_back(1);
+	if (b->getType() == '*') {
+		ncells.push_back(4);
+	} else {
+		ncells.push_back(1);
+	}
 	++id;
 }
 
@@ -135,14 +107,14 @@ void Grid::clearAllPastBlocks(){
     pastBlocks.clear();
 }
 
-void Grid::addBlock() { //add a new block at left top corner
-	cur->init(board); 
-	++blocksPlaced;
-	//cout << blocksPlaced << " " << unclearedRows << endl;
-	if (level->getLevel() == 4) {
-		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {
+void Grid::addBlock() { 
+	updateIds(cur); // assigning ids
+	cur->init(board); // placing on board
+	++blocksPlaced; 
+	if (level->getLevel() == 4) { 
+		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {  // condition for starblock to be dropped
 		 	StarBlock *tempcur = new StarBlock{id};
-			updateStarBlockId(tempcur);
+			updateIds(tempcur);
 		 	tempcur->init(board);
 		 	tempcur->drop();
 		 	delete tempcur;
@@ -150,9 +122,9 @@ void Grid::addBlock() { //add a new block at left top corner
 	}
 }
 
-void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
+void Grid::replaceBlock(char c) {
     Block *tmp = cur;
-    switch (c){
+    switch (c) { // choosing which block to replace with
 	    case 'i':
             cur = new IBlock{level->getLevel(),id};
             break;
@@ -174,28 +146,24 @@ void Grid::replaceBlock(char c) { // replace current block with new block I,J,L
         case 'z':
             cur = new ZBlock{level->getLevel(),id};
             break;
-        
         default:
             break;
     }
     tmp->emptyBlock();
-    cur->init(board);
+    cur->init(board); // placing the replaced block on board
     delete tmp;
 }
 
 void Grid::updateScore() {
 	int count = countFullRows();
-	int amount = (level->getLevel() + count) * (level->getLevel() + count);
-    	s->updateScore(amount);
-
-        // cout<<"rows "<<amount<<endl;
-        
     	if (count > 0) {
-        	    unclearedRows = 0;
+		int amount = (level->getLevel() + count) * (level->getLevel() + count);
+        	s->updateScore(amount);    
+		clearFullRows(); 
+		unclearedRows = 0;
     	} else {
-        	    ++unclearedRows;
+		++unclearedRows;
     	}
-    	clearFullRows();
 }
 
 std::string Grid::hint() {
@@ -212,11 +180,10 @@ std::string Grid::hint() {
 			}
 			++times;
 		}
-	} catch (InvalidMoveException &e) {
+	} catch (InvalidMoveException &e) { // retracing to original position
 		for (int i = 0; i < times; i++) {
 			moveBlockLeft();
 		}
-	
 	}
 	times = 0;
        	try {
@@ -228,7 +195,7 @@ std::string Grid::hint() {
                         }
                         ++times;
                 }
-        } catch (InvalidMoveException &e) {
+        } catch (InvalidMoveException &e) { // retracing to original position
                 for (int i = 0; i < times; i++) {
                         moveBlockRight();
                 }
@@ -245,7 +212,7 @@ std::string Grid::hint() {
 }
 
 bool Grid::isFullRow(int row) {
-    for (int j = 0; j < width; j++) {
+    for (int j = 0; j < width; j++) { // finding gaps in block
         if (board[row][j]->getType() == '\0') {
             return false;
         }
@@ -255,7 +222,7 @@ bool Grid::isFullRow(int row) {
 
 int Grid::countFullRows() {
     int count = 0;
-    for (int i = 3; i < height; i++) {
+    for (int i = 3; i < height; i++) { // finding full rows and incrementing count accordingly
         if (isFullRow(i)) {
             count++;
         }
@@ -266,18 +233,17 @@ int Grid::countFullRows() {
 void Grid::clearFullRows() {
     for (int i = height-1; i >= 3; i--) {
         if (isFullRow(i)) {
-            removeIds(i);
-            updateRows(i);
+            removeIds(i); // checking if a block is cleared before removing row
+            updateRows(i); // removing row
             break;
         }
     }
 }
 
-void Grid::updateRows(int row) { // each row moves down and top row gets cleared
-    for (int i = row; i >= 4; i--) {
+void Grid::updateRows(int row) {
+    for (int i = row; i >= 4; i--) { // replacing row with the row above
         for (int j = 0; j < width; j++) {
             board[i][j]->copyCell(board[i - 1][j]);
-            //board[i][j] = board[i - 1][j];
         }
     }
     for (int k = 0; k < width; k++) {
@@ -287,21 +253,19 @@ void Grid::updateRows(int row) { // each row moves down and top row gets cleared
 }
 
 void Grid::levelUp() { 
-    if(levelNum<4) levelNum++;
+    if(levelNum < 4) levelNum++;
     Level *tmp = level;
     setLevel();
     delete tmp;
-
     cur->setLevel(levelNum);
     next->setLevel(levelNum);
 } 
 
 void Grid::levelDown() {
-    if(levelNum>0) levelNum--;
+    if(levelNum > 0) levelNum--;
     Level *tmp = level;
     setLevel();
     delete tmp;
-
     cur->setLevel(levelNum);
     next->setLevel(levelNum);
 }
@@ -328,57 +292,45 @@ void Grid::setLevel() {
             level = new Level4{};
             level->init(defaultFile);
             break;
-        
         default:
             break;
     }
-    
 }
 
-void Grid::setLevelNum(int n){
+void Grid::setLevelNum(int n) {
     levelNum = n;
     Level *tmp = level;
     setLevel();
     delete tmp;
 }
 
-int Grid::getLevelNum(){
+int Grid::getLevelNum() {
     return levelNum;
 }
 
 
 void Grid::clearGrid() { 
-    for (int i = 0; i < height; i++) {
+    for (int i = 0; i < height; i++) { // traversing each cell
         for (int j = 0; j < width; j++) {
             board[i][j]->clearCell(); // resets each cell
         }
     }
-    // Level *tmp = level;
-    // level = new Level0{};
-    // level->init(defaultFile);
-    // delete tmp;
     setLevelNum(startLevel);
-
     levelNum = startLevel;
-    //need to reset sequence too
     resetIds();
     s->resetScore();
     pastBlocks.push_back(cur);
     pastBlocks.push_back(next);
     cur = level->generateRandomBlock(id, seed);
-    updateIds(cur);
     next = level->generateRandomBlock(id, seed);
-
     blocksPlaced = 0;
     unclearedRows = 0;
-
     clearAllPastBlocks();
-    
 }
 
-void Grid::printGrid() { // prints out current board
+void Grid::printGrid() {
     cout << endl;
-    for (int i = 0; i < height; i++) {
+    for (int i = 0; i < height; i++) { // traversing each cell
         for (int j = 0; j < width; j++) {
             if(board[i][j]->getType()=='\0'){
                 cout << "." << " ";
@@ -393,10 +345,10 @@ void Grid::printGrid() { // prints out current board
     cout << endl;
 }
 
-string Grid::printRow(int n){
-    string output="";
-    for(int i=0;i<width;i++){
-        if(board[n][i]->getType()=='\0'){
+string Grid::printRow(int n) {
+    string output = "";
+    for(int i = 0; i < width; i++) { // traversing each cell in row
+        if(board[n][i]->getType() == '\0'){
             output = output + " ";
         }
         else{
@@ -410,74 +362,67 @@ string Grid::printRow(int n){
 
 
 
-void Grid::setSeed(int seed){
+void Grid::setSeed(int seed) {
     this->seed = seed;
     //need to set the level seed too
 }
 
-void Grid::generateBlock(){
+void Grid::generateBlock() {
     pastBlocks.push_back(cur);
     cur = next;
-    updateIds(cur);
     next = level->generateRandomBlock(id, seed);
 }
 
-void Grid::setDefaultFile(string file){
+void Grid::setDefaultFile(string file) {
     defaultFile = file;
 }
 
-void Grid::changeFile(string file){
+void Grid::changeFile(string file) {
     level->init(file);
 }
 
-void Grid::isRandom(bool t){
-    if(t){
+void Grid::isRandom(bool t) {
+    if(t) {
         level->setRandom();
     }
-    else{
+    else {
         level->setNoRandom();
     }
 }
 
-
-
-
-
-void Grid::moveBlockRight(){
+void Grid::moveBlockRight() {
     cur->moveRight();
 }
 
-void Grid::moveBlockLeft(){
+void Grid::moveBlockLeft() {
     cur->moveLeft();
 }
 
-void Grid::moveBlockDown(){
-   	cur->moveDown();
+void Grid::moveBlockDown() {
+    cur->moveDown();
     cur->moveHeavy();
 }
 
-void Grid::dropBlock(){
+void Grid::dropBlock() {
     cur->drop();
 }
 
-void Grid::rotateBlockCW(){
+void Grid::rotateBlockCW() {
     cur->rotateCW();
 }
 
-void Grid::rotateBlockCCW(){
+void Grid::rotateBlockCCW() {
     cur->rotateCCW();
 }
 
-Block * Grid::getNextBlock(){
+Block * Grid::getNextBlock() {
     return next;
 }
 
-
-
-void Grid::setHeavy(){ //this handles the special effect Heavy
+void Grid::setHeavy() {
     cur->setHeavy();
 }
 
-void Grid::moveHeavy(){
+void Grid::moveHeavy() {
     cur->moveHeavy();
 }
