@@ -4,7 +4,7 @@
 #include "grid.h"
 #include "basedisplay.h"
 #include "textdisplay.h"
-#include "graphicdisplay.h"
+//#include "graphicdisplay.h"
 
 class Game{
 
@@ -16,7 +16,7 @@ class Game{
 
     bool onlyText;                 //if game only displays text (no graphic display)
     TextDisplay textdisplay;       //text display of game
-    GraphicDisplay graphicdisplay; //graphic display of game
+    //GraphicDisplay graphicdisplay; //graphic display of game
 
     void specialEffects(int curNum); //handle special actions of player when cleared more than 1 row
     void drawText();                 //show text display of current game
