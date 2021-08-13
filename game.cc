@@ -10,7 +10,9 @@ board1{file1,startlevel}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
 //,graphicdisplay{&board1,&board2} 
-{}
+{
+    
+}
 
 bool cmpString(string input, string command){
     return input==command.substr(0,input.size());
@@ -252,6 +254,10 @@ void Game::start(){
                 else if(cmpString(input,"norandom")){
                     string newfile;
                     cin>>newfile;
+                    ifstream fileInput(newfile);
+                    if(!fileInput){
+                        throw CannotOpenFile{};
+                    }
                     cur->isRandom(false);
                     cur->changeFile(newfile);
                     break; //this command should not be done more than 1 time
@@ -287,6 +293,7 @@ void Game::start(){
             
         }
         catch(LostException e1){
+            draw(multiplier);
             cout<<"Player "<<curNum<<"can't make moves anymore!"<<endl;
             if(curNum==1){
                 playerLost = 2;

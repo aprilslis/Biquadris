@@ -21,10 +21,20 @@ int main(int argc, char *argv[]){
         } 
         else if (cmd == "-scriptfile1") {
             file1 = argv[++i];
+            ifstream fileInput(file1);
+            if(!fileInput){
+                cout<<"input file1 cannot be opened!"<<endl;
+                throw CannotOpenFile{};
+            }
 
         } 
         else if (cmd == "-scriptfile2") {
             file2 = argv[++i];
+            ifstream fileInput(file2);
+            if(!fileInput){
+                cout<<"input file2 cannot be opened!"<<endl;
+                throw CannotOpenFile{};
+            }
 
         }
         else if (cmd == "-startlevel") {

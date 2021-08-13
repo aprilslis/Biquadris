@@ -1,0 +1,14 @@
+seq tests/t1
+heavy
+3ri
+dr
+restart
+seq tests/t1
+blind
+4ri
+3down
+dr
+restart
+seq tests/t1
+force I
+dr
