@@ -21,7 +21,7 @@ void TBlock::switchBlocks(vector<Cell *> other) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
 	            block[j]->setType('T');
-			    block[j]->setIdentity(identity);
+		    block[j]->setIdentity(identity);
 	        }
 	        throw InvalidMoveException();
 	    }
@@ -32,7 +32,7 @@ void TBlock::switchBlocks(vector<Cell *> other) {
 	block = other;
 	for (int i = 0; i < size; i++) {
 	    block[i]->setType('T'); 
-		block[i]->setIdentity(identity);
+            block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
 }
