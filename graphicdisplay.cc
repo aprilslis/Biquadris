@@ -73,7 +73,7 @@ void GraphicDisplay::FirstBoardBlind() {
 	int ncols = 11;
 	for (int i = 0; i < nrows; i++) {
 		for (int j = 0; j < ncols; j++) {
-			if (i > 1 && i < 12 && j > 1 && j < 9) {
+			if (i >= 5 && i <= 14 && j > 1 && j < 9) {
 				printCell('+', (j + 4) * width, (i + 7) * height);
 			} 
 			else {
@@ -101,7 +101,7 @@ void GraphicDisplay::SecondBoardBlind() {
 	int buffer = width * 12;
 	for (int i = 0; i < nrows; i++) {
 		for (int j = 0; j < ncols; j++) {
-			if (i > 1 && i < 12 && j > 1 && j < 9) {
+			if (i >= 5 && i <= 14 && j > 1 && j < 9) {
 				printCell('+', (j + 4) * width + buffer , (i + 7) * height);
 			} 
 			else {
