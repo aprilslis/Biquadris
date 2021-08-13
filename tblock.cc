@@ -152,7 +152,7 @@ void TBlock::rotateCW() {
 		if (row - 1 < 0 || row - 2  < 0 || col + 1 > 10) {
 			throw InvalidMoveException();
 		}
-        	temp.push_back(lowerleft);
+        temp.push_back(lowerleft);
 		temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col + 1]);
 		temp.push_back(grid[row - 2][col]);
