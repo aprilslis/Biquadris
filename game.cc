@@ -419,38 +419,52 @@ void Game::restart(){
 }
 
 void Game::end(int winner){
+    int winnerScore = 0;
+    int highscore = 0;
+    int score1 = board1.getScore();
+    int score2 = board2.getScore();
+    int highscore1 = board1.getHighScore();
+    int highscore1 = board2.getHighScore();
     cout<<"------";
+    // find the winner and their score
     if(winner==0){
-        if(board1.getScore()>board2.getScore()){
+        if(score1>score2){
             cout<<"Player 1 ";
+            winnerScore=score1;
         }
-        else if(board1.getScore()<board2.getScore()){
+        else if(score1<score2){
             cout<<"Player 2 ";
+            winnerScore=score2;
         }
         else{
             cout<<"No one ";
+            winnerScore=score1;
         }
     }
     else{
         if(winner==1){
             cout<<"Player 1 ";
+            winnerScore=score1;
         }
         else{
             cout<<"Player 2 ";
+            winnerScore=score1;
         }
     }
-    cout<<"won~"<<endl;
-    cout<<"The current highscore is ";
+    cout<<"won with a score of "<<winnerScore<<endl;
     // calculate highscore between both games 
-    if(board1.getHighScore()>board2.getHighScore()){
+    if(highscore1>highscore2){
         cout<<"Player 1 ";
+        highscore=highscore1;
     }
-    else if(board1.getHighScore()<board2.getHighScore()){
+    else if(highscore1<highscore2){
         cout<<"Player 2 ";
+        highscore=highscore2;
+    } else {
+        cout << "Both players";
+        highscore=highscore1;
     }
-    cout<<highscore;
-    cout<<" achieved by";
-    cout<<"Player 1"<<;;
+    cout<<" achieved a highscore of "<<highscore<<endl;
     cout<<" ------"<<endl<<endl;
 }
 
