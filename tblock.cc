@@ -12,7 +12,7 @@ void TBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
 	    block[i]->setType('\0');
-		block[i]->setIdentity(0);
+	    block[i]->setIdentity(0);
 	}
 
 	// asserting invariants
