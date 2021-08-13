@@ -413,7 +413,7 @@ void Game::restart(){
     board2.clearGrid();
     useSeqFile = false;
     textdisplay.setBlind(0);
-    //graphicdisplay.setBlind(0);
+    graphicdisplay.setBlind(0);
 
     start();
 }
@@ -439,8 +439,19 @@ void Game::end(int winner){
             cout<<"Player 2 ";
         }
     }
-    cout<<"won~ ------"<<endl<<endl;
-    
+    cout<<"won~"<<endl;
+    cout<<"The current highscore is ";
+    // calculate highscore between both games 
+    if(board1.getHighScore()>board2.getHighScore()){
+        cout<<"Player 1 ";
+    }
+    else if(board1.getHighScore()<board2.getHighScore()){
+        cout<<"Player 2 ";
+    }
+    cout<<highscore;
+    cout<<" achieved by";
+    cout<<"Player 1"<<;;
+    cout<<" ------"<<endl<<endl;
 }
 
 void Game::drawText(){
@@ -448,7 +459,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    //graphicdisplay.printDisplay();
+    graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){
