@@ -28,6 +28,8 @@ void StarBlock::init(vector<vector<Cell *>> &g) {
 	lost();
 	lowerleft = grid[3][5];
 	block.push_back(lowerleft);
+	block[0]->setType('*'); // setting our block of the empty cells to J type cells
+	block[0]->setIdentity(identity);
 }
 
 void StarBlock::lost() {
