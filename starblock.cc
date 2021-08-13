@@ -3,7 +3,7 @@
 using namespace std;
 
 
-StarBlock::StarBlock(int level, int id) : Block{4, id} {}
+StarBlock::StarBlock(int level, int id) : Block{level, id} {}
 
 char StarBlock::getType(){
 	return '*';
@@ -28,6 +28,7 @@ void StarBlock::init(vector<vector<Cell *>> &g) {
 	lost();
 	lowerleft = grid[3][5];
 	block.push_back(lowerleft);
+	block[0]->setIdentity(identity);
 }
 
 void StarBlock::lost() {
@@ -51,7 +52,7 @@ void StarBlock::drop() {
 			switchBlocks();
 		}
 	} 
-    catch (InvalidMoveException &e) {
+    	catch (InvalidMoveException &e) {
 	}
 }
 

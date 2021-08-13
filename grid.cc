@@ -68,9 +68,9 @@ void Grid::updateIds(Block *b) {
 	ids.push_back(id); 
 	levels.push_back(level->getLevel());
 	if (b->getType() == '*') {
-		ncells.push_back(4);
-	} else {
 		ncells.push_back(1);
+	} else {
+		ncells.push_back(4);
 	}
 	++id;
 }
@@ -111,7 +111,7 @@ void Grid::addBlock() {
 	++blocksPlaced; 
 	if (level->getLevel() == 4) { 
 		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {  // condition for starblock to be dropped
-		 	StarBlock *tempcur = new StarBlock{levelNum,id};
+		 	StarBlock *tempcur = new StarBlock{4,id};
 			updateIds(tempcur);
 		 	tempcur->init(board);
 		 	tempcur->drop();
