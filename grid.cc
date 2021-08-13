@@ -113,6 +113,14 @@ void Grid::updateIds(Block *b) {
 	++id;
 }
 
+void Grid::updateStarBlockId(Block *b) {
+	b->setIdentity(id);
+	ids.push_back(id);
+	levels.push_back(level->getLevel());
+	ncells.push_back(1);
+	++id;
+}
+
 void Grid::resetIds() {
 	id = 1;
 	ids.clear();
@@ -134,7 +142,7 @@ void Grid::addBlock() { //add a new block at left top corner
 	if (level->getLevel() == 4) {
 		if ((blocksPlaced - 1) % 5 == 0 && unclearedRows > 0) {
 		 	StarBlock *tempcur = new StarBlock{id};
-			id++;
+			updateStarBlockId(tempcur);
 		 	tempcur->init(board);
 		 	tempcur->drop();
 		 	delete tempcur;
