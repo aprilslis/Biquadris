@@ -175,18 +175,19 @@ string Grid::hint() {
 	}
 	times = 0;
        	try {
-                while (true) {
-                        moveBlockLeft();
-                        int count = countFullRows();
-                        if (count > maxleft) {
-                                maxleft = count;
-                        }
-                        ++times;
+            while (true) {
+                moveBlockLeft();
+                int count = countFullRows();
+                if (count > maxleft) {
+                    maxleft = count;
                 }
-        } catch (InvalidMoveException &e) { // retracing to original position
-                for (int i = 0; i < times; i++) {
-                        moveBlockRight();
-                }
+                ++times;
+            }
+        } 
+        catch (InvalidMoveException &e) { // retracing to original position
+            for (int i = 0; i < times; i++) {
+                moveBlockRight();
+            }
         }
 	if (maxright > maxleft) {
 		return "Try moving rightwards";
@@ -237,7 +238,7 @@ void Grid::updateRows(int row) {
         }
     }
     for (int k = 0; k < width; k++) {
-            board[3][k]->clearCell();
+        board[3][k]->clearCell();
     }
     clearFullRows(); // after we clear one row we check again if the updated grid has any more such full rows
 }
@@ -247,12 +248,13 @@ void Grid::updateRows(int row) {
 void Grid::updateScore() {
 	int count = countFullRows();
     	if (count > 0) {
-		int amount = (level->getLevel() + count) * (level->getLevel() + count);
+		    int amount = (level->getLevel() + count) * (level->getLevel() + count);
         	s->updateScore(amount);    
-		clearFullRows(); 
-		unclearedRows = 0;
-    	} else {
-		++unclearedRows;
+		    clearFullRows(); 
+		    unclearedRows = 0;
+    	} 
+        else {
+		    ++unclearedRows;
     	}
 }
 
