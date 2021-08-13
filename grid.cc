@@ -260,6 +260,11 @@ int Grid::getScore() {
 	return s->getScore();
 }
 
+
+int Grid::getHighScore() {
+	return s->getHighScore();
+}
+
 void Grid::levelUp() { 
     if(levelNum < 4) levelNum++;
     Level *tmp = level;
