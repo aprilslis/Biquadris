@@ -72,7 +72,8 @@ public:
 
     void updateScore(); //update current score of game
     int getScore();     //get current score of game
-
+    int getHighScore(); //get current highest score of game
+    
     void levelUp();          // level game up
     void levelDown();        // level game down
     void setLevel();         //update the level
