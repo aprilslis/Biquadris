@@ -14,7 +14,7 @@ protected:
     bool heavy;
 
 public:
-    Block(int level, int i);                                    //contrusctor
+    Block(int level, int i);                                    //constructor
     virtual ~Block();                                           //destructor
     virtual char getType() = 0;                                 //return type of the block (ie. J,I,L,etc)
     virtual void init(std::vector<std::vector<Cell *>> &g) = 0; //initialize a block
