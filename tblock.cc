@@ -127,7 +127,7 @@ void TBlock::rotateCW() {
 	int row = lowerleft->getRow();
 	int col = lowerleft->getCol();
 	if (pos == 1) {
-		if (row - 1 < 0 || row - 2 < 0 || col - 1 > 0) {
+		if (row - 1 < 0 || row - 2 < 0 || col - 1 < 0) {
 			throw InvalidMoveException();
 		}
 		temp.push_back(lowerleft);
@@ -160,15 +160,15 @@ void TBlock::rotateCW() {
 		++pos;
 	} 
     else if (pos == 4) {
-		if (row - 1 < 0 || col + 1 > 10 || col + 2 > 10) {
-			throw InvalidMoveException ();
-		}
-		temp.push_back(grid[row][col + 1]);
-		temp.push_back(grid[row - 1][col]);
-		temp.push_back(grid[row - 1][col + 1]);
-		temp.push_back(grid[row - 1][col + 2]);	
-		switchBlocks(temp);
-		pos = 1;
+		if (row - 1 < 0 || col + 1 > 10 || col - 1 < 0) {
+                        throw InvalidMoveException ();
+                }
+                temp.push_back(lowerleft);
+                temp.push_back(grid[row - 1][col - 1]);
+                temp.push_back(grid[row - 1][col]);
+                temp.push_back(grid[row - 1][col + 1]);
+                switchBlocks(temp);
+                pos = 1;
 	}
 }
 
