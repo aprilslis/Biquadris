@@ -49,6 +49,7 @@ class Grid{
 
     void removeIds(int row); // removes id if cleared row removes last cell of a certain block
     void updateIds(Block *b);
+    void updateStarBlockId(Block *b);
     void resetIds();
     void clearAllPastBlocks(); //free all past block pointers
 
