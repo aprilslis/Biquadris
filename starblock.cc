@@ -53,7 +53,7 @@ void StarBlock::drop() {
 			switchBlocks();
 		}
 	} 
-    catch (InvalidMoveException &e) {
+    		catch (InvalidMoveException &e) {
 	}
 }
 
