@@ -9,7 +9,7 @@ board1{file1,startlevel}
 ,onlyText{false}
 ,useSeqFile{false}
 ,textdisplay{&board1,&board2}
-,graphicdisplay{&board1,&board2} 
+//,graphicdisplay{&board1,&board2} 
 {
     
 }
@@ -83,6 +83,30 @@ bool validifyCmd(string input){
     return count==1;
 }
 
+string Game::getInput(){
+    string input = "";
+    if(!isspace(fileCmds[0]) && !isalpha(fileCmds[0]) && !isdigit(fileCmds[0]) && fileCmds[0]!='/'){
+        cout<<"Error: sequence file contain unrecognizable character: "<<fileCmds[0]<<endl;
+        useSeqFile=false;
+    }
+    else{
+        while(isspace(fileCmds[0])){//get rids of whitespace
+            fileCmds = fileCmds.substr(1,fileCmds.size());
+            if(fileCmds=="") break;
+        }
+        while(isalpha(fileCmds[0]) || isdigit(fileCmds[0]) || fileCmds[0]=='/'){ //collect characters
+            input = input + fileCmds.substr(0,1);
+            fileCmds = fileCmds.substr(1,fileCmds.size());
+            if(fileCmds=="") break;
+        }
+        while(isspace(fileCmds[0])){//get rids of whitespace
+            fileCmds = fileCmds.substr(1,fileCmds.size());
+            if(fileCmds=="") break;
+        }
+    }
+    return input;
+}
+
 void Game::start(){
 
     //print welcome messages
@@ -94,7 +118,7 @@ void Game::start(){
     bool checker = false; //sometimes it looks once anyway when it is the end of fileInput, use checker to stop printing current player messages twice
     bool restartGame = false;
     int playerLost = 0;
-    int curNum = 1, count = 0;
+    int curNum = 1;
     Grid *cur = &board1;
     board1.addBlock();
     board2.addBlock();
@@ -109,20 +133,7 @@ void Game::start(){
                 checker = true;
             }
             else{
-                input = "";
-                while(isspace(fileCmds[0])){//get rids of whitespace
-                    fileCmds = fileCmds.substr(1,fileCmds.size());
-                    if(fileCmds=="") break;
-                }
-                while(isalpha(fileCmds[0]) || isdigit(fileCmds[0])){
-                    input = input + fileCmds.substr(count,count+1);
-                    fileCmds = fileCmds.substr(1,fileCmds.size());
-                    if(fileCmds=="") break;
-                }
-                while(isspace(fileCmds[0])){//get rids of whitespace
-                    fileCmds = fileCmds.substr(1,fileCmds.size());
-                    if(fileCmds=="") break;
-                }
+                input = getInput();
             }
         }
         else if(restartGame){
@@ -198,7 +209,7 @@ void Game::start(){
                     
 
                     textdisplay.setBlind(0);
-                    graphicdisplay.setBlind(0);
+                    //graphicdisplay.setBlind(0);
 
                     if(curNum==1){
                         cur = &board2;
@@ -264,7 +275,13 @@ void Game::start(){
                 }
                 else if(cmpString(input,"sequence")){
                     string file;
-                    cin>>file;
+                    if(useSeqFile){
+                        file = getInput();
+                    }
+                    else{
+                        cin>>file;
+                    }
+                    
                     ifstream fileInput(file);
                     if(!fileInput){
                         throw CannotOpenFile{};
@@ -351,11 +368,11 @@ void Game::specialEffects(int curNum){//curNum is the opponent's number
             cout<<endl<<"**Blind** effect would be applied to Player "<<curNum<<endl;
             if(curNum==1){
                 textdisplay.setBlind(1);
-                graphicdisplay.setBlind(1);
+                //graphicdisplay.setBlind(1);
             }
             else{
                 textdisplay.setBlind(2);
-                graphicdisplay.setBlind(2);
+                //graphicdisplay.setBlind(2);
             }
         }
         else if(cmpString(input,"heavy")){
@@ -413,7 +430,7 @@ void Game::restart(){
     board2.clearGrid();
     useSeqFile = false;
     textdisplay.setBlind(0);
-    graphicdisplay.setBlind(0);
+    //graphicdisplay.setBlind(0);
 
     start();
 }
@@ -474,7 +491,7 @@ void Game::drawText(){
 }
 
 void Game::drawGraphic(){
-    graphicdisplay.printDisplay();
+    //graphicdisplay.printDisplay();
 }
 
 void Game::draw(int multiplier){
