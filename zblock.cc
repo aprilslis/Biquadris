@@ -20,7 +20,7 @@ void ZBlock::switchBlocks(vector<Cell *> other) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
 	            block[j]->setType('Z');
-			    block[j]->setIdentity(identity);
+		    block[j]->setIdentity(identity);
 	        }
 	        throw InvalidMoveException();
 	    }
@@ -31,7 +31,7 @@ void ZBlock::switchBlocks(vector<Cell *> other) {
 	block = other;
 	for (int i = 0; i < size; i++) {
 	    block[i]->setType('Z');
-		block[i]->setIdentity(identity);
+	    block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
 }
@@ -145,7 +145,7 @@ void ZBlock::rotateCW() {
 		temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col + 1]);
 		switchBlocks(temp);
-	    --pos;
+	        --pos;
 	}
 }
 
