@@ -31,7 +31,7 @@ void SBlock::switchBlocks(vector<Cell *> other) {
 	block.clear();
 	block = other;
 	for (int i = 0; i < size; i++) {
-	    block[i]->setType('S'); 
+	   	block[i]->setType('S'); 
 		block[i]->setIdentity(identity);
 	}
 	lowerleft = other[0];
@@ -118,7 +118,7 @@ void SBlock::drop() {
 			moveDown();
 		}
 	}
-    catch (InvalidMoveException &e) {
+        catch (InvalidMoveException &e) {
 	}
 }
 
@@ -145,7 +145,7 @@ void SBlock::rotateCW() {
 		temp.push_back(grid[row - 1][col]);
 		temp.push_back(grid[row - 1][col + 1]);
 		switchBlocks(temp);
-	    --pos;
+	        --pos;
 	}
 }
 
