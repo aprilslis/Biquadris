@@ -11,7 +11,7 @@ char SBlock::getType() {
 void SBlock::switchBlocks(vector<Cell *> other) {
 	// emptying block temporarily
 	for (int i = 0; i < size; i++) { 
-	    block[i]->setType('\0'); 
+	    	block[i]->setType('\0'); 
 		block[i]->setIdentity(0);
 	}
 
@@ -20,8 +20,8 @@ void SBlock::switchBlocks(vector<Cell *> other) {
 	    if (other[i]->isFull()) {
 	    	// rewinding block
 	        for (int j = 0; j < size; j++) {
-	            block[j]->setType('S');
-			    block[j]->setIdentity(identity);
+	            	block[j]->setType('S');
+			block[j]->setIdentity(identity);
 	        }
 	        throw InvalidMoveException();
 	    }
