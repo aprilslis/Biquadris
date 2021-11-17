@@ -6,6 +6,9 @@ Game ends with one person's inability of placing a new block down.
 
 # Available Commands
 
+## Note
+All in game commands are available in short form. (For exmaple: `ri` can be interpreted as `right`, though `r` cannot be interpreted as `right` since `restart` shares the common first 'r')
+
 ## Command-line options:
   ``` 
   -text 
