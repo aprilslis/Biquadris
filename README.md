@@ -19,21 +19,34 @@ Player shall also be able to gain special powers by clearing the blocks.
   -scriptfile1 xxx
   ```
   sets game to use file xxx as the default source of blocks instead of sequence1.txt for player 1
-  `-scriptfile2 xxx`
+  `
+  -scriptfile2 xxx
+  `
   sets game to use file xxx as the default source of blocks instead of sequence1.txt for player 2
-  `startlevel n`
+  `
+  startlevel n
+  `
   starts game in level n
 
 ## In-game commands:
-  `left`
+  `
+  left`
+  
   moves current block left by 1 column
-  `right`
+  `
+  right
+  `
   moves current block right by 1 column
-  `down`
+  `
+  down
+  `
   moves current block down by 1 row
-  `clockwise`
+  `
+  clockwise
+  `
   rotates current block clockwise for 90 degrees
-  `counterclockwise`
+  `
+  counterclockwise`
   rotates current block counterclockwise for 90 degrees
   `levelup`
   levels game up by 1 level for the current player
