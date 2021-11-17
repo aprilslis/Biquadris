@@ -1,8 +1,8 @@
 # Biquadris
 
-Biquadris is a two people Tetris game. Game ends with one person's inability of placing a new block down. 
-The game has different 4 levels that have different difficulty levels(different sequence of new blocks popping up, different weight of the block, etc) and different score keeping mechanism.
-Player shall also be able to gain special powers by clearing the blocks.
+Biquadris is a two people Tetris game. 
+Game ends with one person's inability of placing a new block down. 
+
 
 # Available Commands
 
