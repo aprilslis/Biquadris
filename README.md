@@ -7,11 +7,17 @@ Player shall also be able to gain special powers by clearing the blocks.
 # Available Commands
 
 ## Command-line options:
-  ```shell -text ```
+  ``` 
+  -text 
+  ```
   disables graphic display (player game in text-only mode)
-  ```-seed xxx```
+  ```
+  -seed xxx
+  ```
   sets the random number generator’s seed to xxx
-  ```-scriptfile1 xxx```
+  ```
+  -scriptfile1 xxx
+  ```
   sets game to use file xxx as the default source of blocks instead of sequence1.txt for player 1
   `-scriptfile2 xxx`
   sets game to use file xxx as the default source of blocks instead of sequence1.txt for player 2
