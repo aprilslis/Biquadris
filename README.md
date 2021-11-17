@@ -7,7 +7,7 @@ Player shall also be able to gain special powers by clearing the blocks.
 # Available Commands
 
 ## Command-line options:
-  ```-text ```
+  ```shell -text ```
   disables graphic display (player game in text-only mode)
   ```-seed xxx```
   sets the random number generator’s seed to xxx
